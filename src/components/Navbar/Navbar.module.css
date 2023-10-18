@@ -1,9 +1,10 @@
 .header {
   position: relative;
   height: 12.8rem;
-  border-bottom: 1px solid var(--color-black);
   gap: 4.8rem;
-  padding: 4.8rem;
+  padding: 4.8rem 4.8rem 2.4rem 4.8rem;
+  /* border-bottom: 1px solid black; */
+  z-index: 1;
 }
 .logo {
   position: absolute;
@@ -48,11 +49,10 @@
 .actions {
   gap: 3.2rem;
 }
-
 @media (max-width: 84em) {
   .header {
     gap: 4rem;
-    padding: 4rem;
+    padding: 4rem 4rem 2.4rem 4rem ;
   }
 }
 

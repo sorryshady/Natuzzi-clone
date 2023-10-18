@@ -36,7 +36,7 @@
   transition: color 0.1s;
 }
 .content-container:hover::before,.content-container:hover::after{
-  transition: width 0.6s ease-in 0.5s ; 
+  transition: width 0.6s ease-in 0.4s ; 
 } 
 .content-container:hover::before{
   width: 99%;

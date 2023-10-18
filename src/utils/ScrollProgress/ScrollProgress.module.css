@@ -1,0 +1,5 @@
+.progress-bar{
+  height: 4px;
+  background: var(--color-black);
+  transform-origin: 0%;
+}
