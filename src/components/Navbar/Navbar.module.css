@@ -8,9 +8,8 @@
 }
 .logo {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.2);
+  top: 53%;
+  transform:scale(1.2);
 }
 .menuBtn {
   width: 4.8rem;
@@ -54,6 +53,9 @@
     gap: 4rem;
     padding: 4rem 4rem 2.4rem 4rem ;
   }
+  .logo{
+    top: 50%;
+  }
 }
 
 @media (max-width: 75em) {
@@ -64,7 +66,8 @@
     transform: translate(-50%, -50%) scale(0.9);
   }
   .logo {
-    transform: translate(-50%, -50%) scale(1.1);
+    top: 48.5%;
+    transform:  scale(1.1);
   }
   .actions img {
     transform: scale(0.9);
@@ -75,7 +78,8 @@
     transform: translate(-50%, -50%) scale(0.8);
   }
   .logo {
-    transform: translate(-50%, -50%) scale(1);
+    top: 47%;
+    transform: scale(1);
   }
   .actions img {
     transform: scale(0.8);
