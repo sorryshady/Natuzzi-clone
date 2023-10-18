@@ -6,11 +6,14 @@ import Account from '../../assets/Images/Account.svg'
 import Location from '../../assets/Images/Location.svg'
 import CustomLink from '../../utils/CustomLink/CustomLink'
 import Underline from '../../utils/Underline/Underline'
+import NavButtons from '../../utils/NavButtons/NavButtons'
 const Navbar = () => {
   return (
     <header className={`${styles.header} flex`}>
       <div className={styles.logo}>
-        <img src={Logo} alt='company name' />
+        <CustomLink dest={'/'}>
+          <img src={Logo} alt='company name' />
+        </CustomLink>
       </div>
       <div className={styles.menuBtn}>
         <img src={Menu} alt='menu button' className={styles.menuBtnImg} />
@@ -21,8 +24,20 @@ const Navbar = () => {
           <Underline dest={'/natuzzi-editions'}>Natuzzi Editions</Underline>
         </div>
         <div className={`${styles.actions} flex`}>
-          <img src={Location} alt={'store locator'} />
-          <img src={Account} alt={'account'} />
+          {/* <img src={Location} alt={'store locator'} />
+          <img src={Account} alt={'account'} /> */}
+          <NavButtons
+            icon={Location}
+            text={'STORES'}
+            move={'60px'}
+            dest={'/store-locator'}
+          />
+          <NavButtons
+            icon={Account}
+            text={'ACCOUNT'}
+            move={'70px'}
+            dest={'/login'}
+          />
         </div>
       </nav>
     </header>

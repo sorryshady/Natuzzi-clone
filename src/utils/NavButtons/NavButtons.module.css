@@ -1,0 +1,24 @@
+.link{
+  margin-left: 1rem;
+  position: relative;
+  /* display: flex;
+  align-items: center; */
+}
+.link:hover{
+  cursor: pointer;
+}
+.text {
+  display: inline-block;
+  overflow: hidden;
+  font-size: 1.2rem;
+  color: rgba(0,0,0,0.7);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.icon{
+  width: 23px;
+  height: 20px;
+}
+.img{
+  max-width: 23px;
+}
