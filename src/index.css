@@ -49,3 +49,18 @@ body {
   line-height: 1;
   font-weight: 400;
 }
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+}
