@@ -8,15 +8,16 @@ const CustomLink = ({ dest, children }) => {
   const handleDelayedLinkClick = (to, delay) => (event) => {
     event.preventDefault()
     console.log(to)
+    // navigate(to)
     // setExit(true)
     // setTimeout(() => {
     //   navigate(to)
     // }, delay)
   }
   return (
-    <div className={styles.link} onClick={handleDelayedLinkClick(dest, 1000)}>
+    <span className={styles.link} onClick={handleDelayedLinkClick(dest, 1000)}>
       {children}
-    </div>
+    </span>
   )
 }
 

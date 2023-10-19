@@ -1,0 +1,80 @@
+.button {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  /* transform: rotateZ(0deg); */
+  /* transform: rotateZ(45deg); */
+  transform: rotateZ(90deg);
+  /* transform: rotateZ(135deg); */
+  /* transform: rotateZ(180deg); */
+  /* transform: rotateZ(225deg); */
+  /* transform: rotateZ(270deg); */
+  /* transform: rotateZ(315deg); */
+}
+.arrow {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.5s;
+  transform: translateX(20px);
+}
+.arrow:after {
+  position: absolute;
+  display: block;
+  content: '';
+  color: var(--color-black);
+  width: 80px;
+  height: 15px;
+  top: -1px;
+  border-bottom: solid 2px;
+  transform: translatex(4px);
+  transition: all 0.5s;
+  transform-origin: 0%;
+}
+.arrow:before {
+  position: absolute;
+  display: block;
+  content: '';
+  color: var(--color-black);
+  width: 4px;
+  height: 4px;
+  border-top: solid 2px;
+  border-left: solid 2px;
+  top: 50%;
+  left: 2px;
+  transform-origin: 0% 0%;
+  transform: rotatez(-45deg);
+  transition: all 0.5s;
+}
+.button:hover .arrow {
+  transform:  translateX(-8%);
+}
+.button:hover .arrow:before {
+  transform: rotatez(-45deg) translateY(-35%) translateX(-35%);
+}
+.button:hover .arrow:after {
+  transform: scaleX(0.5);
+}
+.circle {
+  width: 10rem;
+  height: 10rem;
+  background-color: transparent;
+  border: 1px solid var(--color-black);
+  opacity: 0.42;
+  border-radius: 100%;
+  z-index: 0;
+  margin: -60px;
+  transform: scale(0.5);
+  transition: all 0.5s;
+}
+.button:hover .circle {
+  transform: scale(1);
+  opacity: 1;
+}
+.button:hover {
+  cursor: pointer;
+}

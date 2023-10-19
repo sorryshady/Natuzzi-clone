@@ -14,7 +14,7 @@ Medium: 1.2
 Paragraph default: 1.6
 
 - Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 64 / 80 / 96 / 128 */
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 56 / 64 / 80 / 96 / 128 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Rubik:wght@400;500;600;700&display=swap');
 :root {
   --color-bg: #ffffff;

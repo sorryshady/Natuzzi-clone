@@ -16,6 +16,7 @@ const router = createBrowserRouter([
       // { path: 'trade-partnership', element: <TradeContract /> },
       // { path: 'meet-natuzzi', element: <TradeContract /> },
       // { path: 'store-locator', element: <TradeContract /> },
+      // { path: 'privacy-policy', element: <TradeContract /> },
     ],
   },
 ])
