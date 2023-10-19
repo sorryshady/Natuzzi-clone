@@ -28,6 +28,9 @@
   font-weight: 500;
 }
 
-@media (max-width: 75em){
-
+@media (max-width: 64em){
+  .checkbox-label{
+    font-size: 1.6rem;
+    margin-left: 2.4rem;
+  }
 }

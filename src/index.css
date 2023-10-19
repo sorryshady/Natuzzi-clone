@@ -54,11 +54,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 90em){}
+
 @media (max-width: 75em) {
   html {
     font-size: 56.25%;
   }
 }
+@media (max-width: 64em){}
+@media (max-width: 48em){}
 @media (max-width: 59em) {
   html {
     font-size: 50%;

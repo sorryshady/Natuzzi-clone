@@ -115,6 +115,7 @@
   display: flex;
 }
 .btn-txt{
+  width: 11rem;
   position: absolute;
   top: 28%;
   left: 23%;
@@ -128,35 +129,93 @@
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 0.42;
 }
+.second-section{
+  height: 20vh;
+}
 .stocks{
   position: absolute;
   bottom: 1%;
   font-weight: 500;
 }
-
+@media(max-width: 90em){
+  .btn-txt{
+    /* left: 20%; */
+    font-size: 2.4rem;
+  }
+}
 @media (max-width: 84em){
   .btn-txt{
     left: 15%;
   }
 }
-@media (max-width: 75em){}
-@media (max-width: 59em){
-  
+@media (max-width: 75em){
+  .btn-txt{
+    left: 13%;
+    width: 9rem;
+    font-size: 2.4rem;
+  }
+  .submit{
+    font-size: 1.6rem;
+    padding: 1.2rem 4rem;
+  }
+}
+@media (max-width: 64em){
+
   .first-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5.6rem;
-  }
-  .logo{
+    gap: 4.8rem;
   }
   .logo img{
     top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -175%) scale(3);
   }
   .form{
     border: none;
+    margin-top: 3.2rem;
+  }
+  .text{
+    text-align: center;
+  }
+  .input-container input{
+    font-size: 2.4rem;
+  }
+  .input-container span{
+    font-size: 2.8rem;
+  }
+  .input-container input:not(:placeholder-shown) ~ span,
+  .input-container input:focus ~ span{
+    transform: translateY(-20px);
+    font-size: 2rem;
+  }
+  .button{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 5%;
+    width: 100%;
+  }
+  .errorEmail{
+    top: 23%;
+  }
+  .btn-txt{
+    position: absolute;
+    width: 100%;
+    left: 12%;
+    top: -10%;
+    /* display: none; */
+  }
+  .submit{
+    position: static;
+    width: 100%;
+    margin-top: 1.6rem;
+  }
+  .stocks{
+    bottom: 8%;
+    font-size: 1.6rem;
   }
 }
+@media (max-width: 59em){}

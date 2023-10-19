@@ -106,17 +106,14 @@ const Footer = () => {
         </div>
 
         <div className={styles.button}>
-          <div className={styles['btn-txt']}>
-            back to <br />
-            Top
-          </div>
+          <div className={styles['btn-txt']}>back to Top</div>
           <CustomButton />
         </div>
       </div>
 
       <div className={styles.divider}></div>
 
-      <div>Second Section</div>
+      <div className={styles['second-section']}>Second Section</div>
 
       <span className={styles.stocks}>Natuzzi S.p.A. 03513760722</span>
     </footer>

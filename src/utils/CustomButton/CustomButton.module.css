@@ -78,3 +78,22 @@
 .button:hover {
   cursor: pointer;
 }
+
+@media (max-width: 64em){
+  .button:hover .arrow{
+    transform:  translateX(-1%);
+  }
+  .arrow{
+    transform:  translateX(-1%);
+  }
+  .arrow:before {
+    transform: rotatez(-45deg) translateY(-35%) translateX(-35%);
+  }
+  .arrow:after {
+    transform: scaleX(0.5);
+  }
+  .circle{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
