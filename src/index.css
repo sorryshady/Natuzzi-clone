@@ -52,22 +52,25 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
-#root{
+#root {
   position: relative;
   width: 100vw;
 }
-.flex{
+.flex {
   display: flex;
 }
-@media (max-width: 90em){}
+@media (max-width: 90em) {
+}
 
 @media (max-width: 75em) {
   html {
     font-size: 56.25%;
   }
 }
-@media (max-width: 64em){}
-@media (max-width: 48em){}
+@media (max-width: 64em) {
+}
+@media (max-width: 48em) {
+}
 @media (max-width: 59em) {
   html {
     font-size: 50%;
