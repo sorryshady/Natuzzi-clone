@@ -49,10 +49,13 @@ body {
   line-height: 1;
   font-weight: 400;
 }
+#root{
+  position: relative;
+}
 .flex{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 }
 @media (max-width: 90em){}
 

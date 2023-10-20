@@ -1,11 +1,15 @@
 .container{
   display: flex;
   flex-direction: column;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   transition: background-color 0.5s;
+  z-index: 5;
 }
 .active{
   background-color: var(--color-theme);
-  /* background-color: red; */
+  transform: translateY(-20%);
 }
+ 

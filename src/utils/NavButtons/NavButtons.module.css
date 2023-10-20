@@ -1,6 +1,7 @@
 .link{
   margin-left: 1rem;
   position: relative;
+  align-items: center;
   /* display: flex;
   align-items: center; */
 }

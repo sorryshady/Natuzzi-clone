@@ -2,6 +2,7 @@
   position: relative;
   padding: 8rem 6.4rem;
   background-color: var(--color-theme);
+  width: 100vw;
 }
 .first-section{
   display: grid;

@@ -1,17 +1,29 @@
 .header {
   position: relative;
-  height: 12.8rem;
+  padding: 6.4rem 6.4rem 2.4rem 6.4rem;
+  width: 100vw;
+  height: 13.5rem;
+  align-items: center;
+}
+.nav {
+  height: 48px;
+  width: 100%;
+}
+.navLeft{
+  flex: 2;
+  align-items: center;
   gap: 4.8rem;
-  padding: 4.8rem 6.4rem 2.4rem 6.4rem;
-  /* border-bottom: 1px solid black; */
-  z-index: 1;
 }
 .logo {
-  position: absolute;
-  top: 53%;
-  transform:scale(1.2);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 2.4rem; */
+  transform: scale(1.2);
 }
 .menuBtn {
+  padding-right: 2.4rem;
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
@@ -33,31 +45,24 @@
 .menuBtn:hover .menuBtnImg{
   opacity: 0;
 }
-.nav {
-  justify-content: space-between !important;
-  flex-grow: 1;
-}
 .editions {
   gap: 3.2rem;
 }
 .editions div{
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
 }
 .actions {
+  flex:2;
+  justify-content: flex-end;
+  align-items: center;
   gap: 3.2rem;
 }
 @media (max-width: 84em) {
   .header {
     gap: 4rem;
     padding: 4rem 5.6rem 2.4rem 5.6rem ;
-  }
-  .logo{
-    top: 50%;
-  }
-  .logo{
-    top: 50%;
   }
 }
 
@@ -68,23 +73,47 @@
   .menuBtnImg {
     transform: translate(-50%, -50%) scale(0.9);
   }
-  .logo {
-    top: 48.5%;
-    transform:  scale(1.1);
-  }
   .actions img {
     transform: scale(0.9);
   }
 }
-@media (max-width: 59em) {
-  .menuBtnImg {
-    transform: translate(-50%, -50%) scale(0.8);
+@media (max-width: 64em){
+  .header{
+    padding: 4rem;
+    position: static;
   }
-  .logo {
-    top: 47%;
-    transform: scale(1);
+  .nav{
+    display: grid !important;
+    grid-template-columns: 15% 70% ;
+    column-gap:3.2rem ;
   }
-  .actions img {
-    transform: scale(0.8);
+  .navLeft{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    justify-self: center;
+    margin-top: 2.4rem;
+    transform: translateX(-8%);
+  }
+  .logo{
+    justify-self: center ;
+    transform: translateX(-20%) scale(1.2);
+  }
+  .actions{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    transform: translateX(-17%);
+    gap: 1.2rem;
+  }
+  .menuBtn{
+    display: none;
+  }
+}
+@media (max-width: 48em){
+  .actions{
+    transform: translateX(0%);
   }
 }
