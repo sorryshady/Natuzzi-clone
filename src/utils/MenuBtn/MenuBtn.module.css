@@ -34,3 +34,18 @@
     opacity: 0;
   }
 }
+@media (max-width: 59em){
+  .container{
+    top: 90%;
+  }
+}
+@media (max-width: 36em){
+  .container{
+    top: 91%;
+  }
+}
+@media (max-width: 30em){
+  .container{
+    top: 91%;
+  }
+}

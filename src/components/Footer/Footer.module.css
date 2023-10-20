@@ -132,7 +132,28 @@
   opacity: 0.42;
 }
 .second-section{
-  height: 20vh;
+  margin-top: 6.4rem ;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr 1fr
+}
+.column-heading{
+  font-weight: 500;
+  font-size: 2.8rem;
+}
+.footer-links{
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 4rem;
+}
+.footer-links span{
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  transition: all 0.5s;
+}
+.footer-links span:hover{
+  color: rgba(0, 0, 0, 1);
 }
 .stocks{
   position: absolute;
@@ -162,7 +183,9 @@
   }
 }
 @media (max-width: 64em){
-
+  .footer{
+    padding-bottom: 16rem;
+  }
   .first-section{
     display: flex;
     flex-direction: column;
@@ -197,8 +220,8 @@
   .button{
     position: absolute;
     display: flex;
-    bottom: 0;
-    right: 5%;
+    bottom: 4%;
+    right: 40%;
     width: 100%;
   }
   .errorEmail{
@@ -207,8 +230,9 @@
   .btn-txt{
     position: absolute;
     width: 100%;
-    left: 12%;
-    top: -10%;
+    left: 47%;
+    top: -130%;
+    font-size: 4rem;
     /* display: none; */
   }
   .submit{
@@ -216,22 +240,40 @@
     width: 100%;
     margin-top: 1.6rem;
   }
-  .stocks{
-    bottom: 8%;
+  .second-section{
+    grid-template-columns: 1fr 1fr;
+    row-gap: 3.2rem;
+  }
+  .footer-links{
+    padding-top: 2.4rem;
+  }
+  .footer-links span{
     font-size: 1.6rem;
+  }
+  .stocks{
+    position: static;
+    margin-top: 4rem ;
+    font-size: 2rem;
   }
 }
 @media (max-width: 59em){}
 
 @media (max-width: 48em){
   .footer{
-    padding: 8rem 3.6rem;
+    padding: 8rem 3.6rem 14rem;
+  }
+  .button{
+    bottom: 3%;
+  }
+  .btn-txt{
+    left: 45%;
+    font-size: 3.2rem;
   }
 }
 
 @media (max-width: 36em){
   .footer{
-    padding: 8rem 3.2rem;
+    padding: 8rem 3.2rem 14rem;
   }
   .form{
     padding: 0 3.2rem;
@@ -243,10 +285,16 @@
   .errorEmail{
     top: 20%;
   }
+  .button{
+    transform: translateX(15px);
+  }
+  .btn-txt{
+    transform: translateX(-5px);
+  }
 }
 @media (max-width: 30em){
   .footer{
-    padding: 8rem 2.4rem;
+    padding: 8rem 2.4rem 14rem;
   }
   .logo img{
     transform: translate(-50%, -175%) scale(2);
@@ -257,8 +305,34 @@
   .form{
     padding: 0 2.4rem;
   }
+  .stocks{
+    font-size: 1.6rem;
+  }
+  .button{
+    transform: translate(45px, 10px);
+  }
+  .btn-txt{
+    font-size: 2.4rem;
+    transform: translate(-20px, -5px) ;
+  }
 }
-
+@media (max-width: 24em){
+  .column-heading{
+    font-size: 2.4rem;
+  }
+  .footer-links span{
+    font-size: 1.4rem;
+  }
+  .button{
+    transform: translate(40px, 10px) ;
+  }
+  .btn-txt{
+    transform: translate(-35px, -10px);
+  }
+  .stocks{
+    font-size: 1.4rem;
+  }
+}
 @media (max-width: 20em){
   .text{
     font-size: 3rem;
@@ -271,5 +345,14 @@
   }
   .errorEmail{
     top: 18%;
+  }
+  .column-heading{
+    font-size: 2rem;
+  }
+  .footer-links span{
+    font-size: 1.2rem;
+  }
+  .stocks{
+    font-size: 1.2rem;
   }
 }
