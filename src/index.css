@@ -49,14 +49,15 @@ body {
   line-height: 1;
   font-weight: 400;
   background-color: var(--color-theme);
+  width: 100vw;
+  overflow-x: hidden;
 }
 #root{
   position: relative;
+  width: 100vw;
 }
 .flex{
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
 }
 @media (max-width: 90em){}
 

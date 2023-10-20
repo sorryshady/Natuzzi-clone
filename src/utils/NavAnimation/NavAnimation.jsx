@@ -47,7 +47,6 @@ const NavAnimation = ({ children }) => {
     paddingBottom = parseFloat(computedStyle.getPropertyValue('padding-bottom'))
     paddingTop = parseFloat(computedStyle.getPropertyValue('padding-top'))
     shift = paddingBottom - paddingTop + 4
-    console.log(shift)
   }
 
   return (
