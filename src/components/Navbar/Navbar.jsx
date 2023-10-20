@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Navbar.module.css'
+import { animateScroll as scroll } from 'react-scroll'
 import Logo from '../../assets/Images/Logo.svg'
 import Menu from '../../assets/Images/Menu.svg'
 import Account from '../../assets/Images/Account.svg'
@@ -11,6 +12,9 @@ import ScrollProgress from '../../utils/ScrollProgress/ScrollProgress'
 import NavAnimation from '../../utils/NavAnimation/NavAnimation'
 import MenuBtn from '../../utils/MenuBtn/MenuBtn'
 const Navbar = () => {
+  const scrollToTop = () => {
+    scroll.scrollToTop()
+  }
   return (
     <>
       <NavAnimation>
@@ -31,7 +35,7 @@ const Navbar = () => {
                 </Underline>
               </div>
             </div>
-            <div className={styles.logo}>
+            <div className={styles.logo} onClick={scrollToTop}>
               <CustomLink dest={'/'}>
                 <img src={Logo} alt='company name' />
               </CustomLink>

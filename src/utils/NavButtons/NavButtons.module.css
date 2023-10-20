@@ -23,3 +23,9 @@
 .img{
   max-width: 23px;
 }
+
+@media (max-width: 36em){
+  .link{
+    pointer-events: none;
+  }
+}

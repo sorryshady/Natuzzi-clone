@@ -4,8 +4,8 @@
 @media (max-width: 64em){
   .container{
     position: fixed;
-    top: 80%;
-    left: 5%;
+    top: 90%;
+    left: 7%;
     z-index: 6;
   }
   .menuBtn-mobile{
@@ -16,23 +16,21 @@
     height: 48px;
     background-color: var(--color-black);
     position: relative;
-    display: flex;
-    padding: 1.2rem;
     border-radius: 50%;
-  }
-  .menuBtn-mobile img{
-    justify-content: center;
-    align-items: center;
     transition: all 0.5s;
   }
-  .menuBtn-mobile:hover img{
-    transform: rotateZ(30deg);
-    opacity: 0;
+  .menuBtn-mobile img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: 0 0;
+    transition: all 0.5s;
   }
-}
-@media (max-width: 59em){
-  .menuBtn-mobile{
-    width: 40px;
-    height: 40px;
+  .menuBtn-mobile:hover{
+    transform: rotateZ(30deg);
+  }
+  .menuBtn-mobile:hover img{
+    opacity: 0;
   }
 }

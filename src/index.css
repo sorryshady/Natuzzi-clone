@@ -69,10 +69,15 @@ body {
 }
 @media (max-width: 64em) {
 }
-@media (max-width: 48em) {
-}
+
 @media (max-width: 59em) {
   html {
     font-size: 50%;
   }
 }
+@media (max-width: 48em) {
+}
+@media (max-width: 36em){}
+@media (max-width: 30em){}
+@media (max-width: 24em){}
+@media (max-width: 20em){}

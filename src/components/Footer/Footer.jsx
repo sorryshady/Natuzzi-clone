@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
+import { animateScroll as scroll } from 'react-scroll'
 import styles from './Footer.module.css'
 import NLogo from '../../assets/Images/NLogo.svg'
 import CustomButton from '../../utils/CustomButton/CustomButton'
 import Checkbox from '../../utils/Checkbox/Checkbox'
 const Footer = () => {
+  const scrollToTop = () => {
+    scroll.scrollToTop()
+  }
+
   const [formData, setFormData] = useState({
     email: '',
     conditions: false,
@@ -105,7 +110,7 @@ const Footer = () => {
           </form>
         </div>
 
-        <div className={styles.button}>
+        <div className={styles.button} onClick={scrollToTop}>
           <div className={styles['btn-txt']}>back to Top</div>
           <CustomButton />
         </div>

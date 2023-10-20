@@ -117,3 +117,12 @@
     transform: translateX(0%);
   }
 }
+@media (max-width: 36em){
+
+}
+@media (max-width: 24em){
+  .navLeft{
+    grid-column-start: 1;
+    transform: translateX(10%);
+  }
+}
