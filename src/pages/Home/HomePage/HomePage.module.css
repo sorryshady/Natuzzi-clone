@@ -8,10 +8,37 @@
 .socials{
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 4.8rem 6.4rem;
   background-color: var(--color-white);
+}
+.socialsContainer{
+  display: flex;
+  align-items: center;
+}
+.followTxt{
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+  position: relative;
+  padding-right: 24vw;
+}
+.followTxt::after{
+  display: block;
+  position: absolute;
+  content: '';
+  height: 2px;
+  background-color: var(--color-black);
+  width: 18vw;
+  top: 50%;
+  right: 3vw;
+}
+.logoFlex{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 64em){
   .container{
@@ -19,8 +46,46 @@
     grid-template-columns: 1fr;
   }
   .socials{
-    padding-bottom: 12rem;
+    padding-bottom: 14rem;
+  }
+  .socialsContainer{
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .followTxt{
+    padding: 0 0 3.2rem;
+  }
+  .followTxt::after{
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
   }
 }
-@media (max-width:24em){
+@media (max-width: 48em){
+  .followTxt::after{
+    width: 21vw;
+  }
+}
+@media (max-width: 36em){
+  .followTxt::after{
+    width: 28vw;
+  }
+}
+@media (max-width: 30em){
+  .followTxt::after{
+    width: 33vw;
+  }
+}
+@media (max-width: 24em){
+  .followTxt::after{
+    width: 42vw;
+  }
+}
+@media (max-width: 20em){
+  .followTxt::after{
+    width: 50vw;
+  }
+  .logoFlex{
+    gap: 10px;
+  }
 }
