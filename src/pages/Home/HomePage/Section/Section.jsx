@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Section.module.css'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
 const Section = ({
@@ -11,30 +11,23 @@ const Section = ({
   textOne,
   textTwo,
 }) => {
-  useEffect(() => {
-    const imgContainers = document.querySelectorAll(`.${styles.imgContainer}`)
-    const optionsContainers = document.querySelectorAll(`.${styles.options}`)
-    const contentElements = document.querySelectorAll(`.${styles.content}`)
+  const [hover, setHover] = useState(false)
+  const handleMouseEnter = () => {
+    setHover(true)
+  }
 
-    imgContainers.forEach((imgContainer, index) => {
-      imgContainer.addEventListener('mouseover', () => {
-        contentElements[index].style.transform = 'scaleX(1)'
-      })
-
-      imgContainer.addEventListener('mouseout', () => {
-        contentElements[index].style.transform = 'scaleX(0)'
-      })
-    })
-    optionsContainers.forEach((optionsContainer, index) => {
-      optionsContainer.addEventListener('mouseover', () => {
-        contentElements[index].style.transform = 'scaleX(1)'
-      })
-
-      optionsContainer.addEventListener('mouseout', () => {
-        contentElements[index].style.transform = 'scaleX(0)'
-      })
-    })
-  }, [])
+  const handleMouseLeave = () => {
+    setHover(false)
+  }
+  const contentStyles = {
+    transform: hover ? 'scaleX(1)' : 'scaleX(0)',
+  }
+  const imgContainerStyles = {
+    transform: hover ? 'scale(1.03)' : 'scale(1)',
+  }
+  const editionsImgStyles = {
+    transform: hover ? 'scale(1.04)' : 'scale(1)',
+  }
   return (
     <>
       <div
@@ -43,22 +36,37 @@ const Section = ({
         }`}
         data-text={dataText}
       >
-        <div className={styles.content}></div>
+        <div className={styles.content} style={contentStyles}></div>
         <div
           className={`${styles.options} ${
             styleClass === 'one' ? styles.italia : styles.editions
           }`}
         >
           <CustomLink dest={dest}>
-            <img src={img} alt={alt} />
-            <div className={styles['options-text']}>
-              {textOne} <br />
-              <span>{textTwo}</span>
+            <div
+              className={styles.optionDesc}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <img src={img} alt={alt} />
+              <div className={styles['options-text']}>
+                {textOne} <br />
+                <span>{textTwo}</span>
+              </div>
             </div>
           </CustomLink>
         </div>
-        <div className={styles.imgContainer}>
-          <img src={src} alt={alt} />
+        <div className={styles.imgContainer} style={imgContainerStyles}>
+          <CustomLink dest={dest}>
+            <img
+              src={src}
+              alt={alt}
+              style={editionsImgStyles}
+              className={styles['editions-img']}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            />
+          </CustomLink>
         </div>
       </div>
     </>

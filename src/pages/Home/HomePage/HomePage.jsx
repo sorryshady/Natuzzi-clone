@@ -31,16 +31,6 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
-      {/* <div className={`${styles.section} ${styles.one}`}>
-        <div className={styles.content}></div>
-        <div className={styles.imgContainer}>
-          <img
-            src='https://static.natuzzi.com/production/0108883_Italia.png'
-            alt='natuzzi italia'
-          />
-        </div>
-      </div> */}
-      {/* <CustomLink dest={'/natuzzi-italia'} styleClass={'flex-grow'}> */}
       <Section
         src={'https://static.natuzzi.com/production/0108883_Italia.png'}
         alt={'natuzzi italia'}
@@ -51,8 +41,6 @@ const HomePage = () => {
         textOne={'made in italy'}
         textTwo={'luxury design.'}
       />
-      {/* </CustomLink> */}
-      {/* <CustomLink dest={'/natuzzi-editions'} styleClass={'flex-grow'}> */}
       <Section
         src={
           'https://static.natuzzi.com/production/0103226_Natuzzi_PORTENTO-3-POSTI_PART-BRACCIOLO.jpeg'
@@ -65,16 +53,6 @@ const HomePage = () => {
         textOne={'best contemporary'}
         textTwo={'design for everyone'}
       />
-      {/* </CustomLink> */}
-      {/* <div className={`${styles.section} ${styles.two}`}>
-        <div className={styles.imgContainer}>
-          <img
-            src='https://static.natuzzi.com/production/0103226_Natuzzi_PORTENTO-3-POSTI_PART-BRACCIOLO.jpeg'
-            alt='natuzzi italia'
-          />
-        </div>
-        <div className={styles.content}></div>
-      </div> */}
     </div>
   )
 }
