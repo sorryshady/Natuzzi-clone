@@ -43,7 +43,7 @@
   z-index: 3;
   transition: all 1s;
   overflow: hidden;
-  background-color: white;
+  background-color: var(--color-white);
 }
 .editions-img{
   width: 100%;
@@ -54,21 +54,47 @@
 .options{
   position: absolute;
   top: 62%;
+  z-index: 5;
 }
 .optionDesc{
   display: block;
+  transition: all ease-out 0.5s;
 }
 .options img{
   margin-bottom: 2.4rem;
   position: absolute;
-  z-index: 5;
 }
 .options-text{
   font-size: 3.8rem;
   font-weight: 500;
   letter-spacing: -3px;
   position: relative;
-  z-index: 5;
+}
+.underline{
+  position: relative;
+  padding: 0.1rem 1rem;
+}
+.underline::before{
+  position: absolute;
+  display: block;
+  content: '';
+  background-color: var(--color-black);
+  height: 1px;
+  width: 100%;
+  transform: rotateZ(-0.6deg);
+  bottom: -5px;
+  left: 0;
+}
+.underline::after{
+  position: absolute;
+  display: block;
+  content: '';
+  background-color: var(--color-black);
+  height: 1px;
+  width: 100%;
+  transform: rotateZ(0.7deg);
+  bottom: -5px;
+  right: 0;
 }
 .italia img{
   left: 10px;
@@ -79,8 +105,8 @@
   top: -50px;
 }
 .italia{
-  left: 9%;
+  left: 8%;
 }
 .editions{
-  right: 9%;
+  right: 8%;
 }

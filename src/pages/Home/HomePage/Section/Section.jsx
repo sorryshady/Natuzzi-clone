@@ -28,6 +28,13 @@ const Section = ({
   const editionsImgStyles = {
     transform: hover ? 'scale(1.04)' : 'scale(1)',
   }
+  const optionDescStyles = {
+    transform: hover
+      ? styleClass === 'one'
+        ? 'translateX(-15px)'
+        : 'translateX(15px)'
+      : 'none',
+  }
   return (
     <>
       <div
@@ -45,13 +52,14 @@ const Section = ({
           <CustomLink dest={dest}>
             <div
               className={styles.optionDesc}
+              style={optionDescStyles}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <img src={img} alt={alt} />
               <div className={styles['options-text']}>
                 {textOne} <br />
-                <span>{textTwo}</span>
+                <div className={styles.underline}>{textTwo}</div>
               </div>
             </div>
           </CustomLink>
