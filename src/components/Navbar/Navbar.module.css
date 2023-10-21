@@ -47,6 +47,7 @@
 }
 .editions {
   gap: 3.2rem;
+  text-wrap: nowrap;
 }
 .editions div{
   font-size: 1.8rem;
@@ -121,9 +122,6 @@
 
 }
 @media (max-width: 30em){
-  .editions{
-    text-wrap: nowrap;
-  }
 }
 @media (max-width: 24em){
   .navLeft{
