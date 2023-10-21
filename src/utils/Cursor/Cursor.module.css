@@ -5,12 +5,12 @@
   width: 1px;
   border-radius: 50%;
   position: fixed;
-  top: -4%;
+  top: -9%;
   left: -4%; 
 }
 .enter {
   display: block;
-  position: absolute;
+  position: fixed;
   width: 130px;
   height: 130px;
   z-index: 101;

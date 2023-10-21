@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-
 export function useCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [hovering, setHovering] = useState(false)
