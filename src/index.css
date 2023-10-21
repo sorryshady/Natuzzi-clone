@@ -42,7 +42,8 @@ Paragraph default: 1.6
 }
 html {
   font-size: 62.5%;
-  overflow-x: hidden;
+  width: 100%;
+  /* overflow-x: hidden; */
 }
 body {
   font-family: 'Rubik', sans-serif;
