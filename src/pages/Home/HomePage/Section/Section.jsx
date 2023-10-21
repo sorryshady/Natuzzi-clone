@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Section.module.css'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
+import { useCursor } from '../../../../hooks/useCursor'
+import Cursor from '../../../../utils/Cursor/Cursor'
 const Section = ({
   src,
   alt,
@@ -11,25 +13,29 @@ const Section = ({
   textOne,
   textTwo,
 }) => {
-  const [hover, setHover] = useState(false)
-  const handleMouseEnter = () => {
-    setHover(true)
-  }
+  const {
+    mousePosition,
+    hovering,
+    handleMouseEnter,
+    handleMouseLeave,
+    hoveredText,
+  } = useCursor()
 
-  const handleMouseLeave = () => {
-    setHover(false)
-  }
+  useEffect(() => {
+    console.log(hoveredText)
+  }, [hoveredText])
+
   const contentStyles = {
-    transform: hover ? 'scaleX(1)' : 'scaleX(0)',
+    transform: hovering ? 'scaleX(1)' : 'scaleX(0)',
   }
   const imgContainerStyles = {
-    transform: hover ? 'scale(1.03)' : 'scale(1)',
+    transform: hovering ? 'scale(1.03)' : 'scale(1)',
   }
   const editionsImgStyles = {
-    transform: hover ? 'scale(1.04)' : 'scale(1)',
+    transform: hovering ? 'scale(1.04)' : 'scale(1)',
   }
   const optionDescStyles = {
-    transform: hover
+    transform: hovering
       ? styleClass === 'one'
         ? 'translateX(-15px)'
         : 'translateX(15px)'
@@ -41,7 +47,6 @@ const Section = ({
         className={`${styles.section} ${
           styleClass === 'one' ? styles.one : styles.two
         }`}
-        data-text={dataText}
       >
         <div className={styles.content} style={contentStyles}></div>
         <div
@@ -53,13 +58,15 @@ const Section = ({
             <div
               className={styles.optionDesc}
               style={optionDescStyles}
-              onMouseEnter={handleMouseEnter}
+              onMouseEnter={(e) => handleMouseEnter(e)}
               onMouseLeave={handleMouseLeave}
             >
-              <img src={img} alt={alt} />
-              <div className={styles['options-text']}>
+              <img src={img} alt={alt} data-text={dataText} />
+              <div data-text={dataText} className={styles['options-text']}>
                 {textOne} <br />
-                <div className={styles.underline}>{textTwo}</div>
+                <div data-text={dataText} className={styles.underline}>
+                  {textTwo}
+                </div>
               </div>
             </div>
           </CustomLink>
@@ -70,13 +77,19 @@ const Section = ({
               src={src}
               alt={alt}
               style={editionsImgStyles}
+              data-text={dataText}
               className={styles['editions-img']}
-              onMouseEnter={handleMouseEnter}
+              onMouseEnter={(e) => handleMouseEnter(e)}
               onMouseLeave={handleMouseLeave}
             />
           </CustomLink>
         </div>
       </div>
+      <Cursor
+        mousePosition={mousePosition}
+        hovering={hovering}
+        text={hoveredText}
+      />
     </>
   )
 }
