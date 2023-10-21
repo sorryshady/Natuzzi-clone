@@ -13,6 +13,14 @@ const Section = ({
   textOne,
   textTwo,
 }) => {
+  const [mobile, setMobile] = useState(false)
+
+  useEffect(() => {
+    if (parseFloat(window.innerWidth) <= 768) {
+      setMobile(true)
+    }
+  }, [])
+
   const {
     mousePosition,
     hovering,
@@ -85,6 +93,7 @@ const Section = ({
         mousePosition={mousePosition}
         hovering={hovering}
         text={hoveredText}
+        mobile={mobile}
       />
     </>
   )
