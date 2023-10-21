@@ -21,12 +21,8 @@ const Section = ({
     hoveredText,
   } = useCursor()
 
-  useEffect(() => {
-    console.log(hoveredText)
-  }, [hoveredText])
-
   const contentStyles = {
-    transform: hovering ? 'scaleX(1)' : 'scaleX(0)',
+    transform: hovering ? 'scaleX(1)' : '',
   }
   const imgContainerStyles = {
     transform: hovering ? 'scale(1.03)' : 'scale(1)',

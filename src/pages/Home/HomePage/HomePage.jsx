@@ -30,6 +30,7 @@ const HomePage = () => {
           textTwo={'design for everyone'}
         />
       </div>
+      <div className={styles.socials}>Follow us</div>
     </>
   )
 }

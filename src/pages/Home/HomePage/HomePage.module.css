@@ -3,6 +3,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  padding-bottom: 4.8rem;
+  background-color: var(--color-white);
+}
+.socials{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4.8rem 6.4rem;
+  background-color: var(--color-white);
+}
+@media (max-width: 64em){
+  .container{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .socials{
+    padding-bottom: 12rem;
+  }
+}
+@media (max-width:24em){
 }
