@@ -1,0 +1,89 @@
+.section{
+  flex: 1;
+  display: flex;
+  height: 62rem;
+  padding-top: 6rem;
+  padding-bottom: 6.4rem;
+  position: relative;
+}
+.section span{
+  flex: 1;
+}
+.one{
+  justify-content: flex-end;
+  padding-right: 6.4rem;
+}
+.two{
+  padding-left: 6.4rem;
+}
+.content{
+  flex: 1;
+  color: black;
+  font-size: 2rem;
+  width: 100%;
+  height: 37rem;
+  position: absolute;
+  left: 0;
+  bottom: 0%;
+  z-index: 2;
+  transform: scaleX(0);
+  transition: all ease-in-out 1s;
+}
+.one .content{
+  transform-origin: center left;
+  background-color: var(--color-italia);
+}
+.two .content{ 
+  transform-origin: center right;
+  background-color: var(--color-editions);
+}
+.imgContainer{
+  flex: 1;
+  max-width: 55%;
+  z-index: 3;
+  opacity: 0.9;
+  transition: all 1s;
+  overflow: hidden;
+}
+.imgContainer:hover{
+  cursor: pointer;
+  transform: scale(1.03);
+}
+.imgContainer img{
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+.imgContainer:hover img{
+  transform: scale(1.04);
+}
+.options{
+  position: absolute;
+  top: 62%;
+}
+.options img{
+  margin-bottom: 2.4rem;
+  position: absolute;
+  z-index: 5;
+}
+.options-text{
+  font-size: 3.8rem;
+  font-weight: 500;
+  letter-spacing: -3px;
+  position: relative;
+  z-index: 5;
+}
+.italia img{
+  left: 10px;
+  top: -50px;
+}
+.editions img{
+  right: 10px;
+  top: -50px;
+}
+.italia{
+  left: 9%;
+}
+.editions{
+  right: 9%;
+}

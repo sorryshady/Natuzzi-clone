@@ -6,14 +6,14 @@ const NavAnimation = ({ children }) => {
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious()
-    if (latest > previous && latest > 150) {
+    if (latest > previous) {
       setHidden(true)
       setTopState(false)
     } else {
       setHidden(false)
       setTopState(latest <= 150)
     }
-    if (latest >= 150) {
+    if (latest >= 50) {
       setActive(true)
     } else {
       setActive(false)

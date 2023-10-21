@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './CustomLinks.module.css'
 import { useNavigate } from 'react-router'
 // const CustomLink = ({dest, children, setExit}) => {
-const CustomLink = ({ dest, children, newTab = false }) => {
+const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
   const navigate = useNavigate()
   const handleDelayedLinkClick = (to, delay) => (event) => {
     event.preventDefault()
@@ -17,7 +17,10 @@ const CustomLink = ({ dest, children, newTab = false }) => {
     // }
   }
   return (
-    <span className={styles.link} onClick={handleDelayedLinkClick(dest, 1000)}>
+    <span
+      className={`${styles.link} ${styleClass ? styles[styleClass] : ''}`}
+      onClick={handleDelayedLinkClick(dest, 1000)}
+    >
       {children}
     </span>
   )
