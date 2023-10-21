@@ -120,6 +120,11 @@
 @media (max-width: 36em){
 
 }
+@media (max-width: 30em){
+  .editions{
+    text-wrap: nowrap;
+  }
+}
 @media (max-width: 24em){
   .navLeft{
     grid-column-start: 1;
