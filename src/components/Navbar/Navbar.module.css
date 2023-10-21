@@ -122,6 +122,13 @@
 
 }
 @media (max-width: 30em){
+  .editions{
+    gap: 2rem;
+    width: 100%;
+  }
+  .editions div{
+    font-size: 1.6rem;
+  }
 }
 @media (max-width: 24em){
   .navLeft{
