@@ -1,5 +1,5 @@
 .progress-bar{
-  height: 4px;
+  height: 3px;
   background: var(--color-black);
   transform-origin: 0%;
 }

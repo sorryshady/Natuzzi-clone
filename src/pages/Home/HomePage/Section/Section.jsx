@@ -13,13 +13,13 @@ const Section = ({
   textOne,
   textTwo,
 }) => {
-  const [mobile, setMobile] = useState(false)
+  // const [mobile, setMobile] = useState(false)
 
-  useEffect(() => {
-    if (parseFloat(window.innerWidth) <= 768) {
-      setMobile(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (parseFloat(window.innerWidth) <= 768) {
+  //     setMobile(true)
+  //   }
+  // }, [])
 
   const {
     mousePosition,
@@ -27,6 +27,7 @@ const Section = ({
     handleMouseEnter,
     handleMouseLeave,
     hoveredText,
+    mobile,
   } = useCursor()
 
   const contentStyles = {

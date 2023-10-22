@@ -55,7 +55,7 @@ const NavAnimation = ({ children }) => {
         variants={{
           visible: { y: 0 },
           scroll: { y: shift },
-          hidden: { y: '-97%' },
+          hidden: { y: '-98%' },
         }}
         animate={
           hidden && isScrolling ? 'hidden' : topState ? 'visible' : 'scroll'

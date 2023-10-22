@@ -1,7 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './Cursor.module.css'
-const Cursor = ({ mousePosition, hovering, text, mobile = false }) => {
+const Cursor = ({
+  mousePosition,
+  hovering = false,
+  clicked = false,
+  text = '',
+  mobile = false,
+}) => {
   const variants = {
     default: {
       x: mousePosition.x,
@@ -10,7 +16,7 @@ const Cursor = ({ mousePosition, hovering, text, mobile = false }) => {
   }
   return (
     <motion.div
-      className={`${styles.cursor} ${hovering ? styles.enter : ''} ${
+      className={`${styles.cursor} ${hovering || clicked ? styles.enter : ''} ${
         mobile ? styles.mobile : ''
       }`}
       variants={variants}

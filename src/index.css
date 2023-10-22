@@ -47,11 +47,14 @@ html {
 }
 body {
   font-family: 'Rubik', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
   font-weight: 400;
   background-color: var(--color-theme);
-  width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  /* overflow-x: hidden; */
 }
 #root {
   position: relative;

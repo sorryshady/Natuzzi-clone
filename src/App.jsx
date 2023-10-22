@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import HomeRoot from './pages/Home/HomeRoot'
 import HomePage from './pages/Home/HomePage/HomePage'
 import TradeContract from './pages/Home/TradeContract/TradeContract'
+import Login from './pages/Home/Login/Login'
 
 const router = createBrowserRouter([
   {
@@ -9,8 +10,8 @@ const router = createBrowserRouter([
     element: <HomeRoot />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'trade-and-contract', element: <TradeContract /> },
-      // { path: 'login', element: <TradeContract /> },
+      // { path: 'trade-and-contract', element: <TradeContract /> },
+      { path: 'login', element: <Login /> },
       // { path: 'dealer-program', element: <TradeContract /> },
       // { path: 'contact-us', element: <TradeContract /> },
       // { path: 'trade-partnership', element: <TradeContract /> },
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
 ])
 function App() {
   return <RouterProvider router={router} />
+  // return <div>This is app</div>
 }
 
 export default App

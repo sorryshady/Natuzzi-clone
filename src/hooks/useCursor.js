@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 export function useCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [hovering, setHovering] = useState(false)
+  const [clicked, setClicked] = useState(false)
+  const [mobile, setMobile] = useState(false)
   const [hoveredText, setHoveredText] = useState('')
 
   useEffect(() => {
@@ -11,6 +13,9 @@ export function useCursor() {
         y: e.clientY,
       })
     }
+    if (parseFloat(window.innerWidth) <= 806) {
+      setMobile(true)
+    }
 
     window.addEventListener('mousemove', mouseMove)
     return () => {
@@ -18,6 +23,14 @@ export function useCursor() {
     }
   }, [])
 
+  const handleMouseClick = (e) => {
+    console.log(e.target)
+    setHoveredText('Loading...')
+    setClicked(true)
+  }
+  const completeLoad = () => {
+    setClicked(false)
+  }
   const handleMouseEnter = (e) => {
     setHovering(true)
     const target = e.target
@@ -33,8 +46,12 @@ export function useCursor() {
   return {
     mousePosition,
     hovering,
+    clicked,
+    handleMouseClick,
+    completeLoad,
     handleMouseEnter,
     handleMouseLeave,
     hoveredText,
+    mobile,
   }
 }
