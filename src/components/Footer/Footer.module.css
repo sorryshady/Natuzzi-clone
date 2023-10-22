@@ -9,7 +9,6 @@
   display: grid;
   grid-template-columns: 0.5fr 5fr 1.5fr;
   grid-template-rows: 1fr;
-  /* place-items: start; */
   margin-bottom: 4rem;
 }
 .logo{

@@ -3,8 +3,9 @@ import styles from './HomePage.module.css'
 import Section from './Section/Section'
 import Italia from '../../../assets/Images/Italia.svg'
 import Editions from '../../../assets/Images/Editions.svg'
-import FollowUs from '../../../components/FollowUs/FollowUs'
+import useDynamicTitle from '../../../hooks/useDynamicTitle'
 const HomePage = () => {
+  useDynamicTitle()
   return (
     <>
       <div className={styles.container}>
@@ -31,7 +32,6 @@ const HomePage = () => {
           textTwo={'design for everyone'}
         />
       </div>
-      <FollowUs />
     </>
   )
 }

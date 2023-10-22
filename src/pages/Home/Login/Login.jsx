@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './Login.module.css'
-import FollowUs from '../../../components/FollowUs/FollowUs'
+import useDynamicTitle from '../../../hooks/useDynamicTitle.js'
 const Login = () => {
+  useDynamicTitle()
   return (
     <>
       <div className={styles.container}></div>
-      <FollowUs />
     </>
   )
 }

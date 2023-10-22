@@ -1,7 +1,13 @@
 import React from 'react'
-
+import styles from './TradeContract.module.css'
+import useDynamicTitle from '../../../hooks/useDynamicTitle'
 const TradeContract = () => {
-  return <div>TradeContract page</div>
+  useDynamicTitle()
+  return (
+    <>
+      <div className={styles.container}></div>
+    </>
+  )
 }
 
 export default TradeContract

@@ -14,6 +14,7 @@ import MenuBtn from '../../utils/MenuBtn/MenuBtn'
 import { useCursor } from '../../hooks/useCursor'
 import Cursor from '../../utils/Cursor/Cursor'
 const Navbar = () => {
+
   const scrollToTop = () => {
     scroll.scrollToTop()
   }

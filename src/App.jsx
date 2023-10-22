@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <HomeRoot />,
     children: [
       { index: true, element: <HomePage /> },
-      // { path: 'trade-and-contract', element: <TradeContract /> },
+      { path: 'trade-and-contract', element: <TradeContract /> },
       { path: 'login', element: <Login /> },
       // { path: 'dealer-program', element: <TradeContract /> },
       // { path: 'contact-us', element: <TradeContract /> },

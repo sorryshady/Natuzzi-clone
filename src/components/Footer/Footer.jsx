@@ -3,13 +3,22 @@ import { animateScroll as scroll } from 'react-scroll'
 import styles from './Footer.module.css'
 import NLogo from '../../assets/Images/NLogo.svg'
 import CustomButton from '../../utils/CustomButton/CustomButton'
-import CustomLink from '../../utils/CustomLink/CustomLink'
 import Checkbox from '../../utils/Checkbox/Checkbox'
 import FooterLinksSection from './FooterLinksSection/FooterLinksSection'
+import Cursor from '../../utils/Cursor/Cursor'
+import { useCursor } from '../../hooks/useCursor'
 const Footer = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+  const {
+    mousePosition,
+    clicked,
+    hoveredText,
+    handleMouseClick,
+    completeLoad,
+    mobile,
+  } = useCursor()
 
   const [formData, setFormData] = useState({
     email: '',
@@ -58,74 +67,88 @@ const Footer = () => {
   }
 
   return (
-    <footer className={styles.footer}>
-      <div className={`${styles['first-section']}`}>
-        <div className={styles.logo}>
-          <img src={NLogo} alt='company logo' />
-        </div>
-
-        <div className={styles.form}>
-          <div className={styles.text}>
-            <span className={styles.bold}>sign up </span>for the latest
-            <br />
-            Natuzzi campaigns, <br />
-            collections and inspirations.
+    <>
+      <footer className={`${styles.footer}`}>
+        <div className={`${styles['first-section']}`}>
+          <div className={styles.logo}>
+            <img src={NLogo} alt='company logo' />
           </div>
-          <form className={`${styles['sign-up']} flex`} onSubmit={handleSubmit}>
-            <div className={styles['input-container']}>
-              <input
-                type='text'
-                placeholder=' '
-                className={styles.email}
-                value={formData.email}
-                onChange={emailChange}
-                name='email'
-              />
-              <span>email*</span>
+
+          <div className={styles.form}>
+            <div className={styles.text}>
+              <span className={styles.bold}>sign up </span>for the latest
+              <br />
+              Natuzzi campaigns, <br />
+              collections and inspirations.
             </div>
-            {!emailValid && startTyping && (
-              <div className={styles.errorEmail}>check email format</div>
-            )}
-            <Checkbox
-              onClick={() => handleCheckboxChange('conditions')}
-              isChecked={formData.conditions}
+            <form
+              className={`${styles['sign-up']} flex`}
+              onSubmit={handleSubmit}
             >
-              I have read and understood the{' '}
-              <span className={styles.privacy}>Privacy Policy</span>*
-            </Checkbox>
-            <Checkbox
-              onClick={() => handleCheckboxChange('offers')}
-              isChecked={formData.offers}
-            >
-              I wish to receive communications and personalised offers from
-              Natuzzi
-            </Checkbox>
+              <div className={styles['input-container']}>
+                <input
+                  type='text'
+                  placeholder=' '
+                  className={styles.email}
+                  value={formData.email}
+                  onChange={emailChange}
+                  name='email'
+                />
+                <span>email*</span>
+              </div>
+              {!emailValid && startTyping && (
+                <div className={styles.errorEmail}>check email format</div>
+              )}
+              <Checkbox
+                onClick={() => handleCheckboxChange('conditions')}
+                isChecked={formData.conditions}
+              >
+                I have read and understood the{' '}
+                <span className={styles.privacy}>Privacy Policy</span>*
+              </Checkbox>
+              <Checkbox
+                onClick={() => handleCheckboxChange('offers')}
+                isChecked={formData.offers}
+              >
+                I wish to receive communications and personalised offers from
+                Natuzzi
+              </Checkbox>
 
-            <button
-              disabled={!formValidity}
-              className={`${styles.submit} ${
-                formValidity ? styles.active : styles.invalid
-              }`}
-            >
-              Subscribe
-            </button>
-          </form>
+              <button
+                disabled={!formValidity}
+                className={`${styles.submit} ${
+                  formValidity ? styles.active : styles.invalid
+                }`}
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+
+          <div className={styles.button} onClick={scrollToTop}>
+            <div className={styles['btn-txt']}>back to Top</div>
+            <CustomButton />
+          </div>
         </div>
 
-        <div className={styles.button} onClick={scrollToTop}>
-          <div className={styles['btn-txt']}>back to Top</div>
-          <CustomButton />
+        <div className={styles.divider}></div>
+
+        <div className={styles['second-section']}>
+          <FooterLinksSection
+            onClick={handleMouseClick}
+            onLoad={completeLoad}
+          />
         </div>
-      </div>
 
-      <div className={styles.divider}></div>
-
-      <div className={styles['second-section']}>
-        <FooterLinksSection />
-      </div>
-
-      <div className={styles.stocks}>Natuzzi S.p.A. 03513760722</div>
-    </footer>
+        <div className={styles.stocks}>Natuzzi S.p.A. 03513760722</div>
+      </footer>
+      <Cursor
+        mousePosition={mousePosition}
+        text={hoveredText}
+        clicked={clicked}
+        mobile={mobile}
+      />
+    </>
   )
 }
 

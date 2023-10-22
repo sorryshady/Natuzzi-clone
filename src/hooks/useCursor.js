@@ -13,18 +13,24 @@ export function useCursor() {
         y: e.clientY,
       })
     }
-    if (parseFloat(window.innerWidth) <= 806) {
-      setMobile(true)
+    const handleResize = () => {
+      if (parseFloat(window.innerWidth) <= 806) {
+        setMobile(true)
+      } else {
+        setMobile(false)
+      }
     }
+    handleResize()
 
     window.addEventListener('mousemove', mouseMove)
+    window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('mousemove', mouseMove)
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
   const handleMouseClick = (e) => {
-    console.log(e.target)
     setHoveredText('Loading...')
     setClicked(true)
   }

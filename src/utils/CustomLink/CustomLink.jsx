@@ -6,7 +6,6 @@ const CustomLink = ({ dest, children, newTab = false, styleClass, onLoad }) => {
   const navigate = useNavigate()
   const handleDelayedLinkClick = (to, delay) => (event) => {
     event.preventDefault()
-    console.log(to)
     // setExit(true)
     if (newTab) {
       window.open(to, '_blank')
