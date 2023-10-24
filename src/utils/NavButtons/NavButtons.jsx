@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import styles from './NavButtons.module.css'
 import CustomLink from '../CustomLink/CustomLink'
-const NavButtons = ({ icon, text, move, dest, onClick, onLoad }) => {
+const NavButtons = ({ icon, text, move, dest }) => {
   const [hover, setHover] = useState(false)
   return (
-    <CustomLink dest={dest} onLoad={onLoad}>
+    <CustomLink dest={dest}>
       <div
         className={`${styles.link} flex`}
         onMouseEnter={() => setHover(true)}
@@ -28,7 +28,7 @@ const NavButtons = ({ icon, text, move, dest, onClick, onLoad }) => {
           )}
         </AnimatePresence>
         <span className={styles.icon}>
-          <img src={icon} className={styles.img} onClick={onClick} />
+          <img src={icon} className={styles.img} />
         </span>
       </div>
     </CustomLink>

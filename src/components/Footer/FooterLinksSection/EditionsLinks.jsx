@@ -1,48 +1,30 @@
 import React from 'react'
 import styles from './FooterLinksSection.module.css'
 import CustomLink from '../../../utils/CustomLink/CustomLink'
-const EditionsLinks = ({ onClick, onLoad }) => {
+const EditionsLinks = () => {
   return (
     <>
       <div className={styles['column-heading']}>Natuzzi Editions</div>
-      <div className={`${styles['footer-links']} flex`} onClick={onClick}>
-        <CustomLink
-          dest={'/shop/natuzzi-editions/living-sofas-sectionals'}
-          onLoad={onLoad}
-        >
+      <div className={`${styles['footer-links']} flex`}>
+        <CustomLink dest={'/shop/natuzzi-editions/living-sofas-sectionals'}>
           Living
         </CustomLink>
-        <CustomLink
-          dest={'/shop/natuzzi-editions/dining-tables'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/shop/natuzzi-editions/dining-tables'}>
           Dining
         </CustomLink>
-        <CustomLink
-          dest={'/shop/natuzzi-editions/bedroom-beds'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/shop/natuzzi-editions/bedroom-beds'}>
           Bedroom
         </CustomLink>
-        <CustomLink
-          dest={'/shop/natuzzi-editions/traveller-collection'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/shop/natuzzi-editions/traveller-collection'}>
           Traveller Collection
         </CustomLink>
-        <CustomLink dest={'/shop/natuzzi-editions/most-loved'} onLoad={onLoad}>
+        <CustomLink dest={'/shop/natuzzi-editions/most-loved'}>
           Most Loved
         </CustomLink>
-        <CustomLink
-          dest={'/natuzzi-editions/about-natuzzi-editions'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/natuzzi-editions/about-natuzzi-editions'}>
           About Natuzzi Editions
         </CustomLink>
-        <CustomLink
-          dest={'/natuzzi-editions/warranty-natuzzi-editions'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/natuzzi-editions/warranty-natuzzi-editions'}>
           Warranty Natuzzi Editions
         </CustomLink>
         <CustomLink
@@ -50,7 +32,6 @@ const EditionsLinks = ({ onClick, onLoad }) => {
             'https://static.natuzzi.com/production/files/CARE_MAINTENANCE_NATUZZI_EDITIONS.pdf'
           }
           newTab={true}
-          onLoad={onLoad}
         >
           Care and Maintenance Editions
         </CustomLink>

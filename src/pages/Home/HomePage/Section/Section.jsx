@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './Section.module.css'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
-import { useCursor } from '../../../../hooks/useCursor'
-import Cursor from '../../../../utils/Cursor/Cursor'
+import { useDispatch } from 'react-redux'
+import { cursorActions } from '../../../../store/cursor-slice'
 const Section = ({
   src,
   alt,
@@ -13,31 +13,37 @@ const Section = ({
   textOne,
   textTwo,
 }) => {
+  const [localHover, setLocalHover] = useState(false)
 
-  const {
-    mousePosition,
-    hovering,
-    handleMouseEnter,
-    handleMouseLeave,
-    hoveredText,
-    mobile,
-  } = useCursor()
+  const dispatch = useDispatch()
 
   const contentStyles = {
-    transform: hovering ? 'scaleX(1)' : '',
+    transform: localHover ? 'scaleX(1)' : '',
   }
   const imgContainerStyles = {
-    transform: hovering ? 'scale(1.03)' : 'scale(1)',
+    transform: localHover ? 'scale(1.03)' : 'scale(1)',
   }
   const editionsImgStyles = {
-    transform: hovering ? 'scale(1.04)' : 'scale(1)',
+    transform: localHover ? 'scale(1.04)' : 'scale(1)',
   }
   const optionDescStyles = {
-    transform: hovering
+    transform: localHover
       ? styleClass === 'one'
         ? 'translateX(-15px)'
         : 'translateX(15px)'
       : 'none',
+  }
+
+  const mouseEnter = (e) => {
+    const text = e.target.getAttribute('data-text')
+    setLocalHover(true)
+    dispatch(cursorActions.setHoveredText(text))
+    dispatch(cursorActions.setHoverState())
+  }
+  const mouseLeave = () => {
+    setLocalHover(false)
+    dispatch(cursorActions.setHoveredText(''))
+    dispatch(cursorActions.setHoverState())
   }
   return (
     <>
@@ -56,8 +62,9 @@ const Section = ({
             <div
               className={styles.optionDesc}
               style={optionDescStyles}
-              onMouseEnter={(e) => handleMouseEnter(e)}
-              onMouseLeave={handleMouseLeave}
+              // onMouseEnter={(e) => handleMouseEnter(e)}
+              onMouseEnter={(e) => mouseEnter(e)}
+              onMouseLeave={mouseLeave}
             >
               <img src={img} alt={alt} data-text={dataText} />
               <div data-text={dataText} className={styles['options-text']}>
@@ -77,18 +84,12 @@ const Section = ({
               style={editionsImgStyles}
               data-text={dataText}
               className={styles['editions-img']}
-              onMouseEnter={(e) => handleMouseEnter(e)}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={(e) => mouseEnter(e, 'hello')}
+              onMouseLeave={mouseLeave}
             />
           </CustomLink>
         </div>
       </div>
-      <Cursor
-        mousePosition={mousePosition}
-        hovering={hovering}
-        text={hoveredText}
-        mobile={mobile}
-      />
     </>
   )
 }

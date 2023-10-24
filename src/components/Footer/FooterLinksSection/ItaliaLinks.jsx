@@ -1,54 +1,32 @@
 import React from 'react'
 import styles from './FooterLinksSection.module.css'
 import CustomLink from '../../../utils/CustomLink/CustomLink'
-const ItaliaLinks = ({ onClick, onLoad }) => {
+const ItaliaLinks = () => {
   return (
     <>
       <div className={styles['column-heading']}>Natuzzi Italia</div>
-      <div className={`${styles['footer-links']} flex`} onClick={onClick}>
-        <CustomLink
-          dest={'/shop/natuzzi-italia/living-sofas-sectionals'}
-          onLoad={onLoad}
-        >
+      <div className={`${styles['footer-links']} flex`}>
+        <CustomLink dest={'/shop/natuzzi-italia/living-sofas-sectionals'}>
           Living
         </CustomLink>
-        <CustomLink dest={'/shop/natuzzi-italia/dining-tables'} onLoad={onLoad}>
+        <CustomLink dest={'/shop/natuzzi-italia/dining-tables'}>
           Dining
         </CustomLink>
-        <CustomLink
-          dest={'/shop/natuzzi-italia/bedroom-accessories'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/shop/natuzzi-italia/bedroom-accessories'}>
           Bedroom
         </CustomLink>
-        <CustomLink
-          dest={'/shop/natuzzi-italia/decor-lighting'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/shop/natuzzi-italia/decor-lighting'}>
           Decor
         </CustomLink>
-        <CustomLink
-          dest={'/shop/natuzzi-italia/new-collection'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/shop/natuzzi-italia/new-collection'}>
           New Collection
         </CustomLink>
-        <CustomLink dest={'/'} onLoad={onLoad}>
-          Sale
-        </CustomLink>
-        <CustomLink dest={'/'} onLoad={onLoad}>
-          Quick Ship
-        </CustomLink>
-        <CustomLink
-          dest={'/natuzzi-italia/about-natuzzi-italia'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/'}>Sale</CustomLink>
+        <CustomLink dest={'/'}>Quick Ship</CustomLink>
+        <CustomLink dest={'/natuzzi-italia/about-natuzzi-italia'}>
           About Natuzzi Italia
         </CustomLink>
-        <CustomLink
-          dest={'/natuzzi-italia/warranty-natuzzi-italia'}
-          onLoad={onLoad}
-        >
+        <CustomLink dest={'/natuzzi-italia/warranty-natuzzi-italia'}>
           Warranty Natuzzi Italia
         </CustomLink>
         <CustomLink
@@ -56,7 +34,6 @@ const ItaliaLinks = ({ onClick, onLoad }) => {
             'https://static.natuzzi.com/production/files/CARE_MAINTENANCE_NATUZZI_ITALIA.pdf'
           }
           newTab={true}
-          onLoad={onLoad}
         >
           Care and Maintenance
         </CustomLink>

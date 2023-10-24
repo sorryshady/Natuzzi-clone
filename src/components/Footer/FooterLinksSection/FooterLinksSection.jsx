@@ -4,20 +4,20 @@ import ItaliaLinks from './ItaliaLinks'
 import EditionsLinks from './EditionsLinks'
 import CorporateLinks from './CorporateLinks'
 import ServiceLinks from './ServiceLinks'
-const FooterLinksSection = ({ onClick, onLoad }) => {
+const FooterLinksSection = () => {
   return (
     <>
       <div className={styles['grid-columns']}>
-        <ItaliaLinks onClick={onClick} onLoad={onLoad} />
+        <ItaliaLinks />
       </div>
       <div className={styles['grid-columns']}>
-        <EditionsLinks onClick={onClick} onLoad={onLoad} />
+        <EditionsLinks />
       </div>
       <div className={styles['grid-columns']}>
-        <CorporateLinks onClick={onClick} onLoad={onLoad} />
+        <CorporateLinks />
       </div>
       <div className={styles['grid-columns']}>
-        <ServiceLinks onClick={onClick} onLoad={onLoad} />
+        <ServiceLinks />
       </div>
     </>
   )

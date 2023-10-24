@@ -5,20 +5,10 @@ import NLogo from '../../assets/Images/NLogo.svg'
 import CustomButton from '../../utils/CustomButton/CustomButton'
 import Checkbox from '../../utils/Checkbox/Checkbox'
 import FooterLinksSection from './FooterLinksSection/FooterLinksSection'
-import Cursor from '../../utils/Cursor/Cursor'
-import { useCursor } from '../../hooks/useCursor'
 const Footer = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
-  const {
-    mousePosition,
-    clicked,
-    hoveredText,
-    handleMouseClick,
-    completeLoad,
-    mobile,
-  } = useCursor()
 
   const [formData, setFormData] = useState({
     email: '',
@@ -134,20 +124,11 @@ const Footer = () => {
         <div className={styles.divider}></div>
 
         <div className={styles['second-section']}>
-          <FooterLinksSection
-            onClick={handleMouseClick}
-            onLoad={completeLoad}
-          />
+          <FooterLinksSection />
         </div>
 
         <div className={styles.stocks}>Natuzzi S.p.A. 03513760722</div>
       </footer>
-      <Cursor
-        mousePosition={mousePosition}
-        text={hoveredText}
-        clicked={clicked}
-        mobile={mobile}
-      />
     </>
   )
 }
