@@ -48,7 +48,7 @@
   position: relative;
   width: 100%;
 }
-.input-container{
+/* .input-container{
   position: relative;
   width: 100%;
 }
@@ -76,10 +76,10 @@
   transform: translateY(-10px);
   font-size: 1.5rem;
   color: rgba(0, 0, 0, 0.5);
-}
-.email{
+} */
+/* .email{
   margin-bottom: 3.2rem;
-}
+} */
 .errorEmail{
   position: absolute;
   top: 35%;
@@ -185,7 +185,7 @@
   .text{
     text-align: center;
   }
-  .input-container input{
+  /* .input-container input{
     font-size: 2.4rem;
   }
   .input-container span{
@@ -195,7 +195,7 @@
   .input-container input:focus ~ span{
     transform: translateY(-20px);
     font-size: 2rem;
-  }
+  } */
   .button{
     position: absolute;
     display: flex;

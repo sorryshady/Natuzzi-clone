@@ -5,6 +5,7 @@ import NLogo from '../../assets/Images/NLogo.svg'
 import CustomButton from '../../utils/CustomButton/CustomButton'
 import Checkbox from '../../utils/Checkbox/Checkbox'
 import FooterLinksSection from './FooterLinksSection/FooterLinksSection'
+import CustomInput from '../../utils/CustomInput/CustomInput'
 const Footer = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
@@ -75,7 +76,7 @@ const Footer = () => {
               className={`${styles['sign-up']} flex`}
               onSubmit={handleSubmit}
             >
-              <div className={styles['input-container']}>
+              {/* <div className={styles['input-container']}>
                 <input
                   type='text'
                   placeholder=' '
@@ -85,13 +86,22 @@ const Footer = () => {
                   name='email'
                 />
                 <span>email*</span>
-              </div>
+              </div> */}
+              <CustomInput
+                type={'text'}
+                value={formData.email}
+                onChange={emailChange}
+                name='email'
+                text={'email*'}
+                form={'subForm'}
+              />
               {!emailValid && startTyping && (
                 <div className={styles.errorEmail}>check email format</div>
               )}
               <Checkbox
                 onClick={() => handleCheckboxChange('conditions')}
                 isChecked={formData.conditions}
+                form={'subForm'}
               >
                 I have read and understood the{' '}
                 <span className={styles.privacy}>Privacy Policy</span>*
@@ -99,6 +109,7 @@ const Footer = () => {
               <Checkbox
                 onClick={() => handleCheckboxChange('offers')}
                 isChecked={formData.offers}
+                form={'subForm'}
               >
                 I wish to receive communications and personalised offers from
                 Natuzzi

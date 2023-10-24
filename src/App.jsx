@@ -3,11 +3,13 @@ import HomeRoot from './pages/Home/HomeRoot'
 import HomePage from './pages/Home/HomePage/HomePage'
 import TradeContract from './pages/Home/TradeContract/TradeContract'
 import Login from './pages/Home/Login/Login'
+import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeRoot />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: 'trade-and-contract', element: <TradeContract /> },

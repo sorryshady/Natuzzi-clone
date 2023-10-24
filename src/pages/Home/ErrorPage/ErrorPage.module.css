@@ -1,0 +1,10 @@
+.container{
+  padding-top: 13.5rem;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  font-size: 4rem;
+  font-weight: 500;
+}
