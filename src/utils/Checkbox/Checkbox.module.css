@@ -3,14 +3,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0 !important;
 }
 .checkbox{
   min-height: 20px;
   min-width: 20px;
   border: 1px solid black;
   position: relative;
-  margin-bottom: 0!important;
 }
 .checkbox.unchecked::after{
   display: block;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './CustomInput.module.css'
 const CustomInput = ({
   type,
@@ -8,11 +8,23 @@ const CustomInput = ({
   text,
   form,
   formType = 'subscribe',
+  className,
 }) => {
-  let validity = true
-  if (form === 'userForm') {
-    if (value.trim().length === 0) {
-      validity = false
+  const [validity, setValidity] = useState(true)
+  const handleBlur = (e) => {
+    if (form === 'userForm') {
+      if (e.target.value.trim() === '') {
+        setValidity(false)
+      }
+    }
+  }
+  const handleInput = (e) => {
+    if (form === 'userForm') {
+      if (e.target.value.trim().length > 0) {
+        setValidity(true)
+      } else {
+        setValidity(false)
+      }
     }
   }
 
@@ -20,12 +32,14 @@ const CustomInput = ({
     formType === 'subscribe' ? '' : formType === 'login' ? 'login' : 'signUp'
   let style = form === 'subForm' ? { fontWeight: '600' } : { fontWeight: '400' }
   return (
-    <div className={styles['input-container']}>
+    <div className={`${styles['input-container']} ${className}`}>
       <input
         type={type}
         placeholder=' '
         value={value}
         onChange={onChange}
+        onBlur={handleBlur}
+        onInput={handleInput}
         name={name}
         style={style}
         className={`${form === 'subForm' ? '' : styles.userForm} ${

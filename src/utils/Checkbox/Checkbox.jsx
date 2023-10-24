@@ -12,8 +12,8 @@ const Checkbox = ({ children, onClick, isChecked, form }) => {
   let boxStyle =
     form === 'userForm'
       ? {
-          height: '25px',
-          width: '25px',
+          minHeight: '25px',
+          minWidth: '25px',
           borderWidth: '2px',
         }
       : { height: '20px', width: '20px' }
