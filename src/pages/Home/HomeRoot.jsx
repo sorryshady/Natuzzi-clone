@@ -7,13 +7,13 @@ import Cursor from '../../utils/Cursor/Cursor'
 import { useCursor } from '../../hooks/useCursor'
 
 const HomeRoot = () => {
-  useCursor()
+  const { mousePosition } = useCursor()
   return (
     <>
       <Navbar />
       <Outlet />
       <FollowUs />
-      <Cursor />
+      <Cursor mousePosition={mousePosition} />
       <Footer />
     </>
   )

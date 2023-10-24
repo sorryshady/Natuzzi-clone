@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  mousePosition: { x: 0, y: 0 },
   hovering: false,
   clicked: false,
   hoveredText: '',
@@ -20,10 +19,6 @@ const cursorSlice = createSlice({
     },
     setHoveredText(state, action) {
       state.hoveredText = action.payload
-    },
-    setMousePosition(state, action) {
-      state.mousePosition.x = action.payload.x
-      state.mousePosition.y = action.payload.y
     },
     setLoadingState(state) {
       state.loading = !state.loading

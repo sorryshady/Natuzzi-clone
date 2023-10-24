@@ -1,9 +1,7 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { cursorActions } from '../store/cursor-slice'
+import { useState, useEffect } from 'react'
 
 export function useCursor() {
-  const dispatch = useDispatch()
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const mouseMove = (e) => {
@@ -11,12 +9,16 @@ export function useCursor() {
         x: e.clientX,
         y: e.clientY,
       }
-      dispatch(cursorActions.setMousePosition(newPosition))
+      setMousePosition(newPosition)
     }
 
     window.addEventListener('mousemove', mouseMove)
     return () => {
       window.removeEventListener('mousemove', mouseMove)
     }
-  }, [dispatch])
+  }, [])
+
+  return {
+    mousePosition,
+  }
 }

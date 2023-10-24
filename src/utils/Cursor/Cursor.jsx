@@ -2,8 +2,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './Cursor.module.css'
 import { useSelector } from 'react-redux'
-const Cursor = () => {
-  const { mousePosition, hovering, clicked, hoveredText } = useSelector(
+const Cursor = ({ mousePosition }) => {
+  const { hovering, clicked, hoveredText } = useSelector(
     (state) => state.cursor
   )
   const variants = {
@@ -13,15 +13,19 @@ const Cursor = () => {
     },
   }
   return (
-    <motion.div
-      className={`${styles.cursor} ${hovering || clicked ? styles.enter : ''} ${
-        styles.desktop
-      }`}
-      variants={variants}
-      animate='default'
-    >
-      <div className={styles.content}>{hoveredText}</div>
-    </motion.div>
+    <>
+      {
+        <motion.div
+          className={`${styles.cursor} ${
+            hovering || clicked ? styles.enter : ''
+          } ${styles.desktop}`}
+          variants={variants}
+          animate='default'
+        >
+          <div className={styles.content}>{hoveredText}</div>
+        </motion.div>
+      }
+    </>
   )
 }
 
