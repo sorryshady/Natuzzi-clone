@@ -1,60 +1,17 @@
 .container{
   display: flex;
-  align-items: center;
   background-color: var(--color-white);
 }
 .sign-in{
   flex: 1;
-  padding: 21.5rem 15rem 2rem 20rem;
   background-color: var(--color-theme);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 .section-heading div{
   display: flex;
-  width: 100%;
   justify-content: center;
-}
-.signIn-form{
-  width: 100%;
-  margin-top: 8rem;
-  display: flex;
-  flex-direction: column;
-}
-.first{
-  margin-bottom: 1.4rem;
-}
-.second{
-  margin-top: 1.4rem;
-}
-.forgot-password{
-  margin-top: -1.6rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  transition: all 0.5s;
-}
-.forgot-password:hover{
-  cursor: pointer;
-  color: var(--color-error);
-}
-.errorMsg{
-  margin-top: 6.4rem;
-  margin-bottom: -4rem;
-  color: var(--color-error);
-  font-size: 1.4rem;
-  font-weight: 500;
-}
-.signIn-actions{
-  margin-top: 6.4rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .sign-up{
   flex: 1;
-  padding: 21.5rem 20rem 2rem 15rem;
 }
 .section-heading{
   font-size: 2.2rem;

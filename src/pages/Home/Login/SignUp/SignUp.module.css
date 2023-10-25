@@ -1,0 +1,66 @@
+.signUpContainer{
+  padding: 21.5rem 10rem 2rem;
+  width: 100%;
+}
+.signUp-form{
+  width: 100%;
+  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.accountType{
+  display: flex;
+  gap: 2.4rem;
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin-top: 4.8rem;
+}
+.companyInputs{
+  display: flex;
+  gap: 1.2rem;
+}
+.nameInputs{
+  display: flex;
+  width: 100%;
+  gap: 1.2rem;
+  /* margin-top: 4.8rem; */
+}
+.addressInput{
+  width: 100%;
+}
+.locationInput{
+  display: flex;
+  gap: 1.2rem;
+}
+.countryInput{
+  display: flex;
+  gap: 1.2rem;
+}
+.emailInputs{
+  width: 100%;
+}
+.passwordInputs{
+  display: flex;
+  gap: 1.2rem;
+}
+.userAgreements{
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.links{
+  text-decoration: underline;
+}
+.links:hover{
+  cursor: pointer;
+}
+.button{
+  width: 100%;
+  display: flex;
+}
+.button button{
+  margin-top: 3.2rem;
+}

@@ -19,7 +19,7 @@ const Checkbox = ({ children, onClick, isChecked, form }) => {
       : { height: '20px', width: '20px' }
 
   let labelStyle =
-    form === 'userForm' ? { fontSize: '1.6rem' } : { fontSize: '1.2rem' }
+    form === 'userForm' ? { fontSize: '1.5rem' } : { fontSize: '1.2rem' }
   return (
     <div className={styles['checkbox-container']} onClick={handleCheckboxClick}>
       {/* <div className={`checkbox ${isChecked ? '' : 'unchecked'}`}></div> */}
