@@ -20,13 +20,10 @@ const SignIn = () => {
     signInValidity = true
   }
   const handleChange = (e) => {
-    const formType = e.target.getAttribute('data-text')
-    if (formType === 'login') {
-      setSignInData((prevData) => ({
-        ...prevData,
-        [e.target.name]: e.target.value,
-      }))
-    }
+    setSignInData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }))
   }
   const handleSignInCheckBox = () => {
     setSignInData((prevData) => ({
@@ -70,7 +67,6 @@ const SignIn = () => {
           text={'email*'}
           name={'email'}
           form={'userForm'}
-          formType={'login'}
           className={styles.first}
         />
         <CustomInput
@@ -80,7 +76,6 @@ const SignIn = () => {
           text={'Password*'}
           name={'password'}
           form={'userForm'}
-          formType={'login'}
           className={styles.second}
         />
         <div className={styles['forgot-password']}>

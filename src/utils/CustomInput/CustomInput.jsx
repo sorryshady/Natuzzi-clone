@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './CustomInput.module.css'
 const CustomInput = ({
   type,
@@ -7,10 +7,14 @@ const CustomInput = ({
   name,
   text,
   form,
-  formType = 'subscribe',
+  dataText,
   className,
+  passwordData = '',
 }) => {
   const [validity, setValidity] = useState(true)
+
+  let spanStyle = form === 'userForm' ? styles.userSpan : ''
+
   const handleBlur = (e) => {
     if (form === 'userForm') {
       if (e.target.value.trim() === '') {
@@ -26,10 +30,26 @@ const CustomInput = ({
         setValidity(false)
       }
     }
+    /*EMAIL VALIDITY CHECK */
+    const emailInputValue = e.target.name === 'email' ? e.target.value : ''
+    const regex = /@.*\.[a-zA-Z]+/
+    if (emailInputValue) {
+      if (regex.test(emailInputValue)) {
+        setValidity(true)
+      } else {
+        setValidity(false)
+      }
+    }
+    /*PASSWORD CHECK */
+    if (passwordData && e.target.name === 'confirmPassword') {
+      if (passwordData === e.target.value) {
+        setValidity(true)
+      } else {
+        setValidity(false)
+      }
+    }
   }
 
-  let dataText =
-    formType === 'subscribe' ? '' : formType === 'login' ? 'login' : 'signUp'
   let style = form === 'subForm' ? { fontWeight: '600' } : { fontWeight: '400' }
   return (
     <div className={`${styles['input-container']} ${className}`}>
@@ -50,7 +70,7 @@ const CustomInput = ({
       <span
         className={`${form === 'subForm' ? '' : styles.userForm} ${
           validity ? '' : styles.invalid
-        }`}
+        } ${spanStyle}`}
       >
         {text}
       </span>

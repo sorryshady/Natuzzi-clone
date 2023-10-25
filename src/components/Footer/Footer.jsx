@@ -76,17 +76,6 @@ const Footer = () => {
               className={`${styles['sign-up']} flex`}
               onSubmit={handleSubmit}
             >
-              {/* <div className={styles['input-container']}>
-                <input
-                  type='text'
-                  placeholder=' '
-                  className={styles.email}
-                  value={formData.email}
-                  onChange={emailChange}
-                  name='email'
-                />
-                <span>email*</span>
-              </div> */}
               <CustomInput
                 type={'text'}
                 value={formData.email}

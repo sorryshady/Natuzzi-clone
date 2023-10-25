@@ -9,25 +9,18 @@ const Checkbox = ({ children, onClick, isChecked, form }) => {
       onClick()
     }
   }
-  let boxStyle =
-    form === 'userForm'
-      ? {
-          minHeight: '25px',
-          minWidth: '25px',
-          borderWidth: '2px',
-        }
-      : { height: '20px', width: '20px' }
+  let boxStyle = form === 'userForm' ? styles.bigger : ''
 
-  let labelStyle =
-    form === 'userForm' ? { fontSize: '1.5rem' } : { fontSize: '1.2rem' }
+  let labelStyle = form === 'userForm' ? styles.fontBig : ''
   return (
     <div className={styles['checkbox-container']} onClick={handleCheckboxClick}>
       {/* <div className={`checkbox ${isChecked ? '' : 'unchecked'}`}></div> */}
       <div
-        className={`${styles.checkbox} ${isChecked ? styles.unchecked : ''}`}
-        style={boxStyle}
+        className={`${styles.checkbox} ${
+          isChecked ? styles.unchecked : ''
+        } ${boxStyle}`}
       ></div>
-      <span className={styles['checkbox-label']} style={labelStyle}>
+      <span className={`${styles['checkbox-label']} ${labelStyle}`}>
         {children}
       </span>
     </div>

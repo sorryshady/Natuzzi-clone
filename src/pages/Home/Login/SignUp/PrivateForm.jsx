@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SignUp.module.css'
 import CustomInput from '../../../../utils/CustomInput/CustomInput'
-const PrivateForm = ({ data }) => {
+const PrivateForm = ({ data, onChange }) => {
   return (
     <>
       <div className={styles.nameInputs}>
@@ -10,14 +10,18 @@ const PrivateForm = ({ data }) => {
           text={'first name*'}
           name={'firstName'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.firstName}
+          onChange={onChange}
+          dataText={'private'}
         />
         <CustomInput
           type={'text'}
           text={'last name*'}
           name={'lastName'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.lastName}
+          onChange={onChange}
+          dataText={'private'}
         />
       </div>
       <div className={styles.emailInput}>
@@ -26,7 +30,9 @@ const PrivateForm = ({ data }) => {
           text={'email*'}
           name={'email'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.email}
+          onChange={onChange}
+          dataText={'private'}
         />
       </div>
       <div className={styles.passwordInputs}>
@@ -35,14 +41,19 @@ const PrivateForm = ({ data }) => {
           text={'Password*'}
           name={'password'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.password}
+          onChange={onChange}
+          dataText={'private'}
         />
         <CustomInput
           type={'password'}
           text={'Confirm password*'}
           name={'confirmPassword'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.confirmPassword}
+          onChange={onChange}
+          dataText={'private'}
+          passwordData={data.password}
         />
       </div>
     </>

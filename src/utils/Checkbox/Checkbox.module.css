@@ -10,6 +10,11 @@
   border: 1px solid black;
   position: relative;
 }
+.checkbox.bigger{
+  height: 25px;
+  width: 25px;
+  border-width: 2px;
+}
 .checkbox.unchecked::after{
   display: block;
   position: absolute;
@@ -27,11 +32,70 @@
 .checkbox-label{
   font-weight: 500;
   text-wrap: wrap;
+  font-size: 1.2rem;
+}
+.checkbox-label.fontBig{
+  font-size: 1.5rem;
 }
 
+@media (max-width: 84em){
+  .checkbox.bigger{
+    height: 22px;
+    width: 22px;
+  }
+  .checkbox-label.fontBig{
+    font-size: 1.3rem;
+  }
+}
 @media (max-width: 64em){
   .checkbox-label{
     font-size: 1.6rem;
     margin-left: 2.4rem;
   }
+  .checkbox.bigger{
+    height: 25px;
+    width: 25px;
+  }
+  .checkbox-label.fontBig{
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
 }
+@media(max-width: 59em){
+  .checkbox-label.fontBig{
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 48em){
+  .checkbox.bigger{
+    height: 22px;
+    width: 22px;
+  }
+  .checkbox-label.fontBig{
+    font-size: 1.5rem;
+  }
+}
+@media(max-width: 30em){
+  .checkbox.bigger{
+    height: 18px;
+    width: 18px;
+  }
+  .checkbox-label.fontBig{
+    font-size: 1.3rem;
+  }
+}
+@media(max-width: 24em){
+  .checkbox-label.fontBig{
+    font-size: 1.5rem;
+  }
+}
+@media(max-width: 24em){
+  .checkbox.bigger{
+    height: 15px;
+    width: 15px;
+  }
+  .checkbox-label.fontBig{
+    font-size: 1.3rem;
+  }
+}
+

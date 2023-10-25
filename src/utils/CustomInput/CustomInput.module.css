@@ -48,3 +48,23 @@
     font-size: 2rem;
   }
 }
+@media(max-width: 48em){
+  .userSpan{
+    font-size: 2.4rem !important;
+  }
+}
+@media(max-width: 30em){
+  .userSpan{
+    font-size: 2rem !important;
+  }
+}
+@media(max-width: 24em){
+  .userSpan{
+    font-size: 1.8rem !important;
+  }
+}
+@media(max-width: 20em){
+  .userSpan{
+    font-size: 1.5rem !important;
+  }
+}

@@ -60,7 +60,19 @@
 .button{
   width: 100%;
   display: flex;
+  margin-bottom: 2rem;
 }
 .button button{
   margin-top: 3.2rem;
+}
+
+@media (max-width: 64em){
+  .signUpContainer{
+    padding: 10rem 10rem 5rem;
+  }
+}
+@media (max-width: 36em) {
+  .signUpContainer{
+    padding: 10rem 5rem 5rem;
+  }
 }

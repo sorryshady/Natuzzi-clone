@@ -14,7 +14,7 @@
   flex: 1;
 }
 .section-heading{
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   letter-spacing: -1px;
   font-weight: 500;
   width: 100%;
@@ -44,4 +44,30 @@
 .loading{
   opacity: 0.5;
   pointer-events: none;
+}
+
+@media (max-width: 64em){
+  .container{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .section-heading{
+    font-size: 2.8rem;
+  }
+  .button{
+    width: 100%;
+    font-size: 2rem;
+    padding: 0.8rem;
+  }
+}
+@media(max-width: 48em){
+  .button{
+    padding: 0.8rem;
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 36em) {
+  .button{
+    font-size: 2.2rem;
+  }
 }

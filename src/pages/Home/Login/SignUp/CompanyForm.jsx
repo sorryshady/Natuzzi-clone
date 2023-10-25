@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SignUp.module.css'
 import CustomInput from '../../../../utils/CustomInput/CustomInput'
-const CompanyForm = ({ data }) => {
+const CompanyForm = ({ data, onChange }) => {
   return (
     <>
       <div className={styles.companyInputs}>
@@ -10,14 +10,18 @@ const CompanyForm = ({ data }) => {
           text={'company*'}
           name={'company'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.company}
+          onChange={onChange}
+          dataText={'company'}
         />
         <CustomInput
           type={'text'}
           text={'VAT*'}
           name={'vat'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.vat}
+          onChange={onChange}
+          dataText={'company'}
         />
       </div>
       <div className={styles.nameInputs}>
@@ -26,14 +30,18 @@ const CompanyForm = ({ data }) => {
           text={'first name*'}
           name={'firstName'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.firstName}
+          onChange={onChange}
+          dataText={'company'}
         />
         <CustomInput
           type={'text'}
           text={'last name*'}
           name={'lastName'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.lastName}
+          onChange={onChange}
+          dataText={'company'}
         />
       </div>
       <div className={styles.addressInput}>
@@ -42,7 +50,9 @@ const CompanyForm = ({ data }) => {
           text={'address*'}
           name={'address'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.address}
+          onChange={onChange}
+          dataText={'company'}
         />
       </div>
       <div className={styles.locationInput}>
@@ -51,14 +61,18 @@ const CompanyForm = ({ data }) => {
           text={'city*'}
           name={'city'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.city}
+          onChange={onChange}
+          dataText={'company'}
         />
         <CustomInput
           type={'text'}
           text={'zip code*'}
           name={'zipCode'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.zipCode}
+          onChange={onChange}
+          dataText={'company'}
         />
       </div>
       <div className={styles.countryInput}>
@@ -67,14 +81,18 @@ const CompanyForm = ({ data }) => {
           text={'country*'}
           name={'country'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.country}
+          onChange={onChange}
+          dataText={'company'}
         />
         <CustomInput
           type={'text'}
           text={'state*'}
           name={'state'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.state}
+          onChange={onChange}
+          dataText={'company'}
         />
       </div>
       <div className={styles.emailInput}>
@@ -83,7 +101,9 @@ const CompanyForm = ({ data }) => {
           text={'email*'}
           name={'email'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.email}
+          onChange={onChange}
+          dataText={'company'}
         />
       </div>
       <div className={styles.passwordInputs}>
@@ -92,14 +112,19 @@ const CompanyForm = ({ data }) => {
           text={'Password*'}
           name={'password'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.password}
+          onChange={onChange}
+          dataText={'company'}
         />
         <CustomInput
           type={'password'}
           text={'Confirm password*'}
           name={'confirmPassword'}
           form={'userForm'}
-          formType={'signup'}
+          value={data.confirmPassword}
+          onChange={onChange}
+          dataText={'company'}
+          passwordData={data.password}
         />
       </div>
     </>
