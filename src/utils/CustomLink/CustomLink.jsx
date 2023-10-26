@@ -13,9 +13,12 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
     if (!to) {
       return
     }
-    dispatch(cursorActions.setHoveredText('Loading...'))
-    dispatch(cursorActions.setMouseClick())
-    dispatch(cursorActions.setLoadingState())
+    if (!newTab) {
+      dispatch(cursorActions.setHoveredText('Loading...'))
+      dispatch(cursorActions.setMouseClick())
+      dispatch(cursorActions.setLoadingState())
+    }
+
     // setExit(true)
     if (newTab) {
       window.open(to, '_blank')

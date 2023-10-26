@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './MenuBtn.module.css'
 import Menu from '../../assets/Images/Menu.svg'
 import Close from '../../assets/Images/Close.svg'
@@ -7,6 +7,15 @@ const MenuBtn = ({ display }) => {
   const [active, setActive] = useState(false)
   const [clicked, setClicked] = useState(false)
   const [src, setSrc] = useState(Menu)
+
+  useEffect(() => {
+    if (active) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [active])
+
   const handleClick = () => {
     setClicked(true)
     setTimeout(() => {
