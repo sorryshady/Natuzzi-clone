@@ -9,12 +9,17 @@ import CustomLink from '../../CustomLink/CustomLink'
 import Underline from '../../Underline/Underline'
 import styles from './MainNavList.module.css'
 import { motion } from 'framer-motion'
-const MainNavList = ({ onClick }) => {
+const MainNavList = ({ onClick, onMouseEnter, version }) => {
   const handleClick = () => {
     setTimeout(() => {
       onClick()
     }, 500)
   }
+  //handle mouse entering two main links (italia and editions)
+  const handleMouseEnter = (version) => {
+    onMouseEnter(version)
+  }
+
   return (
     <motion.div
       className={styles.mainContainer}
@@ -30,19 +35,43 @@ const MainNavList = ({ onClick }) => {
         </div>
       </CustomLink>
       <div className={styles.mainLinks}>
-        <Underline dest={''}>
-          <span className={styles.mainLink}>natuzzi italia</span>
+        <Underline dest={''} active={version === 'italia' ? true : false}>
+          <span
+            className={`${styles.mainLink}`}
+            onMouseEnter={() => handleMouseEnter('italia')}
+          >
+            natuzzi italia
+          </span>
         </Underline>
-        <Underline dest={''}>
-          <span className={styles.mainLink}>natuzzi editions</span>
+        <Underline dest={''} active={version === 'editions' ? true : false}>
+          <span
+            className={styles.mainLink}
+            onMouseEnter={() => handleMouseEnter('editions')}
+          >
+            natuzzi editions
+          </span>
         </Underline>
-        <Underline dest={'/meet-natuzzi'}>
-          <span className={styles.mainLink} onClick={handleClick}>
+        <Underline
+          dest={'/meet-natuzzi'}
+          active={version === 'meet' ? true : false}
+        >
+          <span
+            className={styles.mainLink}
+            onClick={handleClick}
+            onMouseEnter={() => handleMouseEnter('meet')}
+          >
             meet natuzzi
           </span>
         </Underline>
-        <Underline dest={'store-locator'}>
-          <span className={styles.mainLink} onClick={handleClick}>
+        <Underline
+          dest={'store-locator'}
+          active={version === 'store' ? true : false}
+        >
+          <span
+            className={styles.mainLink}
+            onClick={handleClick}
+            onMouseEnter={() => handleMouseEnter('store')}
+          >
             store locator
           </span>
         </Underline>

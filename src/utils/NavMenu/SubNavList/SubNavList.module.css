@@ -1,0 +1,29 @@
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  padding-left: 15rem;
+  gap: 1.6rem;
+}
+.italia{
+  padding-top: 10rem;
+}
+.editions{
+  padding-top: 0;
+}
+.subLink{
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.3);
+  transition: all 0.5s;
+}
+.subLink:hover{
+  color: var(--color-black);
+}
+@media(max-wdith: 90em){
+  .mainContainer{
+    
+  }
+}
