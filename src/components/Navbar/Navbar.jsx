@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Navbar.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Logo from '../../assets/Images/Logo.svg'
-import Menu from '../../assets/Images/Menu.svg'
 import Account from '../../assets/Images/Account.svg'
 import Location from '../../assets/Images/Location.svg'
 import CustomLink from '../../utils/CustomLink/CustomLink'
@@ -15,19 +14,14 @@ const Navbar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+
   return (
     <>
       <NavAnimation>
         <header className={`${styles.header} flex`} id='Header'>
           <nav className={`${styles.nav} flex`}>
             <div className={`${styles.navLeft} flex`}>
-              <div className={styles.menuBtn}>
-                <img
-                  src={Menu}
-                  alt='menu button'
-                  className={styles.menuBtnImg}
-                />
-              </div>
+              <MenuBtn display={'desktop'}></MenuBtn>
               <div className={`${styles.editions} flex`}>
                 <Underline dest={'/natuzzi-italia'}>Natuzzi Italia</Underline>
                 <Underline dest={'/natuzzi-editions'}>
@@ -58,7 +52,7 @@ const Navbar = () => {
         </header>
         <ScrollProgress />
       </NavAnimation>
-      <MenuBtn />
+      <MenuBtn display={'mobile'}></MenuBtn>
     </>
   )
 }
