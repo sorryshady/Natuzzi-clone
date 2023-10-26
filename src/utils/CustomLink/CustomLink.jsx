@@ -10,6 +10,9 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
 
   const handleDelayedLinkClick = (to, delay) => (event) => {
     event.preventDefault()
+    if (!to) {
+      return
+    }
     dispatch(cursorActions.setHoveredText('Loading...'))
     dispatch(cursorActions.setMouseClick())
     dispatch(cursorActions.setLoadingState())

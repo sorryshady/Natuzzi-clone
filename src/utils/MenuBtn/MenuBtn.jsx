@@ -35,7 +35,7 @@ const MenuBtn = ({ display }) => {
           />
         </div>
       </div>
-      {active && <NavMenu />}
+      {<NavMenu active={active} onClick={handleClick} />}
     </>
   )
 }
