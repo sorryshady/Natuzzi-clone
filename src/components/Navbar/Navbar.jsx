@@ -11,7 +11,7 @@ import NavButtons from '../../utils/NavButtons/NavButtons'
 import ScrollProgress from '../../utils/ScrollProgress/ScrollProgress'
 import NavAnimation from '../../utils/NavAnimation/NavAnimation'
 import MenuBtn from '../../utils/MenuBtn/MenuBtn'
-import useViewportSize from '../../hooks/useViewPortSize'
+import useViewportSize from '../../hooks/useViewportSize'
 import { useDispatch, useSelector } from 'react-redux'
 import { menuActions } from '../../store/menu-slice'
 const Navbar = () => {
