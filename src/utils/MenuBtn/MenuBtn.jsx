@@ -33,10 +33,10 @@ const MenuBtn = () => {
 
     if (active) {
       timer2 = setTimeout(() => {
-        dispatch(menuActions.setActive())
+        dispatch(menuActions.setActive(false))
       }, 200)
     } else {
-      dispatch(menuActions.setActive())
+      dispatch(menuActions.setActive(true))
     }
     if (hovering) {
       dispatch(menuActions.setHovering(false))

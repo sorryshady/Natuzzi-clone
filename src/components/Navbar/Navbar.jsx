@@ -3,6 +3,7 @@ import styles from './Navbar.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Logo from '../../assets/Images/Logo.svg'
 import Account from '../../assets/Images/Account.svg'
+import Menu from '../../assets/Images/Menu.svg'
 import Location from '../../assets/Images/Location.svg'
 import CustomLink from '../../utils/CustomLink/CustomLink'
 import Underline from '../../utils/Underline/Underline'
@@ -11,13 +12,19 @@ import ScrollProgress from '../../utils/ScrollProgress/ScrollProgress'
 import NavAnimation from '../../utils/NavAnimation/NavAnimation'
 import MenuBtn from '../../utils/MenuBtn/MenuBtn'
 import useViewportSize from '../../hooks/useViewPortSize'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { menuActions } from '../../store/menu-slice'
 const Navbar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+  const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
   const { width } = useViewportSize()
+  const handleClick = () => {
+    dispatch(menuActions.setActive(false))
+    dispatch(menuActions.setSrc(Menu))
+  }
   return (
     <>
       <NavAnimation>
@@ -36,7 +43,7 @@ const Navbar = () => {
             </div>
             <div className={styles.logo} onClick={scrollToTop}>
               <CustomLink dest={'/'}>
-                <img src={Logo} alt='company name' />
+                <img src={Logo} alt='company name' onClick={handleClick} />
               </CustomLink>
             </div>
             <div className={`${styles.actions} flex`}>
@@ -45,12 +52,14 @@ const Navbar = () => {
                 text={'STORES'}
                 move={'60px'}
                 dest={'/store-locator'}
+                onClick={handleClick}
               />
               <NavButtons
                 icon={Account}
                 text={'ACCOUNT'}
                 move={'70px'}
                 dest={'/login'}
+                onClick={handleClick}
               />
             </div>
           </nav>

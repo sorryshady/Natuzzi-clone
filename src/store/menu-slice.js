@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import Menu from '../assets/Images/Menu.svg'
+import Close from '../assets/Images/Close.svg'
 const initialState = {
   active: false,
   hovering: false,
@@ -12,8 +13,8 @@ const menuSlice = createSlice({
   name: 'menu',
   initialState,
   reducers: {
-    setActive(state) {
-      state.active = !state.active
+    setActive(state, action) {
+      state.active = action.payload
     },
     setHovering(state, action) {
       state.hovering = action.payload
