@@ -38,13 +38,15 @@ const SubNavList = ({ onClick, version }) => {
       <div className={styles.goBack} onClick={goBack}>
         <CustomButton />
       </div>
-      {subListArray.map((item, index) => (
-        <CustomLink key={index} dest={Object.values(item)[0]}>
-          <span className={styles.subLink} onClick={handleClick}>
-            {Object.keys(item)[0]}
-          </span>
-        </CustomLink>
-      ))}
+      <div className={styles.subLinks}>
+        {subListArray.map((item, index) => (
+          <CustomLink key={index} dest={Object.values(item)[0]}>
+            <span className={styles.subLink} onClick={handleClick}>
+              {Object.keys(item)[0]}
+            </span>
+          </CustomLink>
+        ))}
+      </div>
     </motion.div>
   )
 }

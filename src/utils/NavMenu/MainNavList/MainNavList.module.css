@@ -127,3 +127,8 @@
     font-size: 2.8rem;
   }
 }
+@media(max-width: 20em){
+  .mainContainer{
+    padding-left: 3rem;
+  }
+}
