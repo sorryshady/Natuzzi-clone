@@ -110,9 +110,6 @@
     transform: translateX(-17%);
     gap: 1.2rem;
   }
-  .menuBtn{
-    display: none;
-  }
 }
 @media (max-width: 48em){
   .actions{

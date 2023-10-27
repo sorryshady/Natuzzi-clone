@@ -25,14 +25,14 @@ const Navbar = () => {
           <nav className={`${styles.nav} flex`}>
             <div className={`${styles.navLeft} flex`}>
               {width > 1024 && <MenuBtn />}
-              {!active && (
+              {
                 <div className={`${styles.editions} flex`}>
                   <Underline dest={'/natuzzi-italia'}>Natuzzi Italia</Underline>
                   <Underline dest={'/natuzzi-editions'}>
                     Natuzzi Editions
                   </Underline>
                 </div>
-              )}
+              }
             </div>
             <div className={styles.logo} onClick={scrollToTop}>
               <CustomLink dest={'/'}>

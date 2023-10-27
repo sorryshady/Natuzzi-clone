@@ -24,7 +24,7 @@
   .container{
     display: grid;
     grid-template-columns: 1fr;
-    z-index: 9;
+    z-index: 10;
   }
   .mainNavList{
     max-width: 100vw;
