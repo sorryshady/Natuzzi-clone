@@ -1,19 +1,63 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './NavMenu.module.css'
 import { AnimatePresence, motion } from 'framer-motion'
 import MainNavList from './MainNavList/MainNavList'
 import SubNavList from './SubNavList/SubNavList'
-const NavMenu = ({ active, onClick }) => {
-  const [hover, setHover] = useState(false)
-  const [version, setVersion] = useState('')
+import { menuActions } from '../../store/menu-slice'
+import { useSelector } from 'react-redux'
+const NavMenu = ({ active, onClick, hovering, dispatch }) => {
+  const { version } = useSelector((state) => state.menu)
+
   const handleMouseEnter = (version) => {
     if (version === 'italia' || version === 'editions') {
-      setHover(true)
-      setVersion(version)
+      dispatch(menuActions.setHovering(true))
+      dispatch(menuActions.setVersion(version))
     } else {
-      setHover(false)
-      setVersion(version)
+      dispatch(menuActions.setHovering(false))
+      dispatch(menuActions.setVersion(version))
     }
+  }
+
+  const variantsBlur = {
+    initial: {
+      backdropFilter: 'blur(0px)',
+    },
+    final: {
+      backdropFilter: 'blur(6px)',
+      transition: { duration: 0.5 },
+    },
+    exit: {
+      backdropFilter: 'blur(0px)',
+      transition: { duration: 0.4 },
+    },
+  }
+
+  const variantMainNav = {
+    initial: {
+      width: '0',
+    },
+    final: {
+      width: '100%',
+      transition: { duration: 0.4 },
+    },
+    exit: {
+      width: '0',
+      transition: { duration: 0.2 },
+    },
+  }
+
+  const variantSubNav = {
+    initial: {
+      width: '0',
+    },
+    final: {
+      width: '100%',
+      transition: { duration: 0.5 },
+    },
+    exit: {
+      width: '0',
+      transition: { duration: 0.3 },
+    },
   }
 
   return (
@@ -21,18 +65,18 @@ const NavMenu = ({ active, onClick }) => {
       {active && (
         <motion.div
           className={styles.container}
-          initial={{ backdropFilter: 'blur(0px)' }}
-          animate={{ backdropFilter: 'blur(6px)' }}
-          exit={{ backdropFilter: 'blur(0px)' }}
-          transition={{ duration: 0.5 }}
+          variants={variantsBlur}
+          initial={'initial'}
+          animate={'final'}
+          exit={'exit'}
         >
           <motion.div
             className={styles.mainNavList}
             key={'mainNavList'}
-            initial={{ width: '0' }}
-            animate={{ width: '42vw' }}
-            exit={{ width: '0', transition: { duration: 0.3, delay: 0.22 } }}
-            transition={{ duration: 0.2 }}
+            variants={variantMainNav}
+            initial={'initial'}
+            animate={'final'}
+            exit={'exit'}
           >
             <MainNavList
               onClick={onClick}
@@ -40,18 +84,20 @@ const NavMenu = ({ active, onClick }) => {
               version={version}
             />
           </motion.div>
-          {hover && (
-            <motion.div
-              className={styles.subNavList}
-              key={'subNavList'}
-              initial={{ width: '0' }}
-              animate={{ width: '58vw' }}
-              exit={{ width: '0', transition: { duration: 0.2 } }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-            >
-              <SubNavList onClick={onClick} version={version} />
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {hovering && (
+              <motion.div
+                className={styles.subNavList}
+                key={'subNavList'}
+                variants={variantSubNav}
+                initial={'initial'}
+                animate={'final'}
+                exit={'exit'}
+              >
+                <SubNavList onClick={onClick} version={version} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>
@@ -59,3 +105,5 @@ const NavMenu = ({ active, onClick }) => {
 }
 
 export default NavMenu
+
+// , transition: { duration: 0.3, delay: 0.2 }

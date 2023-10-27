@@ -10,10 +10,14 @@ import Underline from '../../Underline/Underline'
 import styles from './MainNavList.module.css'
 import { motion } from 'framer-motion'
 const MainNavList = ({ onClick, onMouseEnter, version }) => {
+  let timeout
   const handleClick = () => {
-    setTimeout(() => {
+    if (timeout) {
+      clearTimeout(timeout)
+    }
+    timeout = setTimeout(() => {
       onClick()
-    }, 500)
+    }, 600)
   }
   //handle mouse entering two main links (italia and editions)
   const handleMouseEnter = (version) => {
@@ -26,7 +30,7 @@ const MainNavList = ({ onClick, onMouseEnter, version }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.1 } }}
-      transition={{ duration: 0.3, delay: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       key={'navList'}
     >
       <CustomLink dest={'/'}>

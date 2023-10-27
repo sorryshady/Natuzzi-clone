@@ -3,10 +3,11 @@ import styles from './MenuBtn.module.css'
 import Menu from '../../assets/Images/Menu.svg'
 import Close from '../../assets/Images/Close.svg'
 import NavMenu from '../NavMenu/NavMenu'
-const MenuBtn = ({ display }) => {
-  const [active, setActive] = useState(false)
-  const [clicked, setClicked] = useState(false)
-  const [src, setSrc] = useState(Menu)
+import { menuActions } from '../../store/menu-slice'
+import { useDispatch, useSelector } from 'react-redux'
+const MenuBtn = () => {
+  const dispatch = useDispatch()
+  const { src, clicked, active, hovering } = useSelector((state) => state.menu)
 
   useEffect(() => {
     if (active) {
@@ -16,23 +17,42 @@ const MenuBtn = ({ display }) => {
     }
   }, [active])
 
+  let timer1, timer2, timer3
   const handleClick = () => {
-    setClicked(true)
-    setTimeout(() => {
-      setSrc(src === Menu ? Close : Menu)
-      setClicked(false)
+    dispatch(menuActions.setClicked())
+    if (timer1) clearTimeout(timer1)
+
+    if (timer2) clearTimeout(timer2)
+
+    if (timer3) clearTimeout(timer3)
+
+    timer1 = setTimeout(() => {
+      dispatch(menuActions.setSrc(src === Menu ? Close : Menu))
+      dispatch(menuActions.setClicked())
     }, 200)
 
-    setActive(!active)
+    if (active) {
+      timer2 = setTimeout(() => {
+        dispatch(menuActions.setActive())
+      }, 200)
+    } else {
+      dispatch(menuActions.setActive())
+    }
+    if (hovering) {
+      dispatch(menuActions.setHovering(false))
+      timer3 = setTimeout(() => {
+        dispatch(menuActions.setHovering(true))
+      }, 200)
+    }
   }
 
   return (
     <>
       <div className={styles.container}>
         <div
-          className={`${styles['menuBtn']} ${
-            display === 'desktop' ? styles.desktop : styles.mobile
-          } ${active === true ? styles.menuCls : ''}`}
+          className={`${styles['menuBtn']}  ${
+            active === true ? styles.menuCls : ''
+          }`}
           onClick={handleClick}
         >
           <img
@@ -44,7 +64,14 @@ const MenuBtn = ({ display }) => {
           />
         </div>
       </div>
-      {<NavMenu active={active} onClick={handleClick} />}
+      {
+        <NavMenu
+          active={active}
+          onClick={handleClick}
+          hovering={hovering}
+          dispatch={dispatch}
+        />
+      }
     </>
   )
 }

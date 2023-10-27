@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding-left: 16rem;
+  z-index: 0;
 }
 .homeBtn{
   width: 48px;
@@ -48,4 +49,81 @@
   align-items: center;
   justify-content: center;
   gap: 5rem;
+}
+@media(max-width:84em){
+  .homeBtn{
+    position: relative;
+    top: -14px;
+    left: 20px;
+  }
+}
+@media (max-width: 75em){
+  .mainContainer{
+    padding-left: 13rem;
+  }
+  .mainLink{
+    font-size: 4.4rem;
+  }
+  .subLink{
+    font-size: 2.8rem;
+  }
+  .socials img{
+    width: 18px;
+    height: 18px;
+  }
+}
+@media (max-width: 64em){
+  .homeBtn{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-110%);
+  }
+  .mainContainer{
+    padding-left: 10rem;
+  }
+  .mainLink{
+    color: var(--color-black);
+    font-size: 4.2rem;
+  }
+  .subLink{
+    color: var(--color-black);
+    font-size: 2.6rem;
+  }
+  .socials img{
+    width: 20px;
+    height: 20px;
+  }
+}
+@media (max-width: 59em){
+  .mainContainer{
+    padding-top: 6rem;
+  }
+  .mainLink{
+    font-size: 4.6rem;
+  }
+  .subLink{
+    font-size: 2.8rem;
+  }
+}
+@media (max-width:36em){
+  .homeBtn{
+    top: 91%;
+  }
+}
+@media(max-width: 30em){
+  .mainContainer{
+    padding-left: 6rem;
+  }
+}
+@media(max-width: 24em){
+  .mainContainer{
+    padding-left: 5rem;
+  }
+  .mainLink{
+    font-size: 4rem;
+  }
+  .subLink{
+    font-size: 2.8rem;
+  }
 }

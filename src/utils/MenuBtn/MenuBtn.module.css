@@ -1,3 +1,6 @@
+.container{
+  z-index: 100;
+}
 .menuBtn{
   width: 48px;
   height: 48px;
@@ -5,13 +8,6 @@
   background-color: var(--color-black);
   position: relative;
   transition: all 0.5s;
-  z-index: 12;
-}
-.menuBtn.desktop{
-  display: block;
-}
-.menuBtn.mobile{
-  display: none;
 }
 .menuBtnImg {
   position: absolute;
@@ -31,10 +27,7 @@
   opacity: 1;
 }
 .fade-in{
-  animation: fadeInOut 0.4s;
-}
-.fade-out{
-  
+  animation: fadeInOut 0.5s;
 }
 @keyframes fadeInOut {
   0% {
@@ -52,13 +45,6 @@
     position: fixed;
     top: 90%;
     left: 7%;
-    z-index: 6;
-  }
-  .menuBtn.desktop{
-    display: none;
-  }
-  .menuBtn.mobile{
-    display: block;
   }
   .menuBtn{
     width: 48px;
@@ -76,12 +62,10 @@
     transform-origin: 0 0;
     transition: all 0.5s;
   }
-  .menuBtn:hover{
-    transform: rotateZ(30deg);
+  .menuBtn.menuCls:hover{
+    transform: rotateZ(0);
   }
-  .menuBtn:hover img{
-    opacity: 0;
-  }
+
 }
 @media (max-width: 59em){
   .container{

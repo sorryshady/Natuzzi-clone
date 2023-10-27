@@ -3,6 +3,7 @@ import styles from './CustomLinks.module.css'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
 import { cursorActions } from '../../store/cursor-slice'
+import { menuActions } from '../../store/menu-slice'
 // const CustomLink = ({dest, children, setExit}) => {
 const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
   const navigate = useNavigate()
@@ -17,6 +18,7 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
       dispatch(cursorActions.setHoveredText('Loading...'))
       dispatch(cursorActions.setMouseClick())
       dispatch(cursorActions.setLoadingState())
+      // dispatch(menuActions.setActive())
     }
 
     // setExit(true)

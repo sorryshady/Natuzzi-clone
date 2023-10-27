@@ -47,6 +47,7 @@
 .editions {
   gap: 3.2rem;
   text-wrap: nowrap;
+  z-index: 12;
 }
 .editions div{
   font-size: 1.8rem;

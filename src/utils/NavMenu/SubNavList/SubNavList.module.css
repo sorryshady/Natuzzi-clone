@@ -6,6 +6,7 @@
   height: 100%;
   padding-left: 15rem;
   gap: 1.6rem;
+  position: relative;
 }
 .italia{
   padding-top: 10rem;
@@ -22,8 +23,48 @@
 .subLink:hover{
   color: var(--color-black);
 }
+.goBack{
+  position: absolute;
+  right: 10%;
+  transform: rotateZ(-90deg);
+  top: 40%;
+  display: none;
+}
 @media(max-wdith: 90em){
+
+}
+@media (max-width: 64em) {
   .mainContainer{
-    
+    padding-left: 18rem;
+    z-index: 18;
+    flex-wrap: wrap;
+  }
+  .goBack{
+    display: block;
+  }
+  .subLink{
+    color: var(--color-black);
+  }
+}
+@media (max-width: 36em){
+  .mainContainer{
+    padding-left: 10rem;
+  }
+}
+@media (max-width: 24em){
+  .mainContainer{
+    padding-left: 5rem;
+  }
+  .goBack{
+    transform: scale(0.8) rotateZ(-90deg);
+  }
+}
+@media (max-width: 20em){
+  .mainContainer{
+    position: relative;
+    top: -20px;
+  }
+  .goBack{
+    transform: scale(0.7) rotateZ(-90deg);
   }
 }
