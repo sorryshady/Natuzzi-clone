@@ -2,17 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   height: 100%;
   padding-left: 15rem;
   gap: 1.6rem;
   position: relative;
 }
 .italia{
-  padding-top: 10rem;
+  padding-top: 17rem;
 }
 .editions{
-  padding-top: 0;
+  padding-top: 20rem;
 }
 .subLinks{
   display: flex;
@@ -35,14 +34,22 @@
   top: 40%;
   display: none;
 }
-@media(max-wdith: 90em){
-
+@media (max-width: 75em){
+  .italia{
+    padding-top: 20rem;
+  }
 }
 @media (max-width: 64em) {
   .mainContainer{
     padding-left: 18rem;
     z-index: 18;
     flex-wrap: wrap;
+  }
+  .italia{
+    padding-top: 25rem;
+  }
+  .editions{
+    padding-top: 35rem;
   }
   .goBack{
     display: block;
@@ -59,10 +66,19 @@
   .subLink{
     font-size: 3.2rem;
   }
+  .italia{
+    padding-top: 30rem;
+  }
+  .editions{
+    padding-top: 36rem;
+  }
 }
 @media (max-width: 48em){
   .mainContainer{
     padding-left: 13rem;
+  }
+  .italia{
+    padding-top: 28rem;
   }
 }
 @media (max-width: 36em){
@@ -83,7 +99,7 @@
     padding-left: 5rem;
   }
   .goBack{
-    transform: scale(0.8) rotateZ(-90deg);
+    transform: scale(0.6) rotateZ(-90deg);
   }
 }
 @media (max-width: 20em){
