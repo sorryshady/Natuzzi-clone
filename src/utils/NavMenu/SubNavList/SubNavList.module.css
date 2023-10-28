@@ -93,13 +93,13 @@
   .subLink{
     font-size: 2.8rem;
   }
+  .goBack{
+    transform: scale(0.6) rotateZ(-90deg);
+  }
 }
 @media (max-width: 24em){
   .mainContainer{
     padding-left: 5rem;
-  }
-  .goBack{
-    transform: scale(0.6) rotateZ(-90deg);
   }
 }
 @media (max-width: 20em){
