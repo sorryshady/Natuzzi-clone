@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   width: 0,
-  count: 0,
+  count: 8,
 }
 
 const loadAnimSlice = createSlice({

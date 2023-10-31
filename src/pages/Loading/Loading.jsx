@@ -3,6 +3,7 @@ import styles from './Loading.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { globalActions } from '../../store/global-slice'
 import { motion, AnimatePresence } from 'framer-motion'
+import InnerLoading from './InnerLoading/InnerLoading'
 const Loading = () => {
   const dispatch = useDispatch()
   const { loading } = useSelector((state) => state.global)
@@ -40,8 +41,10 @@ const Loading = () => {
             variants={mainVariants}
             exit={'exit'}
           >
-            <div className='container'>
-              {/* <AnimatePresence>{inner && <InnerLoading />}</AnimatePresence> */}
+            <div
+              className={`${styles.container} ${!inner ? styles.overflow : ''}`}
+            >
+              <AnimatePresence>{inner && <InnerLoading />}</AnimatePresence>
             </div>
           </motion.div>
         )}
