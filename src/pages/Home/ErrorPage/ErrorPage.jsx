@@ -5,15 +5,25 @@ import Cursor from '../../../utils/Cursor/Cursor'
 import Footer from '../../../components/Footer/Footer'
 import FollowUs from '../../../components/FollowUs/FollowUs'
 import { useCursor } from '../../../hooks/useCursor.js'
+import { AnimatePresence } from 'framer-motion'
+import { useSelector } from 'react-redux'
+import PageTransition from '../../../utils/PageTransition'
 const ErrorPage = () => {
   const { mousePosition } = useCursor()
+  const { navigating } = useSelector((state) => state.global)
   return (
     <>
-      <Navbar />
-      <div className={styles.container}>Coming Soon</div>
-      <FollowUs />
+      <AnimatePresence>
+        {!navigating && (
+          <PageTransition>
+            <Navbar />
+            <div className={styles.container}>Coming Soon</div>
+            <FollowUs />
+            <Footer />
+          </PageTransition>
+        )}
+      </AnimatePresence>
       <Cursor mousePosition={mousePosition} />
-      <Footer />
     </>
   )
 }

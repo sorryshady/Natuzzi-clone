@@ -8,33 +8,23 @@ import { useCursor } from '../../hooks/useCursor'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import useScrollToTop from '../../hooks/useScrollToTop'
+import PageTransition from '../../utils/PageTransition'
 
 const HomeRoot = () => {
   const { mousePosition } = useCursor()
   const { navigating } = useSelector((state) => state.global)
-  const variants = {
-    initial: { opacity: 0 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0 },
-  }
+
   useScrollToTop()
   return (
     <>
       <AnimatePresence>
         {!navigating && (
-          <motion.div
-            className='animation-container'
-            variants={variants}
-            initial={'initial'}
-            animate={'visible'}
-            exit={'exit'}
-            transition={{ duration: 1 }}
-          >
+          <PageTransition>
             <Navbar />
             <Outlet />
             <FollowUs />
             <Footer />
-          </motion.div>
+          </PageTransition>
         )}
       </AnimatePresence>
       <Cursor mousePosition={mousePosition} />
