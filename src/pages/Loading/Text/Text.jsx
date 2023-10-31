@@ -38,7 +38,7 @@ const Text = () => {
               initial={'initial'}
               animate={'visible'}
               exit={'exit'}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
               className={`${styles.content}`}
             >
               <img src={NLogo} alt='logo' />
@@ -54,7 +54,7 @@ const Text = () => {
               initial={'initial'}
               animate={'visible'}
               exit={'exit'}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
               className={`${styles.content} ${styles.text}`}
             >
               Get comfortable

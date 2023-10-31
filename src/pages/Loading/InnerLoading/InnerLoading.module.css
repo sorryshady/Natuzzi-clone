@@ -4,7 +4,7 @@
   height: 100%;
   position: relative;
 }
-.percentage{
+/* .percentage{
   position: absolute;
   top: 90%;
   right: -10px;
@@ -12,4 +12,4 @@
   height: 2rem;
   background-color: white;
   border: 1px solid black;
-}
+} */

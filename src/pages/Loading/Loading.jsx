@@ -12,7 +12,7 @@ const Loading = () => {
   const mainVariants = {
     exit: {
       x: '100%',
-      transition: { duration: 1 },
+      transition: { duration: 0.8 },
     },
   }
   useEffect(() => {

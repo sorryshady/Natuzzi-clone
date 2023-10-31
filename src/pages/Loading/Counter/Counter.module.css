@@ -1,0 +1,24 @@
+.main-outer{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 85%;
+  right: -30px;
+  min-width: 2rem;
+  min-height: 5rem;
+}
+.item-container{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.content-holder{
+  display: block;
+  font-size: 5rem;
+  color: black;
+  font-weight: 400;
+}
