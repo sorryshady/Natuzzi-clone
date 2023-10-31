@@ -6,7 +6,7 @@ import Login from './pages/Home/Login/Login'
 import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 import Loader from './utils/Loader'
 export const config = {
-  endpoint: 'http://localhost:8082/v1',
+  endpoint: 'https://natuzzi-backend.onrender.com/v1',
 }
 
 const router = createBrowserRouter([
