@@ -7,6 +7,7 @@ import Cursor from '../../utils/Cursor/Cursor'
 import { useCursor } from '../../hooks/useCursor'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
+import useScrollToTop from '../../hooks/useScrollToTop'
 
 const HomeRoot = () => {
   const { mousePosition } = useCursor()
@@ -16,6 +17,7 @@ const HomeRoot = () => {
     visible: { opacity: 1 },
     exit: { opacity: 0 },
   }
+  useScrollToTop()
   return (
     <>
       <AnimatePresence>
