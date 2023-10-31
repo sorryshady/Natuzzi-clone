@@ -17,3 +17,14 @@
 .overflow{
   overflow: hidden;
 }
+
+@media (max-width: 48em){
+  .page-container{
+    padding: 8rem;
+  }
+}
+@media (max-width: 24em){
+  .page-container{
+    padding: 5rem;
+  }
+}
