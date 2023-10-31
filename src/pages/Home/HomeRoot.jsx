@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { Outlet } from 'react-router'
 import Footer from '../../components/Footer/Footer'
@@ -11,14 +11,25 @@ import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTransition from '../../utils/PageTransition'
 import axios from 'axios'
 import { config } from '../../App'
+import { globalActions } from '../../store/global-slice'
+import Loading from '../Loading/Loading'
+import store from '../../store'
 
 const HomeRoot = () => {
   const { mousePosition } = useCursor()
-  const { navigating } = useSelector((state) => state.global)
+  const { loading, navigating } = useSelector((state) => state.global)
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [loading])
 
   useScrollToTop()
   return (
     <>
+      <Loading />
       <AnimatePresence>
         {!navigating && (
           <PageTransition>
@@ -36,11 +47,14 @@ const HomeRoot = () => {
 
 export default HomeRoot
 
-// export async function loader() {
-//   try {
-//     const response = await axios.get(`${config.endpoint}/`)
-//     console.log(response)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+export async function loader() {
+  try {
+    store.dispatch(globalActions.setLoading())
+    await axios.get(`${config.endpoint}/`)
+    // store.dispatch(globalActions.setLoading())
+    return null
+  } catch (error) {
+    // store.dispatch(globalActions.setLoading())
+    console.log(error)
+  }
+}
