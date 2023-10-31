@@ -5,7 +5,7 @@ const initialState = {
   navigating: false,
 }
 const globalSlice = createSlice({
-  name: ' ',
+  name: 'global',
   initialState,
   reducers: {
     setLoading(state) {

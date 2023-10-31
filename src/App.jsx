@@ -5,6 +5,7 @@ import TradeContract from './pages/Home/TradeContract/TradeContract'
 import Login from './pages/Home/Login/Login'
 import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 import Loader from './utils/Loader'
+import Loading from './pages/Loading/Loading'
 export const config = {
   endpoint: 'http://localhost:8082/v1',
 }
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeRoot />,
+    // element: <Loading />,
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },

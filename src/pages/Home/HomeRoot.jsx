@@ -9,6 +9,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTransition from '../../utils/PageTransition'
+import axios from 'axios'
+import { config } from '../../App'
 
 const HomeRoot = () => {
   const { mousePosition } = useCursor()
@@ -33,3 +35,12 @@ const HomeRoot = () => {
 }
 
 export default HomeRoot
+
+// export async function loader() {
+//   try {
+//     const response = await axios.get(`${config.endpoint}/`)
+//     console.log(response)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
