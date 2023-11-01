@@ -5,187 +5,125 @@ import { Oval } from 'react-loader-spinner'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
+
+const initialPrivateData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+}
+const initialCompanyData = {
+  company: '',
+  vat: '',
+  firstName: '',
+  lastName: '',
+  address: '',
+  city: '',
+  zipCode: '',
+  country: '',
+  state: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+}
+const initialAccountType = {
+  private: true,
+  company: false,
+}
+const initialConditions = {
+  conditions: false,
+  offers: false,
+}
 const SignUp = () => {
   const [loading, setLoading] = useState(false)
   const [passwordVisible, setPasswordVisible] = useState(false)
-  let errorMsg = ''
-  const [accountType, setAccountType] = useState({
-    private: true,
-    company: false,
-  })
-  const [userAgreements, setUserAgreements] = useState({
-    conditions: false,
-    offers: false,
-  })
-  let privateDataValid = false
-  let companyDataValid = false
-  const [privateData, setPrivateData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
-  const [companyData, setCompanyData] = useState({
-    company: '',
-    vat: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    country: '',
-    state: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
+  const [errorMsg, setErrorMsg] = useState('')
+  const [accountType, setAccountType] = useState(initialAccountType)
+  const [userAgreements, setUserAgreements] = useState(initialConditions)
 
-  // const passwordIsValid = (password, confirmPassword) => {
-  //   if (!password || password.length < 6) {
-  //     setErrorMsg('Password should be atleast 6 characters.')
-  //   } else {
-  //     if (
-  //       !/(?=.*[A-Z])/.test(password) ||
-  //       !/(?=.*[@#$%^&+=!])/g.test(password) ||
-  //       !/(?=.*\d)/.test(password)
-  //     ) {
-  //       setErrorMsg(
-  //         'Password must have atleast 1 uppercase letter, 1 special character and 1 number.'
-  //       )
-  //     } else if (confirmPassword && password !== confirmPassword) {
-  //       setErrorMsg(`Passwords don't match.`)
-  //     } else {
-  //       setErrorMsg('')
-  //     }
-  //   }
-  // }
+  const [privateData, setPrivateData] = useState(initialPrivateData)
+  const [companyData, setCompanyData] = useState(initialCompanyData)
 
   const handleValidityCheck = (data) => {
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        if (key === 'email') {
-          const emailRegex = /@.*\.[a-zA-Z]+/
-          if (!emailRegex.test(data[key])) {
-            return false
-          }
-        } else if (key === 'password' || key === 'confirmPassword') {
-          if (
-            data.password !== data.confirmPassword ||
-            !data.password ||
-            data.password.length < 6
-          ) {
-            return false
-          }
-        } else if (data[key] === '') {
-          return false
-        }
-      }
+    const isDataValid = Object.values(data).every((value) => value)
+    const isPasswordValid = isPasswordValidCheck(
+      data.password,
+      data.confirmPassword
+    )
+    const isEmailValid = isEmailValidCheck(data.email)
+    return (
+      isDataValid &&
+      isPasswordValid &&
+      isEmailValid &&
+      userAgreements.conditions
+    )
+  }
+
+  const isEmailValidCheck = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    return emailRegex.test(email)
+  }
+
+  const isPasswordValidCheck = (password, confirmPassword) => {
+    if (password.length < 6) {
+      return false
+    }
+    if (password !== confirmPassword) {
+      return false
+    }
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).+$/
+    if (!passwordRegex.test(password)) {
+      return false
     }
     return true
   }
 
-  let buttonValidity = false
-  if (
-    accountType.private &&
-    handleValidityCheck(privateData) &&
-    userAgreements.conditions
-  ) {
-    privateDataValid = true
-    buttonValidity = true
-  } else if (
-    accountType.company &&
-    handleValidityCheck(companyData) &&
-    userAgreements.conditions
-  ) {
-    companyDataValid = true
-    buttonValidity = true
-  }
+  const buttonValidity = accountType.private
+    ? handleValidityCheck(privateData)
+    : handleValidityCheck(companyData)
 
   const handleCheckboxChange = (name) => {
-    if (name === 'private' || name === 'company') {
-      if (name === 'private') {
-        setAccountType((prevData) => ({
-          ...prevData,
-          private: prevData.private ? prevData.private : !prevData.private,
-          company: prevData.private ? prevData.company : !prevData.company,
-        }))
-      }
-      if (name === 'company') {
-        setAccountType((prevData) => ({
-          ...prevData,
-          private: prevData.company ? prevData.private : !prevData.private,
-          company: prevData.company ? prevData.company : !prevData.company,
-        }))
-      }
+    if (name === 'private') {
+      setAccountType({ private: true, company: false })
+    } else if (name === 'company') {
+      setAccountType({ private: false, company: true })
     } else {
-      if (name === 'conditions') {
-        setUserAgreements((prevData) => ({
-          ...prevData,
-          conditions: !prevData.conditions,
-        }))
-      }
-      if (name === 'offers') {
-        setUserAgreements((prevData) => ({
-          ...prevData,
-          offers: !prevData.offers,
-        }))
-      }
+      setUserAgreements((prevData) => ({
+        ...prevData,
+        [name]: !prevData[name],
+      }))
     }
   }
+
   const handleChange = (e) => {
     const dataText = e.target.getAttribute('data-text')
-    if (dataText === 'private') {
-      setPrivateData((prevData) => ({
-        ...prevData,
-        [e.target.name]: e.target.value,
-      }))
-    }
-    if (dataText === 'company') {
-      setCompanyData((prevData) => ({
-        ...prevData,
-        [e.target.name]: e.target.value,
-      }))
-    }
+    const data = dataText === 'private' ? privateData : companyData
+    data[e.target.name] = e.target.value
+    dataText === 'private'
+      ? setPrivateData({ ...data })
+      : setCompanyData({ ...data })
   }
 
   const signUpSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    const newData = { ...userAgreements }
-    if (accountType.private) {
-      newData.accountType = 'private'
-      newData.privateData = { ...privateData }
-    } else if (accountType.company) {
-      newData.accountType = 'company'
-      newData.companyData = { ...companyData }
+    const newData = {
+      ...userAgreements,
+      accountType: accountType.private ? 'private' : 'company',
+      privateData: accountType.private ? { ...privateData } : '',
+      companyData: accountType.company ? { ...companyData } : '',
     }
     setTimeout(() => {
       console.log(newData)
-      setPrivateData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      })
-      setCompanyData({
-        company: '',
-        vat: '',
-        firstName: '',
-        lastName: '',
-        address: '',
-        city: '',
-        zipCode: '',
-        country: '',
-        state: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      })
+      setPrivateData(initialPrivateData)
+      setCompanyData(initialCompanyData)
+      setAccountType(initialAccountType)
+      setUserAgreements(initialConditions)
       setLoading(false)
     }, 2000)
   }
+
   return (
     <div className={styles.signUpContainer}>
       <div className={commonStyles['section-heading']}>Create an Account</div>
