@@ -8,8 +8,8 @@ const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    setLoading(state) {
-      state.loading = !state.loading
+    setLoading(state, action) {
+      state.loading = action.payload
     },
     setNavigating(state, action) {
       state.navigating = action.payload

@@ -20,7 +20,7 @@ const Loading = () => {
       setInner(true)
     }, 500)
     const timer2 = setTimeout(() => {
-      dispatch(globalActions.setLoading())
+      dispatch(globalActions.setLoading(false))
     }, 4500)
     const timer3 = setTimeout(() => {
       setInner(false)

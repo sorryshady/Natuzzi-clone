@@ -49,12 +49,11 @@ export default HomeRoot
 
 export async function loader() {
   try {
-    store.dispatch(globalActions.setLoading())
+    store.dispatch(globalActions.setLoading(true))
     await axios.get(`${config.endpoint}/`)
-    // store.dispatch(globalActions.setLoading())
     return null
   } catch (error) {
-    // store.dispatch(globalActions.setLoading())
+    store.dispatch(globalActions.setLoading(false))
     console.log(error)
   }
 }
