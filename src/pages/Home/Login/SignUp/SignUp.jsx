@@ -6,36 +6,36 @@ import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
 
-const initialPrivateData = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-}
-const initialCompanyData = {
-  company: '',
-  vat: '',
-  firstName: '',
-  lastName: '',
-  address: '',
-  city: '',
-  zipCode: '',
-  country: '',
-  state: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-}
-const initialAccountType = {
-  private: true,
-  company: false,
-}
-const initialConditions = {
-  conditions: false,
-  offers: false,
-}
 const SignUp = () => {
+  const initialPrivateData = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }
+  const initialCompanyData = {
+    company: '',
+    vat: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    zipCode: '',
+    country: '',
+    state: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }
+  const initialAccountType = {
+    private: true,
+    company: false,
+  }
+  const initialConditions = {
+    conditions: false,
+    offers: false,
+  }
   const [loading, setLoading] = useState(false)
   const [passwordVisible, setPasswordVisible] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
@@ -66,16 +66,10 @@ const SignUp = () => {
   }
 
   const isPasswordValidCheck = (password, confirmPassword) => {
-    if (password.length < 6) {
-      return false
-    }
     if (password !== confirmPassword) {
       return false
     }
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).+$/
-    if (!passwordRegex.test(password)) {
-      return false
-    }
+
     return true
   }
 
