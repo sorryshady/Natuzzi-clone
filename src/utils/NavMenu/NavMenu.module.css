@@ -26,7 +26,7 @@
     display: grid;
     grid-template-columns: 1fr;
     z-index: 10;
-    height: 100svh;
+    height: 100%;
   }
   .mainNavList{
     max-width: 100%;
