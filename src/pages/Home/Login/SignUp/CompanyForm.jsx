@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SignUp.module.css'
 import CustomInput from '../../../../utils/CustomInput/CustomInput'
-const CompanyForm = ({ data, onChange }) => {
+const CompanyForm = ({ data, onChange, passState }) => {
   return (
     <>
       <div className={styles.companyInputs}>
@@ -108,7 +108,7 @@ const CompanyForm = ({ data, onChange }) => {
       </div>
       <div className={styles.passwordInputs}>
         <CustomInput
-          type={'password'}
+          type={passState ? 'text' : 'password'}
           text={'Password*'}
           name={'password'}
           form={'userForm'}
@@ -117,7 +117,7 @@ const CompanyForm = ({ data, onChange }) => {
           dataText={'company'}
         />
         <CustomInput
-          type={'password'}
+          type={passState ? 'text' : 'password'}
           text={'Confirm password*'}
           name={'confirmPassword'}
           form={'userForm'}

@@ -90,7 +90,7 @@ const SignIn = () => {
             className={`${styles.showPassword} ${
               passwordVisible ? styles.passActive : ''
             }`}
-            onClick={() => setPasswordVisible(!passwordVisible)}
+            onClick={() => setPasswordVisible((prevValue) => !prevValue)}
           >
             Show
           </div>

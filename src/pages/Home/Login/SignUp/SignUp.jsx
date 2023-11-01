@@ -7,6 +7,8 @@ import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
 const SignUp = () => {
   const [loading, setLoading] = useState(false)
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  let errorMsg = ''
   const [accountType, setAccountType] = useState({
     private: true,
     company: false,
@@ -38,6 +40,27 @@ const SignUp = () => {
     password: '',
     confirmPassword: '',
   })
+
+  // const passwordIsValid = (password, confirmPassword) => {
+  //   if (!password || password.length < 6) {
+  //     setErrorMsg('Password should be atleast 6 characters.')
+  //   } else {
+  //     if (
+  //       !/(?=.*[A-Z])/.test(password) ||
+  //       !/(?=.*[@#$%^&+=!])/g.test(password) ||
+  //       !/(?=.*\d)/.test(password)
+  //     ) {
+  //       setErrorMsg(
+  //         'Password must have atleast 1 uppercase letter, 1 special character and 1 number.'
+  //       )
+  //     } else if (confirmPassword && password !== confirmPassword) {
+  //       setErrorMsg(`Passwords don't match.`)
+  //     } else {
+  //       setErrorMsg('')
+  //     }
+  //   }
+  // }
+
   const handleValidityCheck = (data) => {
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
@@ -190,12 +213,31 @@ const SignUp = () => {
         </div>
         <div className={styles.inputs}>
           {accountType.private ? (
-            <PrivateForm data={privateData} onChange={handleChange} />
+            <PrivateForm
+              data={privateData}
+              onChange={handleChange}
+              passState={passwordVisible}
+            />
           ) : (
-            <CompanyForm data={companyData} onChange={handleChange} />
+            <CompanyForm
+              data={companyData}
+              onChange={handleChange}
+              passState={passwordVisible}
+            />
           )}
         </div>
-        {/* {errorText && <div>Error here</div>} */}
+        <div className={styles.passwordActions}>
+          <div className={styles.passwordErrors}>{errorMsg}</div>
+
+          <div
+            className={`${styles.showPassword} ${
+              passwordVisible ? styles.passActive : ''
+            }`}
+            onClick={() => setPasswordVisible((prevValue) => !prevValue)}
+          >
+            Show
+          </div>
+        </div>
         <div className={styles.userAgreements}>
           <Checkbox
             form={'userForm'}

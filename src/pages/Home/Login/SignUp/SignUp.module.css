@@ -7,6 +7,7 @@
   margin-top: 3.2rem;
   display: flex;
   flex-direction: column;
+  gap: 1.6rem;
 }
 .accountType{
   display: flex;
@@ -46,8 +47,32 @@
   display: flex;
   gap: 1.2rem;
 }
+.passwordActions{
+  margin-top: -2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.passwordErrors{
+  font-size: 1.4rem;
+  text-wrap: wrap;
+  font-weight: 500;
+  color: var(--color-error);
+}
+.showPassword{
+  font-size: 1.4rem;
+  font-weight: 500;
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+.showPassword:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+.passActive{
+  opacity: 1;
+}
 .userAgreements{
-  margin-top: 4rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;

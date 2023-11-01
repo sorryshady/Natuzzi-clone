@@ -37,6 +37,12 @@
 }
 
 @media (max-width:75em) {
+  .input-container input{
+    font-size: 2.4rem;
+  }
+  .input-container span{
+    font-size: 1.95rem;
+  }
     .showPass{
       top: 35px;
     }
