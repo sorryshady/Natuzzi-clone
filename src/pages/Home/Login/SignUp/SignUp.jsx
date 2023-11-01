@@ -47,7 +47,11 @@ const SignUp = () => {
             return false
           }
         } else if (key === 'password' || key === 'confirmPassword') {
-          if (data.password !== data.confirmPassword || !data.password) {
+          if (
+            data.password !== data.confirmPassword ||
+            !data.password ||
+            data.password.length < 6
+          ) {
             return false
           }
         } else if (data[key] === '') {
@@ -57,6 +61,7 @@ const SignUp = () => {
     }
     return true
   }
+
   let buttonValidity = false
   if (
     accountType.private &&
@@ -190,6 +195,7 @@ const SignUp = () => {
             <CompanyForm data={companyData} onChange={handleChange} />
           )}
         </div>
+        {/* {errorText && <div>Error here</div>} */}
         <div className={styles.userAgreements}>
           <Checkbox
             form={'userForm'}

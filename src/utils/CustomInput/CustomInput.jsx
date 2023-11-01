@@ -12,7 +12,7 @@ const CustomInput = ({
   passwordData = '',
 }) => {
   const [validity, setValidity] = useState(true)
-
+  const [inputType, setInputType] = useState(type)
   let spanStyle = form === 'userForm' ? styles.userSpan : ''
 
   const handleBlur = (e) => {
@@ -52,29 +52,39 @@ const CustomInput = ({
 
   let style = form === 'subForm' ? { fontWeight: '600' } : { fontWeight: '400' }
   return (
-    <div className={`${styles['input-container']} ${className}`}>
-      <input
-        type={type}
-        placeholder=' '
-        value={value}
-        onChange={onChange}
-        onBlur={handleBlur}
-        onInput={handleInput}
-        name={name}
-        style={style}
-        className={`${form === 'subForm' ? '' : styles.userForm} ${
-          validity ? '' : form === 'userForm' ? styles.invalid : ''
-        }`}
-        data-text={dataText}
-      />
-      <span
-        className={`${form === 'subForm' ? '' : styles.userForm} ${
-          validity ? '' : form === 'userForm' ? styles.invalid : ''
-        } ${spanStyle}`}
-      >
-        {text}
-      </span>
-    </div>
+    <>
+      <div className={`${styles['input-container']} ${className}`}>
+        <input
+          type={inputType}
+          placeholder=' '
+          value={value}
+          onChange={onChange}
+          onBlur={handleBlur}
+          onInput={handleInput}
+          name={name}
+          style={style}
+          className={`${form === 'subForm' ? '' : styles.userForm} ${
+            validity ? '' : form === 'userForm' ? styles.invalid : ''
+          }`}
+          data-text={dataText}
+        />
+        <span
+          className={`${form === 'subForm' ? '' : styles.userForm} ${
+            validity ? '' : form === 'userForm' ? styles.invalid : ''
+          } ${spanStyle}`}
+        >
+          {text}
+        </span>
+        {type === 'password' && (
+          <div
+            className={styles.showPass}
+            onClick={() => setInputType('password')}
+          >
+            Show
+          </div>
+        )}
+      </div>
+    </>
   )
 }
 

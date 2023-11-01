@@ -4,6 +4,7 @@ import commonStyles from '../Login.module.css'
 import CustomInput from '../../../../utils/CustomInput/CustomInput'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import { Oval } from 'react-loader-spinner'
+import CustomLink from '../../../../utils/CustomLink/CustomLink'
 const SignIn = () => {
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
@@ -15,7 +16,7 @@ const SignIn = () => {
   let signInValidity = false
   if (
     signInData.email.trim().length > 0 &&
-    signInData.password.trim().length > 0
+    signInData.password.trim().length >= 6
   ) {
     signInValidity = true
   }
@@ -78,9 +79,11 @@ const SignIn = () => {
           form={'userForm'}
           className={styles.second}
         />
-        <div className={styles['forgot-password']}>
-          Did you forget your password?
-        </div>
+        <CustomLink>
+          <div className={styles['forgot-password']}>
+            Did you forget your password?
+          </div>
+        </CustomLink>
         {errorMsg && <div className={styles['errorMsg']}>{errorMsg}</div>}
         <div className={styles['signIn-actions']}>
           <Checkbox

@@ -8,6 +8,7 @@
   margin-top: 8rem;
   display: flex;
   flex-direction: column;
+  gap: 1.6rem;
 }
 .first{
   margin-bottom: 1.4rem;
@@ -16,7 +17,7 @@
   margin-top: 1.4rem;
 }
 .forgot-password{
-  margin-top: -1.6rem;
+  margin-top: -2rem;
   font-size: 1.6rem;
   font-weight: 500;
   transition: all 0.5s;

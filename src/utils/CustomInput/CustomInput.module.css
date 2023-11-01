@@ -10,7 +10,7 @@
   outline: none;
   background-color: transparent;
   font-size: 2rem;
-  margin-bottom: 3.2rem;
+  margin-bottom: 1.6rem;
 }
 .input-container span{
   position: absolute;
@@ -35,6 +35,17 @@
   color: var(--color-error) !important;
   border-color: var(--color-error) !important;
 }
+.showPass{
+  position: absolute;
+  right: 0;
+  top: 40px;
+  font-size: 1.2rem;
+}
+@media (max-width:75em) {
+    .showPass{
+      top: 35px;
+    }
+}
 @media (max-width: 64em){
   .input-container input{
     font-size: 2.4rem;
@@ -47,6 +58,12 @@
     transform: translateY(-20px);
     font-size: 2rem;
   }
+  .showPass{
+    font-size: 1.6rem;
+  }
+  .showPass:hover{
+    cursor: pointer;
+  }
 }
 @media(max-width: 48em){
   .userSpan{
@@ -56,6 +73,9 @@
 @media(max-width: 30em){
   .userSpan{
     font-size: 2rem !important;
+  }
+  .showPass{
+    font-size: 1.4rem;
   }
 }
 @media(max-width: 24em){
