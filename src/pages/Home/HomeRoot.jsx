@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useSelector } from 'react-redux'
 import useScrollToTop from '../../hooks/useScrollToTop'
 import PageTransition from '../../utils/PageTransition'
-import axios from 'axios'
 import { config } from '../../App'
 import { globalActions } from '../../store/global-slice'
 import Loading from '../Loading/Loading'
@@ -48,12 +47,6 @@ const HomeRoot = () => {
 export default HomeRoot
 
 export async function loader() {
-  try {
-    store.dispatch(globalActions.setLoading(true))
-    await axios.get(`${config.endpoint}/`)
-    return null
-  } catch (error) {
-    store.dispatch(globalActions.setLoading(false))
-    console.log(error)
-  }
+  store.dispatch(globalActions.setLoading(true))
+  return null
 }

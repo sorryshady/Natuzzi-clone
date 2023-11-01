@@ -6,7 +6,8 @@ import Login from './pages/Home/Login/Login'
 import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 import Loader from './utils/Loader'
 export const config = {
-  endpoint: 'https://natuzzi-backend.onrender.com/v1',
+  // endpoint: 'https://natuzzi-backend.onrender.com/v1',
+  endpoint: 'http://192.168.1.38:8082/v1/',
 }
 
 const router = createBrowserRouter([
@@ -14,7 +15,6 @@ const router = createBrowserRouter([
     path: '/',
     element: <HomeRoot />,
     loader: mainLoader,
-    // element: <Loading />,
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
@@ -37,8 +37,6 @@ function App() {
       </Loader>
     </>
   )
-
-  // return <div>This is app</div>
 }
 
 export default App
