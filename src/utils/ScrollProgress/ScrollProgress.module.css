@@ -3,3 +3,6 @@
   background: var(--color-black);
   transform-origin: 0%;
 }
+.hidden{
+  display: none;
+}

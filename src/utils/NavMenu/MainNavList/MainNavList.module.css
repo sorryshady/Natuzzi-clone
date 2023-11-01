@@ -82,6 +82,9 @@
   .mainContainer{
     padding-left: 10rem;
   }
+  .mainLinks{
+    margin-top: 4rem;
+  }
   .mainLink{
     color: var(--color-black);
     font-size: 4.2rem;
