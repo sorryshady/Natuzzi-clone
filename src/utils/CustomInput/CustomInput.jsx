@@ -63,13 +63,13 @@ const CustomInput = ({
         name={name}
         style={style}
         className={`${form === 'subForm' ? '' : styles.userForm} ${
-          validity ? '' : styles.invalid
+          validity ? '' : form === 'userForm' ? styles.invalid : ''
         }`}
         data-text={dataText}
       />
       <span
         className={`${form === 'subForm' ? '' : styles.userForm} ${
-          validity ? '' : styles.invalid
+          validity ? '' : form === 'userForm' ? styles.invalid : ''
         } ${spanStyle}`}
       >
         {text}
