@@ -8,6 +8,7 @@ import CustomLink from '../../../../utils/CustomLink/CustomLink'
 const SignIn = () => {
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  const [passwordVisible, setPasswordVisible] = useState(false)
   const [signInData, setSignInData] = useState({
     email: '',
     password: '',
@@ -71,7 +72,7 @@ const SignIn = () => {
           className={styles.first}
         />
         <CustomInput
-          type={'password'}
+          type={passwordVisible ? 'text' : 'password'}
           onChange={handleChange}
           value={signInData.password}
           text={'Password*'}
@@ -79,11 +80,21 @@ const SignIn = () => {
           form={'userForm'}
           className={styles.second}
         />
-        <CustomLink>
-          <div className={styles['forgot-password']}>
-            Did you forget your password?
+        <div className={styles.passwordActions}>
+          <CustomLink dest={''}>
+            <div className={styles['forgot-password']}>
+              Did you forget your password?
+            </div>
+          </CustomLink>
+          <div
+            className={`${styles.showPassword} ${
+              passwordVisible ? styles.passActive : ''
+            }`}
+            onClick={() => setPasswordVisible(!passwordVisible)}
+          >
+            Show
           </div>
-        </CustomLink>
+        </div>
         {errorMsg && <div className={styles['errorMsg']}>{errorMsg}</div>}
         <div className={styles['signIn-actions']}>
           <Checkbox

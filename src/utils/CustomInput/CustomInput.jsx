@@ -12,7 +12,6 @@ const CustomInput = ({
   passwordData = '',
 }) => {
   const [validity, setValidity] = useState(true)
-  const [inputType, setInputType] = useState(type)
   let spanStyle = form === 'userForm' ? styles.userSpan : ''
 
   const handleBlur = (e) => {
@@ -55,7 +54,7 @@ const CustomInput = ({
     <>
       <div className={`${styles['input-container']} ${className}`}>
         <input
-          type={inputType}
+          type={type}
           placeholder=' '
           value={value}
           onChange={onChange}
@@ -75,14 +74,6 @@ const CustomInput = ({
         >
           {text}
         </span>
-        {type === 'password' && (
-          <div
-            className={styles.showPass}
-            onClick={() => setInputType('password')}
-          >
-            Show
-          </div>
-        )}
       </div>
     </>
   )

@@ -11,7 +11,6 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
-  const { loading } = useSelector((state) => state.global)
   let timeout, animationTimer
   const handleDelayedLinkClick = (to, delay) => (event) => {
     event.preventDefault()
