@@ -1,7 +1,7 @@
 .container{
   padding-top: 13.5rem;
   display: flex;
-  height: 100vh;
+  height: 100svh;
   justify-content: center;
   align-items: center;
   background-color: var(--color-white);

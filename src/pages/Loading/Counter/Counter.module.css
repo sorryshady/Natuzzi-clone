@@ -22,3 +22,11 @@
   color: black;
   font-weight: 400;
 }
+@media(max-width: 30em){
+  .main-outer{
+    right: -20px;
+  }
+  .content-holder{
+    font-size: 4rem;
+  }
+}
