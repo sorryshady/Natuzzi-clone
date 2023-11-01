@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from './NavAnimation.module.css'
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
+import { useSelector } from 'react-redux'
 const NavAnimation = ({ children }) => {
   const { scrollY } = useScroll()
+  const { active: menuActive } = useSelector((state) => state.menu)
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious()
@@ -61,7 +63,9 @@ const NavAnimation = ({ children }) => {
           hidden && isScrolling ? 'hidden' : topState ? 'visible' : 'scroll'
         }
         transition={{ type: 'spring', damping: 17, stiffness: 100 }}
-        className={`${styles.container} ${active ? styles.active : ''}`}
+        className={`${styles.container} ${
+          active && !menuActive ? styles.active : ''
+        }`}
       >
         {children}
       </motion.div>
