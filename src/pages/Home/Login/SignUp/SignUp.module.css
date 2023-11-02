@@ -50,7 +50,7 @@
 .passwordActions{
   margin-top: -2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .passwordErrors{
   font-size: 1.4rem;

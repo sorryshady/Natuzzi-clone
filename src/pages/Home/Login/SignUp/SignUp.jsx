@@ -159,8 +159,6 @@ const SignUp = () => {
           )}
         </div>
         <div className={styles.passwordActions}>
-          <div className={styles.passwordErrors}>{errorMsg}</div>
-
           <div
             className={`${styles.showPassword} ${
               passwordVisible ? styles.passActive : ''
