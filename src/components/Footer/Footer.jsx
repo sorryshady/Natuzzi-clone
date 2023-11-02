@@ -6,31 +6,36 @@ import CustomButton from '../../utils/CustomButton/CustomButton'
 import Checkbox from '../../utils/Checkbox/Checkbox'
 import FooterLinksSection from './FooterLinksSection/FooterLinksSection'
 import CustomInput from '../../utils/CustomInput/CustomInput'
+import Input from '../../utils/Input/Input'
 const Footer = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
-
-  const [formData, setFormData] = useState({
-    email: '',
+  const [userAgreements, setUserAgreements] = useState({
     conditions: false,
     offers: false,
   })
-  const [focus, setFocus] = useState(false)
-  const regex = /@.*\.[a-zA-Z]+/
-  let formValidity = false
-  let startTyping = false
-  let emailValid = false
 
-  if (regex.test(formData.email)) {
-    emailValid = true
-    if (formData.conditions) {
-      formValidity = true
-    }
-  }
-  if (focus && formData.email.trim().length > 0) {
-    startTyping = true
-  }
+  // const [formData, setFormData] = useState({
+  //   email: '',
+  //   conditions: false,
+  //   offers: false,
+  // })
+  // const [focus, setFocus] = useState(false)
+  // const regex = /@.*\.[a-zA-Z]+/
+  // let formValidity = false
+  // let startTyping = false
+  // let emailValid = false
+
+  // if (regex.test(formData.email)) {
+  //   emailValid = true
+  //   if (formData.conditions) {
+  //     formValidity = true
+  //   }
+  // }
+  // if (focus && formData.email.trim().length > 0) {
+  //   startTyping = true
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -76,7 +81,14 @@ const Footer = () => {
               className={`${styles['sign-up']} flex`}
               onSubmit={handleSubmit}
             >
-              <CustomInput
+              <Input
+                type={'email'}
+                formType={'subscribe'}
+                registerType='subscribe'
+                name={'email'}
+                placeholder={'email*'}
+              />
+              {/* <CustomInput
                 type={'text'}
                 value={formData.email}
                 onChange={emailChange}
@@ -111,7 +123,7 @@ const Footer = () => {
                 }`}
               >
                 Subscribe
-              </button>
+              </button> */}
             </form>
           </div>
 

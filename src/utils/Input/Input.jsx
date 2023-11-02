@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './Input.module.css'
 import { emailValidate } from '../validationChecks/emailValidation'
 import {
@@ -25,6 +25,24 @@ const Input = ({
   const [validity, setValidity] = useState(true)
   const [showPass, setShowPass] = useState(true)
   const [inputType, setInputType] = useState(type)
+
+  const dispatchRegister = () => {
+    dispatch(
+      registerActions.updateField({
+        fieldPath: `${formType}.${name}`,
+        value: input,
+      })
+    )
+  }
+
+  const dispatchLoginSub = () => {
+    dispatch(
+      loginSubActions.updateField({
+        fieldPath: `${formType}.${name}`,
+        value: input,
+      })
+    )
+  }
 
   const handleChange = (e) => {
     setInput(e.target.value)
@@ -57,23 +75,13 @@ const Input = ({
         setIsTyping(false)
       }, 600)
     }
-    if (isTyping) {
+    if (isTyping && type === 'text') {
       dispatchTimer = setTimeout(() => {
         console.log('dispatching: ', input)
         if (registerType === 'signup') {
-          dispatch(
-            registerActions.updateField({
-              fieldPath: `${formType}.${name}`,
-              value: input,
-            })
-          )
+          dispatchRegister()
         } else {
-          dispatch(
-            loginSubActions.updateField({
-              fieldPath: `${formType}.${name}`,
-              value: input,
-            })
-          )
+          dispatchLoginSub()
         }
       }, 600)
     }
@@ -88,6 +96,11 @@ const Input = ({
       const valid = emailValidate(checkValue)
       if (!valid) {
         setValidity(true)
+        if (registerType === 'signup') {
+          dispatchRegister()
+        } else {
+          dispatchLoginSub()
+        }
         setErrorMsg('')
       } else {
         setValidity(false)
@@ -103,6 +116,11 @@ const Input = ({
       }
       if (!valid) {
         setValidity(true)
+        if (registerType === 'signup') {
+          dispatchRegister()
+        } else {
+          dispatchLoginSub()
+        }
         setErrorMsg('')
       } else {
         setValidity(false)
@@ -110,7 +128,7 @@ const Input = ({
       }
     }
   }
-  
+
   return (
     <>
       <div className={`${styles['main-container']}`}>
