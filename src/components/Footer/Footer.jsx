@@ -11,8 +11,9 @@ const Footer = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
-
+  let submitTimer
   const { email } = useSelector((state) => state.loginSub.subscribe)
+  const [submit, setSubmit] = useState(false)
   const [userAgreements, setUserAgreements] = useState({
     conditions: false,
     offers: false,
@@ -21,11 +22,17 @@ const Footer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setSubmit(true)
     const formData = {
       email,
       ...userAgreements,
     }
     console.log(formData)
+    clearTimeout(submitTimer)
+    submitTimer = setTimeout(() => {
+      setSubmit(false)
+    }, 500)
+
     setUserAgreements({
       conditions: false,
       offers: false,
@@ -64,6 +71,7 @@ const Footer = () => {
                 registerType='subscribe'
                 name={'email'}
                 placeholder={'email*'}
+                submit={submit}
               />
               <div className={styles.actionArea}>
                 <Checkbox

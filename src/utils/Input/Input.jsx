@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './Input.module.css'
 import { emailValidate } from '../validationChecks/emailValidation'
 import {
@@ -17,9 +17,11 @@ const Input = ({
   placeholder,
   validityCheck = true,
   value = '',
+  submit,
 }) => {
+  let debounce
+  const inputRef = useRef(null)
   const dispatch = useDispatch()
-  const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [validity, setValidity] = useState(true)
@@ -31,7 +33,7 @@ const Input = ({
       dispatch(
         registerActions.updateField({
           fieldPath: `${formType}.${name}`,
-          value: input,
+          value: inputRef.current.value,
         })
       )
     } else {
@@ -49,7 +51,7 @@ const Input = ({
       dispatch(
         loginSubActions.updateField({
           fieldPath: `${formType}.${name}`,
-          value: input,
+          value: inputRef.current.value,
         })
       )
     } else {
@@ -62,8 +64,19 @@ const Input = ({
     }
   }
 
-  const handleChange = (e) => {
-    setInput(e.target.value)
+  const handleBlur = (e) => {
+    if (e.target.value.trim() === '') {
+      setErrorMsg('')
+      setValidity(false)
+    }
+  }
+
+  const handleChange = () => {
+    clearTimeout(debounce)
+    debounce = setTimeout(() => {
+      console.log('debouncing')
+      handleDispatch()
+    }, 1000)
     setIsTyping(true)
     setValidity(true)
   }
@@ -73,41 +86,23 @@ const Input = ({
     showPass ? setInputType('text') : setInputType('password')
   }
 
-  const handleBlur = (e) => {
-    if (e.target.value.trim() === '') {
-      setErrorMsg('')
-      setValidity(false)
-    }
-  }
-
-  useEffect(() => {
-    let debounce, dispatchTimer
-
+  const handleDispatch = () => {
     if (
       isTyping &&
       (type === 'email' || type === 'password') &&
       validityCheck
     ) {
-      debounce = setTimeout(() => {
-        performValidityCheck(input.trim())
-        setIsTyping(false)
-      }, 600)
+      // console.log('performing check')
+      performValidityCheck(inputRef.current.value)
     }
     if (isTyping && type === 'text') {
-      dispatchTimer = setTimeout(() => {
-        console.log('dispatching: ', input)
-        if (registerType === 'signup') {
-          dispatchRegister()
-        } else {
-          dispatchLoginSub()
-        }
-      }, 600)
+      if (registerType === 'register') {
+        dispatchRegister()
+      } else {
+        dispatchLoginSub()
+      }
     }
-    return () => {
-      clearTimeout(debounce)
-      clearTimeout(dispatchTimer)
-    }
-  }, [input, isTyping])
+  }
 
   const performValidityCheck = (checkValue) => {
     if (type === 'email') {
@@ -157,6 +152,10 @@ const Input = ({
     }
   }
 
+  if (submit) {
+    inputRef.current.value = ''
+  }
+
   return (
     <>
       <div className={`${styles['main-container']}`}>
@@ -168,7 +167,7 @@ const Input = ({
             validity ? '' : registerType !== 'subscribe' ? styles.invalid : ''
           }`}
           placeholder=' '
-          value={input}
+          ref={inputRef}
           name={name}
           onChange={handleChange}
           onBlur={handleBlur}
