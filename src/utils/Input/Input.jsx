@@ -18,6 +18,7 @@ const Input = ({
   validityCheck = true,
   value = '',
   submit,
+  className,
 }) => {
   let debounce
   const inputRef = useRef(null)
@@ -74,7 +75,7 @@ const Input = ({
   const handleChange = () => {
     clearTimeout(debounce)
     debounce = setTimeout(() => {
-      console.log('debouncing')
+      // console.log('debouncing')
       handleDispatch()
     }, 1000)
     setIsTyping(true)
@@ -95,7 +96,7 @@ const Input = ({
       // console.log('performing check')
       performValidityCheck(inputRef.current.value)
     }
-    if (isTyping && type === 'text') {
+    if (isTyping && (type === 'text' || !validityCheck)) {
       if (registerType === 'register') {
         dispatchRegister()
       } else {
@@ -154,15 +155,20 @@ const Input = ({
 
   if (submit) {
     inputRef.current.value = ''
+    if (registerType === 'register') {
+      dispatchRegister('empty')
+    } else {
+      dispatchLoginSub('empty')
+    }
   }
 
   return (
     <>
-      <div className={`${styles['main-container']}`}>
+      <div className={`${styles['main-container']} ${className}`}>
         <input
           type={inputType}
           className={`${styles.input} ${
-            registerType !== 'subscribe' && styles.notSubscribe
+            registerType !== 'subscribe' && styles.notSubscribeInput
           } ${
             validity ? '' : registerType !== 'subscribe' ? styles.invalid : ''
           }`}

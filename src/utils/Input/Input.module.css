@@ -29,10 +29,12 @@
   font-size: 1.5rem;
   color: rgba(0, 0, 0, 0.5);
 }
+.notSubscribeInput{
+  font-weight: 400 !important;
+  border-color: var(--color-black) !important;
+}
 .notSubscribe{
   color: var(--color-black) !important;
-  border-color: var(--color-black) !important;
-  font-weight: 400 !important;
 }
 .invalid{
   color: var(--color-error) !important;

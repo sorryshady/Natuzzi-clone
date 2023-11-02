@@ -1,55 +1,46 @@
 import React, { useState } from 'react'
 import styles from './SignIn.module.css'
 import commonStyles from '../Login.module.css'
-import CustomInput from '../../../../utils/CustomInput/CustomInput'
 import Input from '../../../../utils/Input/Input'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import { Oval } from 'react-loader-spinner'
-import CustomLink from '../../../../utils/CustomLink/CustomLink'
+import { useSelector } from 'react-redux'
 const SignIn = () => {
   const [loading, setLoading] = useState(false)
+  const [submit, setSubmit] = useState(false)
+  const { email, password } = useSelector((state) => state.loginSub.login)
   const [errorMsg, setErrorMsg] = useState('')
-  const [passwordVisible, setPasswordVisible] = useState(false)
-  const [signInData, setSignInData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false,
-  })
+
+  const [rememberMe, setRememberMe] = useState(false)
   let signInValidity = false
-  if (
-    signInData.email.trim().length > 0 &&
-    signInData.password.trim().length >= 6
-  ) {
+  if (email && password) {
     signInValidity = true
   }
-  const handleChange = (e) => {
-    setSignInData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }))
-  }
+
   const handleSignInCheckBox = () => {
-    setSignInData((prevData) => ({
-      ...prevData,
-      rememberMe: !prevData.rememberMe,
-    }))
+    setRememberMe((prevValue) => !prevValue)
   }
   const signInSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
+    setSubmit(true)
+    const formData = {
+      email,
+      password,
+      rememberMe,
+    }
     // setTimeout(() => {
-    //   console.log(signInData)
-    //   setSignInData({
-    //     email: '',
-    //     password: '',
-    //     rememberMe: false,
-    //   })
+    //   console.log(formData)
     //   setLoading(false)
+    //   setRememberMe(false)
+    //   setSubmit(false)
     // }, 2000)
     setTimeout(() => {
-      console.log(signInData)
+      console.log(formData)
       setErrorMsg('No customer account found')
       setLoading(false)
+      setRememberMe(false)
+      setSubmit(false)
     }, 2000)
   }
   return (
@@ -63,46 +54,30 @@ const SignIn = () => {
         }`}
         onSubmit={signInSubmit}
       >
-        <Input type={'email'} formType={'login'} />
-        <Input />
-        {/* <CustomInput
-          type={'text'}
-          onChange={handleChange}
-          value={signInData.email}
-          text={'email*'}
+        <Input
+          type={'email'}
+          formType={'login'}
+          registerType='login'
           name={'email'}
-          form={'userForm'}
+          placeholder={'email*'}
+          submit={submit}
           className={styles.first}
         />
-        <CustomInput
-          type={passwordVisible ? 'text' : 'password'}
-          onChange={handleChange}
-          value={signInData.password}
-          text={'Password*'}
+        <Input
+          type={'password'}
+          formType={'login'}
+          registerType='login'
           name={'password'}
-          form={'userForm'}
+          placeholder={'password*'}
+          submit={submit}
+          validityCheck={false}
           className={styles.second}
-        /> */}
-        {/* <div className={styles.passwordActions}>
-          <CustomLink dest={''}>
-            <div className={styles['forgot-password']}>
-              Did you forget your password?
-            </div>
-          </CustomLink>
-          <div
-            className={`${styles.showPassword} ${
-              passwordVisible ? styles.passActive : ''
-            }`}
-            onClick={() => setPasswordVisible((prevValue) => !prevValue)}
-          >
-            Show
-          </div>
-        </div>
-        {errorMsg && <div className={styles['errorMsg']}>{errorMsg}</div>} */}
+        />
+        {errorMsg && <div className={styles['errorMsg']}>{errorMsg}</div>}
         <div className={styles['signIn-actions']}>
           <Checkbox
             form={'userForm'}
-            isChecked={signInData.rememberMe}
+            isChecked={rememberMe}
             onClick={() => handleSignInCheckBox()}
           >
             Remember me
