@@ -26,22 +26,40 @@ const Input = ({
   const [showPass, setShowPass] = useState(true)
   const [inputType, setInputType] = useState(type)
 
-  const dispatchRegister = () => {
-    dispatch(
-      registerActions.updateField({
-        fieldPath: `${formType}.${name}`,
-        value: input,
-      })
-    )
+  const dispatchRegister = (receivedValue = '') => {
+    if (receivedValue !== 'empty') {
+      dispatch(
+        registerActions.updateField({
+          fieldPath: `${formType}.${name}`,
+          value: input,
+        })
+      )
+    } else {
+      dispatch(
+        registerActions.updateField({
+          fieldPath: `${formType}.${name}`,
+          value: '',
+        })
+      )
+    }
   }
 
-  const dispatchLoginSub = () => {
-    dispatch(
-      loginSubActions.updateField({
-        fieldPath: `${formType}.${name}`,
-        value: input,
-      })
-    )
+  const dispatchLoginSub = (receivedValue = '') => {
+    if (receivedValue !== 'empty') {
+      dispatch(
+        loginSubActions.updateField({
+          fieldPath: `${formType}.${name}`,
+          value: input,
+        })
+      )
+    } else {
+      dispatch(
+        loginSubActions.updateField({
+          fieldPath: `${formType}.${name}`,
+          value: '',
+        })
+      )
+    }
   }
 
   const handleChange = (e) => {
@@ -104,6 +122,11 @@ const Input = ({
         setErrorMsg('')
       } else {
         setValidity(false)
+        if (registerType === 'signup') {
+          dispatchRegister('empty')
+        } else {
+          dispatchLoginSub('empty')
+        }
         setErrorMsg(valid)
       }
     }
@@ -124,6 +147,11 @@ const Input = ({
         setErrorMsg('')
       } else {
         setValidity(false)
+        if (registerType === 'signup') {
+          dispatchRegister('empty')
+        } else {
+          dispatchLoginSub('empty')
+        }
         setErrorMsg(valid)
       }
     }

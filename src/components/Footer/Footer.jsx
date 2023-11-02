@@ -5,58 +5,33 @@ import NLogo from '../../assets/Images/NLogo.svg'
 import CustomButton from '../../utils/CustomButton/CustomButton'
 import Checkbox from '../../utils/Checkbox/Checkbox'
 import FooterLinksSection from './FooterLinksSection/FooterLinksSection'
-import CustomInput from '../../utils/CustomInput/CustomInput'
 import Input from '../../utils/Input/Input'
+import { useSelector } from 'react-redux'
 const Footer = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+
+  const { email } = useSelector((state) => state.loginSub.subscribe)
+
   const [userAgreements, setUserAgreements] = useState({
     conditions: false,
     offers: false,
   })
-
-  // const [formData, setFormData] = useState({
-  //   email: '',
-  //   conditions: false,
-  //   offers: false,
-  // })
-  // const [focus, setFocus] = useState(false)
-  // const regex = /@.*\.[a-zA-Z]+/
-  // let formValidity = false
-  // let startTyping = false
-  // let emailValid = false
-
-  // if (regex.test(formData.email)) {
-  //   emailValid = true
-  //   if (formData.conditions) {
-  //     formValidity = true
-  //   }
-  // }
-  // if (focus && formData.email.trim().length > 0) {
-  //   startTyping = true
-  // }
+  const formValidity = email && userAgreements.conditions
+  email && console.log(formValidity)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(formData)
-    setFormData({
-      email: '',
+    setUserAgreements({
       conditions: false,
       offers: false,
     })
   }
 
-  const emailChange = (e) => {
-    setFocus(true)
-    setFormData((prevData) => ({
-      ...prevData,
-      email: e.target.value,
-    }))
-  }
-
   const handleCheckboxChange = (checkboxName) => {
-    setFormData((prevData) => ({
+    setUserAgreements((prevData) => ({
       ...prevData,
       [checkboxName]: !prevData[checkboxName],
     }))
@@ -88,42 +63,33 @@ const Footer = () => {
                 name={'email'}
                 placeholder={'email*'}
               />
-              {/* <CustomInput
-                type={'text'}
-                value={formData.email}
-                onChange={emailChange}
-                name='email'
-                text={'email*'}
-                form={'subForm'}
-              />
-              {!emailValid && startTyping && (
-                <div className={styles.errorEmail}>check email format</div>
-              )}
-              <Checkbox
-                onClick={() => handleCheckboxChange('conditions')}
-                isChecked={formData.conditions}
-                form={'subForm'}
-              >
-                I have read and understood the{' '}
-                <span className={styles.privacy}>Privacy Policy</span>*
-              </Checkbox>
-              <Checkbox
-                onClick={() => handleCheckboxChange('offers')}
-                isChecked={formData.offers}
-                form={'subForm'}
-              >
-                I wish to receive communications and personalised offers from
-                Natuzzi
-              </Checkbox>
+              <div className={styles.actionArea}>
+                <Checkbox
+                  onClick={() => handleCheckboxChange('conditions')}
+                  isChecked={userAgreements.conditions}
+                  form={'subForm'}
+                >
+                  I have read and understood the{' '}
+                  <span className={styles.privacy}>Privacy Policy</span>*
+                </Checkbox>
+                <Checkbox
+                  onClick={() => handleCheckboxChange('offers')}
+                  isChecked={userAgreements.offers}
+                  form={'subForm'}
+                >
+                  I wish to receive communications and personalised offers from
+                  Natuzzi
+                </Checkbox>
 
-              <button
-                disabled={!formValidity}
-                className={`${styles.submit} ${
-                  formValidity ? styles.active : styles.invalid
-                }`}
-              >
-                Subscribe
-              </button> */}
+                <button
+                  disabled={formValidity}
+                  className={`${styles.submit} ${
+                    formValidity ? styles.active : styles.invalid
+                  }`}
+                >
+                  Subscribe
+                </button>
+              </div>
             </form>
           </div>
 
