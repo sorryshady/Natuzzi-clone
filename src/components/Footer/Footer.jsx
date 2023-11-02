@@ -26,7 +26,6 @@ const Footer = () => {
       ...userAgreements,
     }
     console.log(formData)
-    setValue('')
     setUserAgreements({
       conditions: false,
       offers: false,
