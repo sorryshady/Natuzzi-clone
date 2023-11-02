@@ -13,17 +13,20 @@ const Footer = () => {
   }
 
   const { email } = useSelector((state) => state.loginSub.subscribe)
-
   const [userAgreements, setUserAgreements] = useState({
     conditions: false,
     offers: false,
   })
   const formValidity = email && userAgreements.conditions
-  email && console.log(formValidity)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const formData = {
+      email,
+      ...userAgreements,
+    }
     console.log(formData)
+    setValue('')
     setUserAgreements({
       conditions: false,
       offers: false,
@@ -82,7 +85,7 @@ const Footer = () => {
                 </Checkbox>
 
                 <button
-                  disabled={formValidity}
+                  disabled={!formValidity}
                   className={`${styles.submit} ${
                     formValidity ? styles.active : styles.invalid
                   }`}

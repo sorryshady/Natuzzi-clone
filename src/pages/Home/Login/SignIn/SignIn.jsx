@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './SignIn.module.css'
 import commonStyles from '../Login.module.css'
 import CustomInput from '../../../../utils/CustomInput/CustomInput'
+import Input from '../../../../utils/Input/Input'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import { Oval } from 'react-loader-spinner'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
@@ -62,7 +63,9 @@ const SignIn = () => {
         }`}
         onSubmit={signInSubmit}
       >
-        <CustomInput
+        <Input type={'email'} formType={'login'} />
+        <Input />
+        {/* <CustomInput
           type={'text'}
           onChange={handleChange}
           value={signInData.email}
@@ -79,8 +82,8 @@ const SignIn = () => {
           name={'password'}
           form={'userForm'}
           className={styles.second}
-        />
-        <div className={styles.passwordActions}>
+        /> */}
+        {/* <div className={styles.passwordActions}>
           <CustomLink dest={''}>
             <div className={styles['forgot-password']}>
               Did you forget your password?
@@ -95,7 +98,7 @@ const SignIn = () => {
             Show
           </div>
         </div>
-        {errorMsg && <div className={styles['errorMsg']}>{errorMsg}</div>}
+        {errorMsg && <div className={styles['errorMsg']}>{errorMsg}</div>} */}
         <div className={styles['signIn-actions']}>
           <Checkbox
             form={'userForm'}
