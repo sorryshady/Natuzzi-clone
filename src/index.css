@@ -62,6 +62,8 @@ body {
 }
 .snackbar{
   font-size: 14px !important;
+  display: flex;
+  align-items: center;
 }
 @media (max-width: 90em) {
 }

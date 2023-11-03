@@ -97,6 +97,7 @@ const SignUp = () => {
     const response = await performAPICall(newData)
     if (response) {
       setSubmit(true)
+      enqueueSnackbar('registered succesfully', { variant: 'success' })
       setUserAgreements(initialConditions)
     }
     setTimeout(() => {
