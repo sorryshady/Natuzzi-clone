@@ -74,3 +74,51 @@
   cursor: pointer;
   color: var(--color-error);
 }
+
+@media (max-width: 75em){
+  .input{
+    font-size: 2.4rem;
+  }
+  .placeholder{
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 64em){
+  .placeholder{
+    font-size: 2.8rem;
+  }
+  .main-container .input:not(:placeholder-shown) ~ .placeholder,
+  .main-container .input:focus ~ .placeholder{
+    transform: translateY(-15px);
+    font-size: 2rem;
+  }
+}
+@media (max-width: 30em){
+  .errorMsg{
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 24em){
+  .input{
+    font-size: 2rem;
+  }
+  .placeholder{
+    font-size: 2.2rem;
+  }
+  .main-container .input:not(:placeholder-shown) ~ .placeholder,
+  .main-container .input:focus ~ .placeholder{
+    transform: translateY(-10px);
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 20em) {
+  .placeholder{
+    font-size: 1.8rem;
+    margin-top: 3px;
+  }
+  .main-container .input:not(:placeholder-shown) ~ .placeholder,
+  .main-container .input:focus ~ .placeholder{
+    transform: translateY(-13px);
+    font-size: 1.3rem;
+  }
+}

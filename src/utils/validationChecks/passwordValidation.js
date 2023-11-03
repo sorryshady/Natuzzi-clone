@@ -20,7 +20,7 @@ export const passwordValidate = (password) => {
 
 export const passwordEquality = (password, confirmPassword) => {
   if (!confirmPassword) {
-    return `enter password first`
+    return `enter valid password first`
   }
   if (confirmPassword && password !== confirmPassword) {
     return `passwords don't match.`

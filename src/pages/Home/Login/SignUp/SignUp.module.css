@@ -46,7 +46,7 @@
 .passwordInputs{
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 3.6rem;
 }
 .passwordActions{
   margin-top: -2rem;
@@ -101,5 +101,10 @@
 @media (max-width: 36em) {
   .signUpContainer{
     padding: 10rem 5rem 5rem;
+  }
+}
+@media (max-width: 24em){
+  .passwordInputs{
+    gap: 3.8rem;
   }
 }
