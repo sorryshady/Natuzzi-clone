@@ -1,59 +1,56 @@
 import React from 'react'
 import styles from './SignUp.module.css'
-import CustomInput from '../../../../utils/CustomInput/CustomInput'
-const PrivateForm = ({ data, onChange, passState }) => {
+import Input from '../../../../utils/Input/Input'
+import { useSelector } from 'react-redux'
+const PrivateForm = ({ submit }) => {
+  const { password } = useSelector((state) => state.register.privateData)
   return (
     <>
       <div className={styles.nameInputs}>
-        <CustomInput
+        <Input
           type={'text'}
-          text={'first name*'}
+          formType={'private'}
+          registerType='signup'
           name={'firstName'}
-          form={'userForm'}
-          value={data.firstName}
-          onChange={onChange}
-          dataText={'private'}
+          placeholder={'first name*'}
+          submit={submit}
         />
-        <CustomInput
+        <Input
           type={'text'}
-          text={'last name*'}
+          formType={'private'}
+          registerType='signup'
           name={'lastName'}
-          form={'userForm'}
-          value={data.lastName}
-          onChange={onChange}
-          dataText={'private'}
+          placeholder={'last name*'}
+          submit={submit}
         />
       </div>
       <div className={styles.emailInput}>
-        <CustomInput
-          type={'text'}
-          text={'email*'}
+        <Input
+          type={'email'}
+          formType={'private'}
+          registerType='signup'
           name={'email'}
-          form={'userForm'}
-          value={data.email}
-          onChange={onChange}
-          dataText={'private'}
+          placeholder={'email*'}
+          submit={submit}
         />
       </div>
       <div className={styles.passwordInputs}>
-        <CustomInput
-          type={passState ? 'text' : 'password'}
-          text={'Password*'}
+        <Input
+          type={'password'}
+          formType={'private'}
+          registerType='signup'
           name={'password'}
-          form={'userForm'}
-          value={data.password}
-          onChange={onChange}
-          dataText={'private'}
+          placeholder={'password*'}
+          submit={submit}
         />
-        <CustomInput
-          type={passState ? 'text' : 'password'}
-          text={'Confirm password*'}
+        <Input
+          type={'password'}
+          formType={'private'}
+          registerType='signup'
           name={'confirmPassword'}
-          form={'userForm'}
-          value={data.confirmPassword}
-          onChange={onChange}
-          dataText={'private'}
-          passwordData={data.password}
+          placeholder={'confirm password*'}
+          value={password}
+          submit={submit}
         />
       </div>
     </>

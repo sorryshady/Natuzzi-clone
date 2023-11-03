@@ -45,7 +45,8 @@
 }
 .passwordInputs{
   display: flex;
-  gap: 1.2rem;
+  flex-direction: column;
+  gap: 3.2rem;
 }
 .passwordActions{
   margin-top: -2rem;

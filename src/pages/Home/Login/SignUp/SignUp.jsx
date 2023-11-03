@@ -5,29 +5,13 @@ import { Oval } from 'react-loader-spinner'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
+import { useSelector } from 'react-redux'
 
 const SignUp = () => {
-  const initialPrivateData = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  }
-  const initialCompanyData = {
-    company: '',
-    vat: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    zipCode: '',
-    country: '',
-    state: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  }
+  const privateState = useSelector((state) => state.register.privateData)
+  const companyState = useSelector((state) => state.register.companyData)
+
+  const [submit, setSubmit] = useState(false)
   const initialAccountType = {
     private: true,
     company: false,
@@ -37,45 +21,23 @@ const SignUp = () => {
     offers: false,
   }
   const [loading, setLoading] = useState(false)
-  const [passwordVisible, setPasswordVisible] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
   const [accountType, setAccountType] = useState(initialAccountType)
   const [userAgreements, setUserAgreements] = useState(initialConditions)
 
-  const [privateData, setPrivateData] = useState(initialPrivateData)
-  const [companyData, setCompanyData] = useState(initialCompanyData)
-
-  const handleValidityCheck = (data) => {
-    const isDataValid = Object.values(data).every((value) => value)
-    const isPasswordValid = isPasswordValidCheck(
-      data.password,
-      data.confirmPassword
-    )
-    const isEmailValid = isEmailValidCheck(data.email)
-    return (
-      isDataValid &&
-      isPasswordValid &&
-      isEmailValid &&
-      userAgreements.conditions
-    )
-  }
-
-  const isEmailValidCheck = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    return emailRegex.test(email)
-  }
-
-  const isPasswordValidCheck = (password, confirmPassword) => {
-    if (password !== confirmPassword) {
-      return false
+  const validityCheck = (data) => {
+    for (const key in data) {
+      if (data.hasOwnProperty(key) && !data[key]) {
+        return false
+      }
     }
-
     return true
   }
 
-  const buttonValidity = accountType.private
-    ? handleValidityCheck(privateData)
-    : handleValidityCheck(companyData)
+  const buttonValidity =
+    userAgreements.conditions &&
+    (accountType.private
+      ? validityCheck(privateState)
+      : validityCheck(companyState))
 
   const handleCheckboxChange = (name) => {
     if (name === 'private') {
@@ -90,30 +52,21 @@ const SignUp = () => {
     }
   }
 
-  const handleChange = (e) => {
-    const dataText = e.target.getAttribute('data-text')
-    const data = dataText === 'private' ? privateData : companyData
-    data[e.target.name] = e.target.value
-    dataText === 'private'
-      ? setPrivateData({ ...data })
-      : setCompanyData({ ...data })
-  }
-
   const signUpSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
+    setSubmit(true)
     const newData = {
       ...userAgreements,
       accountType: accountType.private ? 'private' : 'company',
-      privateData: accountType.private ? { ...privateData } : '',
-      companyData: accountType.company ? { ...companyData } : '',
+      data: {
+        ...(accountType.private ? { ...privateState } : { ...companyState }),
+      },
     }
     setTimeout(() => {
       console.log(newData)
-      setPrivateData(initialPrivateData)
-      setCompanyData(initialCompanyData)
-      setAccountType(initialAccountType)
       setUserAgreements(initialConditions)
+      setSubmit(false)
       setLoading(false)
     }, 2000)
   }
@@ -145,28 +98,10 @@ const SignUp = () => {
         </div>
         <div className={styles.inputs}>
           {accountType.private ? (
-            <PrivateForm
-              data={privateData}
-              onChange={handleChange}
-              passState={passwordVisible}
-            />
+            <PrivateForm submit={submit} />
           ) : (
-            <CompanyForm
-              data={companyData}
-              onChange={handleChange}
-              passState={passwordVisible}
-            />
+            <CompanyForm submit={submit} />
           )}
-        </div>
-        <div className={styles.passwordActions}>
-          <div
-            className={`${styles.showPassword} ${
-              passwordVisible ? styles.passActive : ''
-            }`}
-            onClick={() => setPasswordVisible((prevValue) => !prevValue)}
-          >
-            Show
-          </div>
         </div>
         <div className={styles.userAgreements}>
           <Checkbox

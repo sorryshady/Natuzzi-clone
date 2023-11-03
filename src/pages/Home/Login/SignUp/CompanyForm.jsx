@@ -1,130 +1,120 @@
 import React from 'react'
 import styles from './SignUp.module.css'
-import CustomInput from '../../../../utils/CustomInput/CustomInput'
-const CompanyForm = ({ data, onChange, passState }) => {
+import Input from '../../../../utils/Input/Input'
+import { useSelector } from 'react-redux'
+const CompanyForm = ({ submit }) => {
+  const { password } = useSelector((state) => state.register.companyData)
   return (
     <>
       <div className={styles.companyInputs}>
-        <CustomInput
+        <Input
           type={'text'}
-          text={'company*'}
+          formType={'company'}
+          registerType='signup'
           name={'company'}
-          form={'userForm'}
-          value={data.company}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'company*'}
+          submit={submit}
         />
-        <CustomInput
+        <Input
           type={'text'}
-          text={'VAT*'}
+          formType={'company'}
+          registerType='signup'
           name={'vat'}
-          form={'userForm'}
-          value={data.vat}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'VAT*'}
+          submit={submit}
         />
       </div>
       <div className={styles.nameInputs}>
-        <CustomInput
+        <Input
           type={'text'}
-          text={'first name*'}
+          formType={'company'}
+          registerType='signup'
           name={'firstName'}
-          form={'userForm'}
-          value={data.firstName}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'first name*'}
+          submit={submit}
         />
-        <CustomInput
+        <Input
           type={'text'}
-          text={'last name*'}
+          formType={'company'}
+          registerType='signup'
           name={'lastName'}
-          form={'userForm'}
-          value={data.lastName}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'last name*'}
+          submit={submit}
         />
       </div>
       <div className={styles.addressInput}>
-        <CustomInput
+        <Input
           type={'text'}
-          text={'address*'}
+          formType={'company'}
+          registerType='signup'
           name={'address'}
-          form={'userForm'}
-          value={data.address}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'address*'}
+          submit={submit}
         />
       </div>
       <div className={styles.locationInput}>
-        <CustomInput
+        <Input
           type={'text'}
-          text={'city*'}
+          formType={'company'}
+          registerType='signup'
           name={'city'}
-          form={'userForm'}
-          value={data.city}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'city*'}
+          submit={submit}
         />
-        <CustomInput
+        <Input
           type={'text'}
-          text={'zip code*'}
+          formType={'company'}
+          registerType='signup'
           name={'zipCode'}
-          form={'userForm'}
-          value={data.zipCode}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'zip code*'}
+          submit={submit}
         />
       </div>
       <div className={styles.countryInput}>
-        <CustomInput
+        <Input
           type={'text'}
-          text={'country*'}
+          formType={'company'}
+          registerType='signup'
           name={'country'}
-          form={'userForm'}
-          value={data.country}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'country*'}
+          submit={submit}
         />
-        <CustomInput
+        <Input
           type={'text'}
-          text={'state*'}
+          formType={'company'}
+          registerType='signup'
           name={'state'}
-          form={'userForm'}
-          value={data.state}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'state*'}
+          submit={submit}
         />
       </div>
       <div className={styles.emailInput}>
-        <CustomInput
-          type={'text'}
-          text={'email*'}
+        <Input
+          type={'email'}
+          formType={'company'}
+          registerType='signup'
           name={'email'}
-          form={'userForm'}
-          value={data.email}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'email*'}
+          submit={submit}
         />
       </div>
       <div className={styles.passwordInputs}>
-        <CustomInput
-          type={passState ? 'text' : 'password'}
-          text={'Password*'}
+        <Input
+          type={'password'}
+          formType={'company'}
+          registerType='signup'
           name={'password'}
-          form={'userForm'}
-          value={data.password}
-          onChange={onChange}
-          dataText={'company'}
+          placeholder={'password*'}
+          submit={submit}
         />
-        <CustomInput
-          type={passState ? 'text' : 'password'}
-          text={'Confirm password*'}
+        <Input
+          type={'password'}
+          formType={'company'}
+          registerType='signup'
           name={'confirmPassword'}
-          form={'userForm'}
-          value={data.confirmPassword}
-          onChange={onChange}
-          dataText={'company'}
-          passwordData={data.password}
+          placeholder={'confirm password*'}
+          value={password}
+          submit={submit}
         />
       </div>
     </>

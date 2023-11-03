@@ -97,7 +97,7 @@ const Input = ({
       performValidityCheck(inputRef.current.value)
     }
     if (isTyping && (type === 'text' || !validityCheck)) {
-      if (registerType === 'register') {
+      if (registerType === 'signup') {
         dispatchRegister()
       } else {
         dispatchLoginSub()
@@ -155,7 +155,7 @@ const Input = ({
 
   if (submit) {
     inputRef.current.value = ''
-    if (registerType === 'register') {
+    if (registerType === 'signup') {
       dispatchRegister('empty')
     } else {
       dispatchLoginSub('empty')
