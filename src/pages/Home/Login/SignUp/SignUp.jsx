@@ -6,10 +6,18 @@ import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
 import { useSelector } from 'react-redux'
+import { config } from '../../../../App'
+import axios from 'axios'
+import { enqueueSnackbar } from 'notistack'
 
 const SignUp = () => {
   const privateState = useSelector((state) => state.register.privateData)
   const companyState = useSelector((state) => state.register.companyData)
+
+  const modifiedPrivateState = { ...privateState }
+  delete modifiedPrivateState.confirmPassword
+  const modifiedCompanyState = { ...companyState }
+  delete modifiedCompanyState.confirmPassword
 
   const [submit, setSubmit] = useState(false)
   const initialAccountType = {
@@ -52,23 +60,54 @@ const SignUp = () => {
     }
   }
 
-  const signUpSubmit = (e) => {
+  const performAPICall = async (data) => {
+    try {
+      setLoading(true)
+      const response = await axios.post(
+        `${config.endpoint}/auth/register`,
+        data
+      )
+      setLoading(false)
+      if (!response.data.code) {
+        return response
+      } else {
+        if (response.data.code < 400)
+          enqueueSnackbar(response.data.message, { variant: 'warning' })
+        console.log(response)
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+  }
+
+  const signUpSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
-    setSubmit(true)
+    // setLoading(true)
+    // setSubmit(true)
     const newData = {
-      ...userAgreements,
       accountType: accountType.private ? 'private' : 'company',
+      offers: userAgreements.offers,
       data: {
-        ...(accountType.private ? { ...privateState } : { ...companyState }),
+        ...(accountType.private
+          ? { ...modifiedPrivateState }
+          : { ...modifiedCompanyState }),
       },
     }
-    setTimeout(() => {
-      console.log(newData)
+    const response = await performAPICall(newData)
+    if (response) {
+      setSubmit(true)
       setUserAgreements(initialConditions)
+    }
+    setTimeout(() => {
       setSubmit(false)
-      setLoading(false)
-    }, 2000)
+    }, 500)
+    // setTimeout(() => {
+    //   console.log(newData)
+    //   setUserAgreements(initialConditions)
+    //   setSubmit(false)
+    //   setLoading(false)
+    // }, 2000)
   }
 
   return (
