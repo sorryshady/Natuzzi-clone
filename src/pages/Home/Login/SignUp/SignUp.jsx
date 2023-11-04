@@ -73,7 +73,8 @@ const SignUp = () => {
       } else {
         if (response.data.code < 400)
           enqueueSnackbar(response.data.message, { variant: 'warning' })
-        console.log(response)
+        if (response.data.code >= 400)
+          enqueueSnackbar(response.data.message, { variant: 'error' })
       }
     } catch (error) {
       setLoading(false)
