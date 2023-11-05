@@ -38,12 +38,12 @@ const Section = ({
     const text = e.target.getAttribute('data-text')
     setLocalHover(true)
     dispatch(cursorActions.setHoveredText(text))
-    dispatch(cursorActions.setHoverState())
+    dispatch(cursorActions.setHoverState(true))
   }
   const mouseLeave = () => {
     setLocalHover(false)
     dispatch(cursorActions.setHoveredText(''))
-    dispatch(cursorActions.setHoverState())
+    dispatch(cursorActions.setHoverState(false))
   }
   return (
     <>

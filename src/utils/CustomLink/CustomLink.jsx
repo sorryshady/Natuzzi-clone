@@ -43,6 +43,7 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
       timeout = setTimeout(() => {
         navigate(to)
         dispatch(cursorActions.setHoveredText(''))
+        dispatch(cursorActions.setHoverState(false))
         dispatch(cursorActions.setMouseClick())
         dispatch(cursorActions.setLoadingState())
         dispatch(globalActions.setNavigating(false))

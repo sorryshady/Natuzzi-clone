@@ -14,8 +14,8 @@ const cursorSlice = createSlice({
     setMouseClick(state) {
       state.clicked = !state.clicked
     },
-    setHoverState(state) {
-      state.hovering = !state.hovering
+    setHoverState(state, action) {
+      state.hovering = action.payload
     },
     setHoveredText(state, action) {
       state.hoveredText = action.payload
