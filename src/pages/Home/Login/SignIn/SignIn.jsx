@@ -4,12 +4,16 @@ import commonStyles from '../Login.module.css'
 import Input from '../../../../utils/Input/Input'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import { Oval } from 'react-loader-spinner'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { config } from '../../../../App'
 import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
+import { useNavigate } from 'react-router'
+import { globalActions } from '../../../../store/global-slice'
 
 const SignIn = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [submit, setSubmit] = useState(false)
   const { email, password } = useSelector((state) => state.loginSub.login)
@@ -30,6 +34,7 @@ const SignIn = () => {
       setLoading(true)
       const response = await axios.post(`${config.endpoint}/auth/login`, data)
       setLoading(false)
+      dispatch(globalActions.setNavigating(true))
       return response
     } catch (error) {
       setLoading(false)
@@ -52,8 +57,10 @@ const SignIn = () => {
       setRememberMe(false)
     }
     setTimeout(() => {
+      navigate('/')
       setSubmit(false)
-    }, 500)
+      dispatch(globalActions.setNavigating(false))
+    }, 1000)
   }
   return (
     <div className={styles.signInContainer}>

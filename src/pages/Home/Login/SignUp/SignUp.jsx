@@ -5,14 +5,16 @@ import { Oval } from 'react-loader-spinner'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { config } from '../../../../App'
 import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
+import { globalActions } from '../../../../store/global-slice'
 
 const SignUp = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const privateState = useSelector((state) => state.register.privateData)
   const companyState = useSelector((state) => state.register.companyData)
 
@@ -70,6 +72,7 @@ const SignUp = () => {
         data
       )
       setLoading(false)
+      dispatch(globalActions.setNavigating(true))
       if (!response.data.code) {
         return response
       } else {
@@ -101,16 +104,12 @@ const SignUp = () => {
       enqueueSnackbar('registered succesfully', { variant: 'success' })
       setUserAgreements(initialConditions)
     }
+
     setTimeout(() => {
       navigate('/')
       setSubmit(false)
-    }, 500)
-    // setTimeout(() => {
-    //   console.log(newData)
-    //   setUserAgreements(initialConditions)
-    //   setSubmit(false)
-    //   setLoading(false)
-    // }, 2000)
+      dispatch(globalActions.setNavigating(false))
+    }, 1000)
   }
 
   return (
