@@ -44,7 +44,7 @@
   opacity: 1;
 }
 .errorMsg{
-  margin-top: 6.4rem;
+  margin-top: 4rem;
   margin-bottom: -4rem;
   color: var(--color-error);
   font-size: 1.4rem;

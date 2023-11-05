@@ -5,6 +5,10 @@ import Input from '../../../../utils/Input/Input'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import { Oval } from 'react-loader-spinner'
 import { useSelector } from 'react-redux'
+import { config } from '../../../../App'
+import axios from 'axios'
+import { enqueueSnackbar } from 'notistack'
+
 const SignIn = () => {
   const [loading, setLoading] = useState(false)
   const [submit, setSubmit] = useState(false)
@@ -20,28 +24,36 @@ const SignIn = () => {
   const handleSignInCheckBox = () => {
     setRememberMe((prevValue) => !prevValue)
   }
-  const signInSubmit = (e) => {
+
+  const performAPICall = async (data) => {
+    try {
+      setLoading(true)
+      const response = await axios.post(`${config.endpoint}/auth/login`, data)
+      setLoading(false)
+      return response
+    } catch (error) {
+      setLoading(false)
+      setErrorMsg(error.response.data.message)
+      enqueueSnackbar(error.response.data.message, { variant: 'error' })
+    }
+  }
+  const signInSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
-    setSubmit(true)
     const formData = {
       email,
       password,
       rememberMe,
     }
-    // setTimeout(() => {
-    //   console.log(formData)
-    //   setLoading(false)
-    //   setRememberMe(false)
-    //   setSubmit(false)
-    // }, 2000)
-    setTimeout(() => {
-      console.log(formData)
-      setErrorMsg('No customer account found')
-      setLoading(false)
+    const response = await performAPICall(formData)
+    if (response) {
+      setSubmit(true)
+      enqueueSnackbar('login successfull', { variant: 'success' })
+      setErrorMsg('')
       setRememberMe(false)
+    }
+    setTimeout(() => {
       setSubmit(false)
-    }, 2000)
+    }, 500)
   }
   return (
     <div className={styles.signInContainer}>
