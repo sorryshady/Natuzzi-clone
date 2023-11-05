@@ -9,8 +9,10 @@ import { useSelector } from 'react-redux'
 import { config } from '../../../../App'
 import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
+import { useNavigate } from 'react-router'
 
 const SignUp = () => {
+  const navigate = useNavigate()
   const privateState = useSelector((state) => state.register.privateData)
   const companyState = useSelector((state) => state.register.companyData)
 
@@ -84,8 +86,6 @@ const SignUp = () => {
 
   const signUpSubmit = async (e) => {
     e.preventDefault()
-    // setLoading(true)
-    // setSubmit(true)
     const newData = {
       accountType: accountType.private ? 'private' : 'company',
       offers: userAgreements.offers,
@@ -102,6 +102,7 @@ const SignUp = () => {
       setUserAgreements(initialConditions)
     }
     setTimeout(() => {
+      navigate('/')
       setSubmit(false)
     }, 500)
     // setTimeout(() => {
