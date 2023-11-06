@@ -69,7 +69,8 @@ const SignUp = () => {
       setLoading(true)
       const response = await axios.post(
         `${config.endpoint}/auth/register`,
-        data
+        data,
+        { withCredentials: true }
       )
       setLoading(false)
       dispatch(globalActions.setNavigating(true))

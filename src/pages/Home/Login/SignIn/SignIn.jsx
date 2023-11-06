@@ -32,7 +32,9 @@ const SignIn = () => {
   const performAPICall = async (data) => {
     try {
       setLoading(true)
-      const response = await axios.post(`${config.endpoint}/auth/login`, data)
+      const response = await axios.post(`${config.endpoint}/auth/login`, data, {
+        withCredentials: true,
+      })
       setLoading(false)
       dispatch(globalActions.setNavigating(true))
       return response
