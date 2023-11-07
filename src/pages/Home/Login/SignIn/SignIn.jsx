@@ -62,7 +62,7 @@ const SignIn = () => {
       persistUserInfo(response.data.user)
 
       setTimeout(() => {
-        navigate('/')
+        navigate('/user/dashboard')
         setSubmit(false)
         dispatch(globalActions.setNavigating(false))
       }, 1000)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Navbar.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Logo from '../../assets/Images/Logo.svg'
@@ -18,6 +18,7 @@ const Navbar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+  const [userName, setUserName] = useState('')
   const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
   const { width } = useViewportSize()
@@ -25,6 +26,12 @@ const Navbar = () => {
     dispatch(menuActions.setActive(false))
     dispatch(menuActions.setSrc(Menu))
   }
+  useEffect(() => {
+    const firstName = localStorage.getItem('firstName')
+    if (firstName) {
+      setUserName(firstName.toUpperCase())
+    }
+  }, [])
   return (
     <>
       <NavAnimation>
@@ -56,9 +63,9 @@ const Navbar = () => {
               />
               <NavButtons
                 icon={Account}
-                text={'ACCOUNT'}
+                text={userName ? `${userName}` : 'ACCOUNT'}
                 move={'70px'}
-                dest={'/login'}
+                dest={userName ? '/user/dashboard' : '/login'}
                 onClick={handleClick}
               />
             </div>
