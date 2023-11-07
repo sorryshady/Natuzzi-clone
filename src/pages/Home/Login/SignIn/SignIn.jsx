@@ -10,6 +10,7 @@ import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
 import { globalActions } from '../../../../store/global-slice'
+import { persistUserInfo } from '../../../../utils/persistUserInfo'
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -57,12 +58,15 @@ const SignIn = () => {
       enqueueSnackbar('login successfull', { variant: 'success' })
       setErrorMsg('')
       setRememberMe(false)
+      // console.log(response)
+      persistUserInfo(response.data.user)
+
+      setTimeout(() => {
+        navigate('/')
+        setSubmit(false)
+        dispatch(globalActions.setNavigating(false))
+      }, 1000)
     }
-    setTimeout(() => {
-      navigate('/')
-      setSubmit(false)
-      dispatch(globalActions.setNavigating(false))
-    }, 1000)
   }
   return (
     <div className={styles.signInContainer}>

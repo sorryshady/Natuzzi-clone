@@ -11,6 +11,7 @@ import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
 import { globalActions } from '../../../../store/global-slice'
+import { persistUserInfo } from '../../../../utils/persistUserInfo'
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -104,13 +105,15 @@ const SignUp = () => {
       setSubmit(true)
       enqueueSnackbar('registered succesfully', { variant: 'success' })
       setUserAgreements(initialConditions)
-    }
+      // console.log(response)
+      persistUserInfo(response.data.user)
 
-    setTimeout(() => {
-      navigate('/')
-      setSubmit(false)
-      dispatch(globalActions.setNavigating(false))
-    }, 1000)
+      setTimeout(() => {
+        navigate('/')
+        setSubmit(false)
+        dispatch(globalActions.setNavigating(false))
+      }, 1000)
+    }
   }
 
   return (
