@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './SideNav.module.css'
 import { useDispatch } from 'react-redux'
-import Cookies from 'js-cookie'
 import { globalActions } from '../../../../../store/global-slice'
 import axios from 'axios'
 import { config } from '../../../../../App'
@@ -19,8 +18,8 @@ const SideNav = () => {
       if (response.status === 200) {
         localStorage.removeItem('firstName')
         localStorage.removeItem('id')
-        Cookies.remove('loggedIn')
-        enqueueSnackbar('Logged out succesfully', { variant: 'success' })
+        console.log(response)
+        enqueueSnackbar(response.data.message, { variant: 'success' })
         dispatch(globalActions.setNavigating(true))
         setTimeout(() => {
           navigate('/login')
