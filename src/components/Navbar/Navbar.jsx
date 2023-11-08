@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 import styles from './Navbar.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Logo from '../../assets/Images/Logo.svg'
@@ -14,11 +15,13 @@ import MenuBtn from '../../utils/MenuBtn/MenuBtn'
 import useViewportSize from '../../hooks/useViewportSize'
 import { useDispatch, useSelector } from 'react-redux'
 import { menuActions } from '../../store/menu-slice'
+
 const Navbar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
   const [userName, setUserName] = useState('')
+  const [loginCheck, setLoginCheck] = useState(false)
   const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
   const { width } = useViewportSize()
@@ -27,11 +30,20 @@ const Navbar = () => {
     dispatch(menuActions.setSrc(Menu))
   }
   useEffect(() => {
-    const firstName = localStorage.getItem('firstName')
-    if (firstName) {
-      setUserName(firstName.toUpperCase())
+    if (!loginCheck) {
+      const loggedInState = Cookies.get('loggedIn')
+      if (loggedInState) {
+        const firstName = localStorage.getItem('firstName')
+        if (firstName) {
+          setUserName(firstName.toUpperCase())
+        }
+      } else {
+        localStorage.removeItem('firstName')
+        localStorage.removeItem('id')
+      }
+      setLoginCheck(true)
     }
-  }, [])
+  }, [loginCheck])
   return (
     <>
       <NavAnimation>
