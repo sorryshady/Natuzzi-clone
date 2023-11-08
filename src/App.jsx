@@ -7,9 +7,9 @@ import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 import Loader from './utils/Loader'
 import Dashboard from './pages/Home/User/Dashboard/Dashboard'
 export const config = {
-  // endpoint: 'https://natuzzi-backend.onrender.com/v1',
+  endpoint: 'https://natuzzi-backend.onrender.com/v1',
   // endpoint: 'http://192.168.1.38:8082/v1/',
-  endpoint: 'http://localhost:8082/v1/',
+  // endpoint: 'http://localhost:8082/v1/',
 }
 
 const router = createBrowserRouter([
