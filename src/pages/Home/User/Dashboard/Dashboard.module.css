@@ -1,0 +1,13 @@
+.parent-container{
+  padding-top: 13.5rem;
+}
+.section{
+  padding: 6.4rem;
+  display: flex;
+}
+.navMenu{
+  flex: 1;
+}
+.content{
+  flex: 2.5;
+}
