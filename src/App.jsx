@@ -12,9 +12,9 @@ import SavedProjects from './pages/Home/User/SavedProjects/SavedProjects'
 import Help from './pages/Home/User/Help/Help'
 import UserRoot from './pages/Home/User/UserRoot/UserRoot'
 export const config = {
-  // endpoint: 'https://natuzzi-backend.onrender.com/v1',
+  endpoint: 'https://natuzzi-backend.onrender.com/v1',
   // endpoint: 'http://192.168.1.38:8082/v1/',
-  endpoint: 'http://localhost:8082/v1/',
+  // endpoint: 'http://localhost:8082/v1/',
 }
 
 const router = createBrowserRouter([
