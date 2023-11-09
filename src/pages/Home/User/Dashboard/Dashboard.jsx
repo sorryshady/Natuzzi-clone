@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import styles from './Dashboard.module.css'
-import SideNav from './SideNav/SideNav'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router'
 import { enqueueSnackbar } from 'notistack'

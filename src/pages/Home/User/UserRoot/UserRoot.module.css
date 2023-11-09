@@ -11,3 +11,13 @@
 .content{
   flex: 2.5;
 }
+
+@media (max-width: 64em){
+  .section{
+    display: block;
+    padding: 1rem 6.4rem;
+  }
+  .navMenu{
+    padding: 0 4.8rem;
+  }
+}
