@@ -38,10 +38,13 @@ const Navbar = () => {
           setUserName(firstName.toUpperCase())
         }
       } else {
+        setUserName('')
         localStorage.removeItem('firstName')
         localStorage.removeItem('id')
       }
       setLoginCheck(true)
+    }else{
+      setLoginCheck(false)
     }
   }, [loginCheck])
   return (
