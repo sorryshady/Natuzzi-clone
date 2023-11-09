@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './SideNav.module.css'
 import { useDispatch } from 'react-redux'
-import { globalActions } from '../../../../store/global-slice'
+import { globalActions } from '../../store/global-slice'
 import axios from 'axios'
-import { config } from '../../../../App'
+import { config } from '../../App'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
-import Underline from '../../../../utils/Underline/Underline'
+import Underline from '../Underline/Underline'
 const SideNav = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()

@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './UserRoot.module.css'
 import { Outlet } from 'react-router'
-import SideNav from '../SideNav/SideNav'
+import SideNav from '../../../../utils/SideNav/SideNav'
 import useViewportSize from '../../../../hooks/useViewportSize'
-import MobileSideNav from '../mobileSideNav/mobileSideNav'
+import MobileSideNav from '../../../../utils/mobileSideNav/mobileSideNav'
 const UserRoot = () => {
   const { width } = useViewportSize()
   return (
