@@ -6,6 +6,7 @@ import Login from './pages/Home/Login/Login'
 import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 import Loader from './utils/Loader'
 import Dashboard from './pages/Home/User/Dashboard/Dashboard'
+import UserRoot from './pages/Home/User/UserRoot/UserRoot'
 export const config = {
   // endpoint: 'https://natuzzi-backend.onrender.com/v1',
   // endpoint: 'http://192.168.1.38:8082/v1/',
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       {
         path: 'user',
+        element: <UserRoot />,
         children: [{ path: 'dashboard', element: <Dashboard /> }],
       },
       // { path: 'dealer-program', element: <TradeContract /> },

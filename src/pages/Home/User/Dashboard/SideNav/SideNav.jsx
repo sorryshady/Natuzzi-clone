@@ -6,6 +6,7 @@ import axios from 'axios'
 import { config } from '../../../../../App'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
+import Underline from '../../../../../utils/Underline/Underline'
 const SideNav = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,7 +19,6 @@ const SideNav = () => {
       if (response.status === 200) {
         localStorage.removeItem('firstName')
         localStorage.removeItem('id')
-        // console.log(response)
         enqueueSnackbar(response.data.message, { variant: 'success' })
         dispatch(globalActions.setNavigating(true))
         setTimeout(() => {
@@ -34,19 +34,29 @@ const SideNav = () => {
   return (
     <>
       <div className={styles.navContainer}>
-        <div className={styles['your-services']}>Your Services</div>
-        <div className={styles['your-account']}>
+        <div className={styles['your-services']}>
+          <Underline>Your Services</Underline>
+        </div>
+        <div className={styles.content}>
           <div className={styles.heading}>YOUR ACCOUNT</div>
-          <div className={styles.link}>Profile and preferences</div>
+          <div className={styles.link}>
+            <Underline>Profile and preferences</Underline>
+          </div>
         </div>
-        <div className={styles['your-products']}>
+        <div className={styles.content}>
           <div className={styles.heading}>YOUR PRODUCTS</div>
-          <div className={styles.link}>Wishlist</div>
-          <div className={styles.link}>Saved Products</div>
+          <div className={styles.link}>
+            <Underline>Wishlist</Underline>
+          </div>
+          <div className={styles.link}>
+            <Underline>Saved Products</Underline>
+          </div>
         </div>
-        <div className={styles['your-products']}>
+        <div className={styles.content}>
           <div className={styles.heading}>NEED HELP</div>
-          <div className={styles.link}>Help and contacts</div>
+          <div className={styles.link}>
+            <Underline>Help and contacts</Underline>
+          </div>
         </div>
       </div>
       <button className={styles.logout} onClick={handleLogout}>
