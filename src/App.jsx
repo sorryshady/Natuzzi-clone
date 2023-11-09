@@ -6,6 +6,10 @@ import Login from './pages/Home/Login/Login'
 import ErrorPage from './pages/Home/ErrorPage/ErrorPage'
 import Loader from './utils/Loader'
 import Dashboard from './pages/Home/User/Dashboard/Dashboard'
+import Profile from './pages/Home/User/Profile/Profile'
+import Wishlist from './pages/Home/User/Wishlist/Wishlist'
+import SavedProjects from './pages/Home/User/SavedProjects/SavedProjects'
+import Help from './pages/Home/User/Help/Help'
 import UserRoot from './pages/Home/User/UserRoot/UserRoot'
 export const config = {
   // endpoint: 'https://natuzzi-backend.onrender.com/v1',
@@ -26,7 +30,13 @@ const router = createBrowserRouter([
       {
         path: 'user',
         element: <UserRoot />,
-        children: [{ path: 'dashboard', element: <Dashboard /> }],
+        children: [
+          { path: 'dashboard', element: <Dashboard /> },
+          { path: 'profile', element: <Profile /> },
+          { path: 'wishlist', element: <Wishlist /> },
+          { path: 'projects', element: <SavedProjects /> },
+          { path: 'help', element: <Help /> },
+        ],
       },
       // { path: 'dealer-program', element: <TradeContract /> },
       // { path: 'contact-us', element: <TradeContract /> },

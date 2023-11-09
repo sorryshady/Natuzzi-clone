@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './mobileSideNav.module.css'
+import styles from './MobileSideNav.module.css'
 import { useLocation } from 'react-router'
 const MobileSideNav = () => {
   const location = useLocation()
