@@ -12,7 +12,6 @@ import { globalActions } from '../../../../store/global-slice'
 import MobileNav from '../../../../utils/MobileNav/MobileNav'
 const UserRoot = () => {
   const navigate = useNavigate()
-  const location = useLocation()
   const dispatch = useDispatch()
   const { width } = useViewportSize()
 
@@ -41,7 +40,7 @@ const UserRoot = () => {
     const userLoggedIn = Cookies.get('loggedIn')
     console.log(userLoggedIn)
     if (!userLoggedIn) {
-      if (!location.pathname.includes('/login')) {
+      if (!window.location.pathname.includes('/login')) {
         navigate('/login')
         enqueueSnackbar('No user logged in.', { variant: 'warning' })
       }
