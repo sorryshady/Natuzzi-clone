@@ -10,7 +10,7 @@ import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
 import { globalActions } from '../../../../store/global-slice'
-import { persistUserInfo } from '../../../../utils/persistUserInfo'
+import { persistUserInfo } from '../../../../utils/utilFunctions/persistUserInfo'
 
 const SignIn = () => {
   const navigate = useNavigate()
