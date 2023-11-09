@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './MobileSideNav.module.css'
 import { useLocation } from 'react-router'
-const MobileSideNav = () => {
+import CustomLink from '../CustomLink/CustomLink'
+const MobileSideNav = ({ logout }) => {
   const location = useLocation()
   return (
     <>
@@ -11,37 +12,41 @@ const MobileSideNav = () => {
             location.pathname.includes('dashboard') && styles.active
           }`}
         >
-          Your Services
+          <CustomLink dest={'/user/dashboard'}>Your Services</CustomLink>
         </div>
         <div
           className={`${styles.links} ${
             location.pathname.includes('profile') && styles.active
           }`}
         >
-          Profile and preferences
+          <CustomLink dest={'/user/profile'}>
+            Profile and preferences
+          </CustomLink>
         </div>
         <div
           className={`${styles.links} ${
             location.pathname.includes('wishlist') && styles.active
           }`}
         >
-          Wishlist
+          <CustomLink dest={'/user/wishlist'}>Wishlist</CustomLink>
         </div>
         <div
           className={`${styles.links} ${
             location.pathname.includes('projects') && styles.active
           }`}
         >
-          Saved Projects
+          <CustomLink dest={'/user/projects'}>Saved Projects</CustomLink>
         </div>
         <div
           className={`${styles.links} ${
             location.pathname.includes('help') && styles.active
           }`}
         >
-          Help and contacts
+          <CustomLink dest={'/user/help'}>Help and Contacts</CustomLink>
         </div>
-        <button className={styles.logout}>Logout</button>
+        <button className={styles.logout} onClick={logout}>
+          Logout
+        </button>
       </div>
     </>
   )

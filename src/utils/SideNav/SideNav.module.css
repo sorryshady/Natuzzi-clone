@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+}
+.your-services, 
+.link{
+  margin-left: 0.2rem;
 }
 .your-services div {
   color: var(--color-black) !important;

@@ -1,65 +1,51 @@
 import React from 'react'
 import styles from './SideNav.module.css'
-import { useDispatch } from 'react-redux'
-import { globalActions } from '../../store/global-slice'
-import axios from 'axios'
-import { config } from '../../App'
-import { enqueueSnackbar } from 'notistack'
-import { useNavigate } from 'react-router'
 import Underline from '../Underline/Underline'
-const SideNav = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get(`${config.endpoint}/auth/logout`, {
-        withCredentials: true,
-      })
-      if (response.status === 200) {
-        localStorage.removeItem('firstName')
-        localStorage.removeItem('id')
-        enqueueSnackbar(response.data.message, { variant: 'success' })
-        dispatch(globalActions.setNavigating(true))
-        setTimeout(() => {
-          navigate('/login')
-          dispatch(globalActions.setNavigating(false))
-        }, 1000)
-      }
-    } catch (error) {
-      console.log(error)
-      enqueueSnackbar('Something went wrong.', { variant: 'error' })
-    }
-  }
+import CustomLink from '../CustomLink/CustomLink'
+import { useLocation } from 'react-router'
+const SideNav = ({ logout }) => {
+  const location = useLocation()
   return (
     <>
       <div className={styles.navContainer}>
         <div className={styles['your-services']}>
-          <Underline>Your Services</Underline>
+          <Underline active={location.pathname.includes('dashboard')}>
+            <CustomLink dest={'/user/dashboard'}>Your Services</CustomLink>
+          </Underline>
         </div>
         <div className={styles.content}>
           <div className={styles.heading}>YOUR ACCOUNT</div>
           <div className={styles.link}>
-            <Underline>Profile and preferences</Underline>
+            <Underline active={location.pathname.includes('profile')}>
+              <CustomLink dest={'/user/profile'}>
+                Profile and preferences
+              </CustomLink>
+            </Underline>
           </div>
         </div>
         <div className={styles.content}>
           <div className={styles.heading}>YOUR PRODUCTS</div>
           <div className={styles.link}>
-            <Underline>Wishlist</Underline>
+            <Underline active={location.pathname.includes('wishlist')}>
+              <CustomLink dest={'/user/wishlist'}>Wishlist</CustomLink>
+            </Underline>
           </div>
           <div className={styles.link}>
-            <Underline>Saved Products</Underline>
+            <Underline active={location.pathname.includes('projects')}>
+              <CustomLink dest={'/user/projects'}>Saved Projects</CustomLink>
+            </Underline>
           </div>
         </div>
         <div className={styles.content}>
           <div className={styles.heading}>NEED HELP</div>
           <div className={styles.link}>
-            <Underline>Help and contacts</Underline>
+            <Underline active={location.pathname.includes('help')}>
+              <CustomLink dest={'/user/help'}>Help and Contacts</CustomLink>
+            </Underline>
           </div>
         </div>
       </div>
-      <button className={styles.logout} onClick={handleLogout}>
+      <button className={styles.logout} onClick={logout}>
         Logout
       </button>
     </>
