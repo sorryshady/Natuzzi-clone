@@ -18,7 +18,7 @@ const SideNav = () => {
       if (response.status === 200) {
         localStorage.removeItem('firstName')
         localStorage.removeItem('id')
-        console.log(response)
+        // console.log(response)
         enqueueSnackbar(response.data.message, { variant: 'success' })
         dispatch(globalActions.setNavigating(true))
         setTimeout(() => {

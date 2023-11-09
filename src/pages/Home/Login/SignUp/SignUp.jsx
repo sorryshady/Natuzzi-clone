@@ -74,8 +74,8 @@ const SignUp = () => {
         { withCredentials: true }
       )
       setLoading(false)
-      dispatch(globalActions.setNavigating(true))
       if (!response.data.code) {
+        dispatch(globalActions.setNavigating(true))
         return response
       } else {
         if (response.data.code < 400)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Cookies from 'js-cookie'
 import styles from './Navbar.module.css'
 import { animateScroll as scroll } from 'react-scroll'
@@ -21,32 +21,45 @@ const Navbar = () => {
     scroll.scrollToTop()
   }
   const [userName, setUserName] = useState('')
+  const isFirstRender = useRef(true)
   const [loginCheck, setLoginCheck] = useState(false)
   const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
   const { width } = useViewportSize()
-  const handleClick = () => {
+
+  const handleClick = useCallback(() => {
     dispatch(menuActions.setActive(false))
     dispatch(menuActions.setSrc(Menu))
-  }
-  useEffect(() => {
-    if (!loginCheck) {
-      const loggedInState = Cookies.get('loggedIn')
-      if (loggedInState) {
-        const firstName = localStorage.getItem('firstName')
-        if (firstName) {
-          setUserName(firstName.toUpperCase())
-        }
-      } else {
-        setUserName('')
-        localStorage.removeItem('firstName')
-        localStorage.removeItem('id')
+  }, [dispatch])
+
+  const checkLogin = () => {
+    const loggedInState = Cookies.get('loggedIn')
+    if (loggedInState) {
+      const firstName = localStorage.getItem('firstName')
+      if (firstName) {
+        setUserName(firstName.toUpperCase())
       }
-      setLoginCheck(true)
-    }else{
+    } else {
+      setUserName('')
+      localStorage.removeItem('firstName')
+      localStorage.removeItem('id')
+    }
+  }
+
+  useEffect(() => {
+    if (!isFirstRender.current) {
+      checkLogin()
+    } else {
+      isFirstRender.current = false
+    }
+  }, [checkLogin])
+
+  useEffect(() => {
+    if (loginCheck) {
       setLoginCheck(false)
     }
   }, [loginCheck])
+
   return (
     <>
       <NavAnimation>
