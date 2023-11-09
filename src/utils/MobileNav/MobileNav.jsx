@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './MobileSideNav.module.css'
+import styles from './MobileNav.module.css'
 import { useLocation } from 'react-router'
 import CustomLink from '../CustomLink/CustomLink'
-const MobileSideNav = ({ logout }) => {
+const MobileNav = ({ logout }) => {
   const location = useLocation()
   return (
     <>
@@ -52,4 +52,4 @@ const MobileSideNav = ({ logout }) => {
   )
 }
 
-export default MobileSideNav
+export default MobileNav

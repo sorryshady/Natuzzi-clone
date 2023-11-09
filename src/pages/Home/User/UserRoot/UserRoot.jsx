@@ -5,11 +5,11 @@ import { enqueueSnackbar } from 'notistack'
 import styles from './UserRoot.module.css'
 import { Outlet, useLocation, useNavigate } from 'react-router'
 import SideNav from '../../../../utils/SideNav/SideNav'
-import MobileSideNav from '../../../../utils/MobileSideNav/MobileSideNav'
 import useViewportSize from '../../../../hooks/useViewportSize'
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { globalActions } from '../../../../store/global-slice'
+import MobileNav from '../../../../utils/MobileNav/MobileNav'
 const UserRoot = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -53,7 +53,7 @@ const UserRoot = () => {
         <div className={styles.section}>
           <div className={styles.navMenu}>
             {width > 1024 && <SideNav logout={handleLogout} />}
-            {width <= 1024 && <MobileSideNav logout={handleLogout} />}
+            {width <= 1024 && <MobileNav logout={handleLogout} />}
           </div>
           <div className={styles.content}>
             <Outlet />
