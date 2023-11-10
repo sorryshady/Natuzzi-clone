@@ -10,14 +10,16 @@ import Profile from './pages/Home/User/Profile/Profile'
 import Wishlist from './pages/Home/User/Wishlist/Wishlist'
 import SavedProjects from './pages/Home/User/SavedProjects/SavedProjects'
 import Help from './pages/Home/User/Help/Help'
-import UserRoot from './pages/Home/User/UserRoot/UserRoot'
+import UserRoot, {
+  loader as userLoader,
+} from './pages/Home/User/UserRoot/UserRoot'
 import Checkout from './pages/Home/Checkout/Checkout'
 import Orders from './pages/Home/User/Orders/Orders'
 import Addresses from './pages/Home/User/Addresses/Addresses'
 export const config = {
-  // endpoint: 'https://natuzzi-backend.onrender.com/v1',
+  endpoint: 'https://natuzzi-backend.onrender.com/v1',
   // endpoint: 'http://192.168.1.38:8082/v1/',
-  endpoint: 'http://localhost:8082/v1/',
+  // endpoint: 'http://localhost:8082/v1/',
 }
 
 const router = createBrowserRouter([
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
         path: 'user',
         element: <UserRoot />,
         children: [
-          { path: 'dashboard', element: <Dashboard /> },
+          { path: 'dashboard', element: <Dashboard />, loader: userLoader },
           { path: 'orders', element: <Orders /> },
           { path: 'address', element: <Addresses /> },
           { path: 'profile', element: <Profile /> },

@@ -67,3 +67,19 @@ const UserRoot = () => {
 }
 
 export default UserRoot
+
+export async function loader() {
+  // console.log('loader executed')
+  const loggedIn = Cookies.get('loggedIn')
+  if (loggedIn) {
+    const response = await axios.get(`${config.endpoint}/auth/user`, {
+      withCredentials: true,
+    })
+    if (response.status === 200) {
+      return response.data
+    } else {
+      enqueueSnackbar('Something went wrong', { variant: 'error' })
+      throw new Error('Internal Server Error')
+    }
+  }
+} 

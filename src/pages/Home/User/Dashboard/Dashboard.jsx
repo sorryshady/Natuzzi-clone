@@ -3,8 +3,9 @@ import styles from './Dashboard.module.css'
 import CardLocation from '../../../../assets/Images/CardLocation.svg'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
 import RadioButtons from '../../../../utils/RadioButtons/RadioButtons'
+import { useLoaderData } from 'react-router-dom'
 const Dashboard = () => {
-  const userName = localStorage.getItem('firstName')
+  const userData = useLoaderData()
   const [storeType, setStoreType] = useState({
     italia: true,
     editions: false,
@@ -19,7 +20,7 @@ const Dashboard = () => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.welcome}>Welcome, {userName}</div>
+        <div className={styles.welcome}>Welcome, {userData.firstName}</div>
         <div className={styles.profileContainer}>
           <div className={styles.header}>
             <div className={styles.heading}>Profile and preferences</div>
@@ -29,17 +30,23 @@ const Dashboard = () => {
           </div>
           <div className={styles.profileSection}>
             <div className={`${styles.card} ${styles.profile}`}>
-              <div className={styles.cardTitle}>User Name</div>
+              <div className={styles.cardTitle}>
+                {userData.firstName} {userData.lastName}
+              </div>
               <div className={styles.userInfo}>
                 <span className={styles.field}>User </span>
-                <span className={styles.email}>someone@gmail.com</span>
+                <span className={styles.email}>{userData.email}</span>
               </div>
             </div>
             <div className={`${styles.card} ${styles.italia}`}>
               <div className={styles.cardTitle}>Natuzzi Italia</div>
               <div className={styles.cardContent}>
                 <img src={CardLocation} alt='location' />
-                <span>No selected references shop</span>
+                <span>
+                  {!userData.storeOption.natuzziItalia
+                    ? 'No selected reference shop'
+                    : userData.storeOption.natuzziItalia}
+                </span>
               </div>
               <button className={styles.button}>Select</button>
             </div>
@@ -47,7 +54,11 @@ const Dashboard = () => {
               <div className={styles.cardTitle}>Natuzzi Editions</div>
               <div className={styles.cardContent}>
                 <img src={CardLocation} alt='location' />
-                <span>No selected references shop</span>
+                <span>
+                  {!userData.storeOption.natuzziEditions
+                    ? 'No selected reference shop'
+                    : userData.storeOption.natuzziEditions}
+                </span>
               </div>
               <button className={styles.button}>Select</button>
             </div>
