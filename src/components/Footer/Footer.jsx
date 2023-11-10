@@ -27,7 +27,7 @@ const Footer = () => {
       email,
       ...userAgreements,
     }
-    console.log(formData)
+    // console.log(formData)
     clearTimeout(submitTimer)
     submitTimer = setTimeout(() => {
       setSubmit(false)

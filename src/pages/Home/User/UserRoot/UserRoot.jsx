@@ -40,7 +40,7 @@ const UserRoot = () => {
 
   useEffect(() => {
     const userLoggedIn = Cookies.get('loggedIn')
-    console.log(userLoggedIn)
+    // console.log(userLoggedIn)
     if (!userLoggedIn) {
       if (!window.location.pathname.includes('/login')) {
         navigate('/login')
