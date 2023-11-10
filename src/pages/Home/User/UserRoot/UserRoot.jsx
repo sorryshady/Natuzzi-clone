@@ -23,7 +23,8 @@ const UserRoot = () => {
       if (response.status === 200) {
         localStorage.removeItem('firstName')
         localStorage.removeItem('id')
-        document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; '
+        document.cookie =
+          'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'
         enqueueSnackbar(response.data.message, { variant: 'success' })
         dispatch(globalActions.setNavigating(true))
         setTimeout(() => {

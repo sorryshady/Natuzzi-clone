@@ -59,7 +59,7 @@ const SignIn = () => {
       setErrorMsg('')
       setRememberMe(false)
       // console.log(response)
-      persistUserInfo(response.data.user)
+      persistUserInfo(response.data.user, response.data.tokenExpiry)
 
       setTimeout(() => {
         navigate('/user/dashboard')

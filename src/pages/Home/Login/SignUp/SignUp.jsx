@@ -106,7 +106,7 @@ const SignUp = () => {
       enqueueSnackbar('registered succesfully', { variant: 'success' })
       setUserAgreements(initialConditions)
       // console.log(response)
-      persistUserInfo(response.data.user)
+      persistUserInfo(response.data.user, response.data.tokenExpiry)
 
       setTimeout(() => {
         navigate('/user/dashboard')
