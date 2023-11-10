@@ -1,0 +1,121 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 9.6rem;
+}
+.welcome{
+  font-size: 9.8rem;
+  font-weight: 500;
+}
+.profileContainer, .helpContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+.heading{
+  font-size: 3.6rem;
+  font-weight: 500;
+}
+.link{
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.profileSection{
+  display: flex;
+  gap: 2rem;
+}
+.card{
+  flex: 1;
+  padding: 4rem 3rem;
+}
+.profile{
+  border: 1px solid var(--color-black);
+}
+.italia{
+  background-color: var(--color-italia);
+}
+.editions{
+  background-color: var(--color-editions);
+}
+.cardTitle{
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+.cardContent{
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 4rem 0 6.4rem;
+}
+.cardContent span{
+  font-size: 2.2rem;
+  line-height: 1.5;
+}
+.userInfo{
+  margin-top: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.field{
+  font-size: 2rem;
+  font-weight: 500;
+}
+.email{
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.button{
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: 100px;
+  font-size: 2rem;
+  transition: all 0.5s;
+}
+.button:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+.helpSection{
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 6.4rem 4.4rem;
+}
+.helpHeading{
+  font-size: 3.2rem;
+  margin-bottom: 3rem;
+}
+.options{
+  display: flex;
+  gap: 5.6rem;
+  margin-bottom: 6.4rem;
+}
+.store{
+  font-size: 2rem;
+}
+.message{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sendMessage{
+  background-color: var(--color-white);
+  font-size: 1.8rem;
+  border: none;
+  padding: 1.2rem 3.6rem;
+  border-radius: 100px;
+  transition: box-shadow 0.3s, transform 0.3s; 
+}
+.sendMessage:hover{
+  cursor: pointer; 
+  transform: translateY(2px);
+}
