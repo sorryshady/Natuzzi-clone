@@ -24,7 +24,7 @@
   max-width: 23px;
 }
 
-@media (max-width: 36em){
+@media (max-width: 59em){
   .link{
     pointer-events: none;
   }

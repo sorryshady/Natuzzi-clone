@@ -103,12 +103,14 @@
     transform: translateX(-20%) scale(1.2);
   }
   .actions{
+    position: relative;
+    left: 30px;
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
     transform: translateX(-17%);
-    gap: 1.2rem;
+    gap: 1rem;
   }
 }
 @media (max-width: 48em){
@@ -130,7 +132,26 @@
 }
 @media (max-width: 24em){
   .navLeft{
-    grid-column-start: 1;
-    transform: translateX(10%);
+    transform: translateX(0%);
+    order: 2;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .nav{
+    display: flex !important;
+    /* gap: 1rem; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .actions{
+    left: 0;
+    order: 3;
+  }
+  .logo{
+    justify-self: center ;
+    transform: scale(1.2);
+    order: 1;
+    margin-bottom: 0.5rem;
   }
 }

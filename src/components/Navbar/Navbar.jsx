@@ -93,7 +93,7 @@ const Navbar = () => {
               <NavButtons
                 icon={Account}
                 text={userName ? `${userName}` : 'ACCOUNT'}
-                move={'70px'}
+                move={'68px'}
                 dest={userName ? '/user/dashboard' : '/login'}
                 onClick={handleClick}
               />
