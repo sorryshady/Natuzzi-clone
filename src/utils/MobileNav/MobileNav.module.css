@@ -31,16 +31,20 @@
 .logout:hover{
   cursor: pointer;
 }
-@media (max-width: 48em){
+
+@media (max-width: 59em){
   .navContainer{
     gap: 1.2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
     margin-bottom: 2rem;
   }
 }
 @media (max-width: 30em){
   .navContainer{
     /* gap: 0.8rem; */
+    display: flex;
     flex-wrap: nowrap;
     overflow: auto !important;
     flex-basis: auto;

@@ -6,6 +6,7 @@ import Logo from '../../assets/Images/Logo.svg'
 import Account from '../../assets/Images/Account.svg'
 import Menu from '../../assets/Images/Menu.svg'
 import Location from '../../assets/Images/Location.svg'
+import Cart from '../../assets/Images/Cart.svg'
 import CustomLink from '../../utils/CustomLink/CustomLink'
 import Underline from '../../utils/Underline/Underline'
 import NavButtons from '../../utils/NavButtons/NavButtons'
@@ -96,6 +97,13 @@ const Navbar = () => {
                 dest={userName ? '/user/dashboard' : '/login'}
                 onClick={handleClick}
               />
+              {Cookies.get('loggedIn') && (
+                <NavButtons
+                  icon={Cart}
+                  dest={'/checkout'}
+                  onClick={handleClick}
+                />
+              )}
             </div>
           </nav>
         </header>

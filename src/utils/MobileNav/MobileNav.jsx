@@ -16,12 +16,26 @@ const MobileNav = ({ logout }) => {
         </div>
         <div
           className={`${styles.links} ${
+            location.pathname.includes('orders') && styles.active
+          }`}
+        >
+          <CustomLink dest={'/user/orders'}>Your orders</CustomLink>
+        </div>
+        <div
+          className={`${styles.links} ${
             location.pathname.includes('profile') && styles.active
           }`}
         >
           <CustomLink dest={'/user/profile'}>
             Profile and preferences
           </CustomLink>
+        </div>
+        <div
+          className={`${styles.links} ${
+            location.pathname.includes('address') && styles.active
+          }`}
+        >
+          <CustomLink dest={'/user/address'}>Addresses</CustomLink>
         </div>
         <div
           className={`${styles.links} ${

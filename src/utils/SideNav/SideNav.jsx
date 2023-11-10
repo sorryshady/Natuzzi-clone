@@ -16,10 +16,20 @@ const SideNav = ({ logout }) => {
         <div className={styles.content}>
           <div className={styles.heading}>YOUR ACCOUNT</div>
           <div className={styles.link}>
+            <Underline active={location.pathname.includes('orders')}>
+              <CustomLink dest={'/user/orders'}>Your orders</CustomLink>
+            </Underline>
+          </div>
+          <div className={styles.link}>
             <Underline active={location.pathname.includes('profile')}>
               <CustomLink dest={'/user/profile'}>
                 Profile and preferences
               </CustomLink>
+            </Underline>
+          </div>
+          <div className={styles.link}>
+            <Underline active={location.pathname.includes('address')}>
+              <CustomLink dest={'/user/address'}>Addresses</CustomLink>
             </Underline>
           </div>
         </div>
