@@ -1,0 +1,12 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+}
+.ordersHeading{
+  font-size: 9.8rem;
+  font-weight: 500;
+}
+.empty{
+  font-size: 2.4rem;
+}

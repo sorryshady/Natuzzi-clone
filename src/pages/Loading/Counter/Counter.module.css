@@ -19,8 +19,8 @@
 .content-holder{
   display: block;
   font-size: 5rem;
-  color: black;
-  font-weight: 400;
+  color: var(--color-black);
+  font-weight: 300;
 }
 @media(max-width: 30em){
   .main-outer{

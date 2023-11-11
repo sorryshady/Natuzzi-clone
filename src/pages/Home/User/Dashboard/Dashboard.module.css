@@ -15,6 +15,7 @@
 .header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .heading{
   font-size: 3.6rem;
@@ -28,10 +29,13 @@
 .profileSection{
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 .card{
   flex: 1;
   padding: 4rem 3rem;
+  flex-basis: 32%;
+  flex-grow: 0;
 }
 .profile{
   border: 1px solid var(--color-black);
@@ -118,4 +122,101 @@
 .sendMessage:hover{
   cursor: pointer; 
   transform: translateY(2px);
+}
+
+
+@media (max-width: 75em){
+  .card{
+    flex-basis: 48%
+  }
+}
+@media (max-width: 64em){
+  .container{
+    margin: 4rem;
+    gap: 8rem;
+  }
+}
+@media (max-width: 36em){
+  .container{
+    margin: 4rem 3.2rem 3.2rem;
+    gap: 6.4rem;
+  }
+  .welcome{
+    font-size: 7.2rem;
+  }
+  .heading{
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 30em){
+  .welcome{
+    font-size: 6rem;
+  }
+  .heading{
+    font-size: 2.4rem;
+  }
+  .card{
+    flex-basis: 100%;
+  }
+  .helpHeading{
+    font-size: 3.6rem;
+    margin-bottom: 5.6rem;
+  }
+  .options{
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  .store{
+    font-size: 1.8rem;
+  }
+  .sendMessage{
+    font-size: 1.6rem;
+    padding: 1.2rem 2rem;
+    font-weight: 600;
+  }
+}
+@media (max-width: 24em){
+  .container{
+    margin: 2.4rem;
+    gap: 5.6rem;
+  }
+  .welcome{
+    font-size: 4.8rem;
+  }
+  .options{
+    margin-bottom: 4.8rem;
+  }
+  .heading{
+    font-size: 2rem;
+  }
+  .helpSection{
+    padding: 4.8rem 3.2rem;
+  }
+  .message{
+    flex-direction: column;
+    gap: 3.2rem;
+    align-items: flex-start;
+  }
+  .sendMessage{
+    width: 100%;
+  }
+}
+@media (max-width: 20em){
+  .container{
+    margin: 1.6rem;
+    gap: 4rem;
+  }
+  .welcome{
+    font-size: 4rem;
+  }
+  .heading{
+    font-size: 1.8rem;
+  }
+  .helpHeading{
+    font-size: 2.8rem;
+    font-weight: 500;
+  }
+  .link{
+    font-size: 1.3rem;
+  }
 }

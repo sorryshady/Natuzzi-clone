@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './Dashboard.module.css'
 import CardLocation from '../../../../assets/Images/CardLocation.svg'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
 import RadioButtons from '../../../../utils/RadioButtons/RadioButtons'
-import { useLoaderData } from 'react-router-dom'
+import { useRouteLoaderData } from 'react-router-dom'
 const Dashboard = () => {
-  const userData = useLoaderData()
+  const userData = useRouteLoaderData('userRoot')
   const [storeType, setStoreType] = useState({
     italia: true,
     editions: false,

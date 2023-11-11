@@ -27,5 +27,26 @@
 }
 .text{
   font-size: 2.2rem;
+  text-wrap: nowrap;
 }
-
+@media (max-width:30em){
+  .radioContainer{
+    gap: 2rem;
+  }
+  .radioButton{
+    width: 20px;
+    height: 20px;
+  }
+  .radioButton.checked::after{
+    width: 10px;
+    height: 10px;
+  }
+  .text{
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 20em){
+  .text{
+    font-size: 2rem;
+  }
+}
