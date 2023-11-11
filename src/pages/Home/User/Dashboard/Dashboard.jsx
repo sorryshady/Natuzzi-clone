@@ -5,7 +5,7 @@ import CustomLink from '../../../../utils/CustomLink/CustomLink'
 import RadioButtons from '../../../../utils/RadioButtons/RadioButtons'
 import { useRouteLoaderData } from 'react-router-dom'
 const Dashboard = () => {
-  // const userData = useRouteLoaderData('userRoot')
+  const userData = useRouteLoaderData('userRoot')
   const [storeType, setStoreType] = useState({
     italia: true,
     editions: false,
@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.welcome}>Welcome, Dummy </div>
+        <div className={styles.welcome}>Welcome, {userData.firstName}</div>
         <div className={styles.profileContainer}>
           <div className={styles.header}>
             <div className={styles.heading}>Profile and preferences</div>
@@ -30,25 +30,23 @@ const Dashboard = () => {
           </div>
           <div className={styles.profileSection}>
             <div className={`${styles.card} ${styles.profile}`}>
-              <div className={styles.cardTitle}>Dummy Name</div>
-              {/* <div className={styles.cardTitle}>
+              <div className={styles.cardTitle}>
                 {userData.firstName} {userData.lastName}
-              </div> */}
+              </div>
               <div className={styles.userInfo}>
                 <span className={styles.field}>User </span>
-                <span className={styles.email}>Dummy email</span>
+                <span className={styles.email}>{userData.email}</span>
               </div>
             </div>
             <div className={`${styles.card} ${styles.italia}`}>
               <div className={styles.cardTitle}>Natuzzi Italia</div>
               <div className={styles.cardContent}>
                 <img src={CardLocation} alt='location' />
-                <span>'No selected reference shop'</span>
-                {/* <span>
+                <span>
                   {!userData.storeOption.natuzziItalia
                     ? 'No selected reference shop'
                     : userData.storeOption.natuzziItalia}
-                </span> */}
+                </span>
               </div>
               <button className={styles.button}>Select</button>
             </div>
@@ -56,12 +54,11 @@ const Dashboard = () => {
               <div className={styles.cardTitle}>Natuzzi Editions</div>
               <div className={styles.cardContent}>
                 <img src={CardLocation} alt='location' />
-                <span>'No selected reference shop'</span>
-                {/* <span>
+                <span>
                   {!userData.storeOption.natuzziEditions
                     ? 'No selected reference shop'
                     : userData.storeOption.natuzziEditions}
-                </span> */}
+                </span>
               </div>
               <button className={styles.button}>Select</button>
             </div>

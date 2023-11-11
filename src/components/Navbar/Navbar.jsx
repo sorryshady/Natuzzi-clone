@@ -21,9 +21,10 @@ const Navbar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+  const firstName =
+    localStorage.getItem('firstName') || sessionStorage.getItem('firstName')
   const [userName, setUserName] = useState('')
-  const isFirstRender = useRef(true)
-  const [loginCheck, setLoginCheck] = useState(false)
+
   const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
   const { width } = useViewportSize()
@@ -33,33 +34,15 @@ const Navbar = () => {
     dispatch(menuActions.setSrc(Menu))
   }, [dispatch])
 
-  const checkLogin = () => {
-    const loggedInState = Cookies.get('loggedIn')
-    if (loggedInState) {
-      const firstName = localStorage.getItem('firstName')
-      if (firstName) {
-        setUserName(firstName.toUpperCase())
-      }
+  useEffect(() => {
+    if (firstName) {
+      setUserName(firstName)
     } else {
       setUserName('')
       localStorage.removeItem('firstName')
-      localStorage.removeItem('id')
+      sessionStorage.removeItem('firstName')
     }
-  }
-
-  useEffect(() => {
-    if (!isFirstRender.current) {
-      checkLogin()
-    } else {
-      isFirstRender.current = false
-    }
-  }, [checkLogin])
-
-  useEffect(() => {
-    if (loginCheck) {
-      setLoginCheck(false)
-    }
-  }, [loginCheck])
+  }, [userName])
 
   return (
     <>
@@ -92,12 +75,12 @@ const Navbar = () => {
               />
               <NavButtons
                 icon={Account}
-                text={userName ? `${userName}` : 'ACCOUNT'}
+                text={firstName ? `${firstName.toUpperCase()}` : 'ACCOUNT'}
                 move={'68px'}
                 dest={userName ? '/user/dashboard' : '/login'}
                 onClick={handleClick}
               />
-              {Cookies.get('loggedIn') && (
+              {firstName && (
                 <NavButtons
                   icon={Cart}
                   dest={'/checkout'}

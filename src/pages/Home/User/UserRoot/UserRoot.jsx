@@ -18,8 +18,12 @@ const UserRoot = () => {
     try {
       const response = await axios.get(`${config.endpoint}/auth/logout`)
       if (response.status === 200) {
-        localStorage.removeItem('jwt')
-        sessionStorage.removeItem('jwt')
+        localStorage.getItem('jwt')
+          ? localStorage.removeItem('jwt')
+          : sessionStorage.removeItem('jwt')
+        localStorage.getItem('firstName')
+          ? localStorage.removeItem('firstName')
+          : sessionStorage.removeItem('firstName')
         enqueueSnackbar(response.data.message, { variant: 'success' })
         dispatch(globalActions.setNavigating(true))
         setTimeout(() => {
@@ -63,18 +67,22 @@ const UserRoot = () => {
 export default UserRoot
 
 export async function loader() {
-  // console.log('loader executed')
-  // const loggedIn = Cookies.get('loggedIn')
-  // if (loggedIn) {
-  //   const response = await axios.get(`${config.endpoint}/auth/user`, {
-  //     withCredentials: true,
-  //   })
-  //   if (response.status === 200) {
-  //     return response.data
-  //   } else {
-  //     enqueueSnackbar('Something went wrong', { variant: 'error' })
-  //     throw new Error('Internal Server Error')
-  //   }
-  // }
+  const token = sessionStorage.getItem('jwt')
+    ? sessionStorage.getItem('jwt')
+    : localStorage.getItem('jwt')
+  if (token) {
+    const response = await axios.get(`${config.endpoint}/auth/user`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    if (response.status === 200) {
+      return response.data
+    } else {
+      enqueueSnackbar('Something went wrong', { variant: 'error' })
+      throw new Error('Internal Server Error')
+    }
+  }
+
   return null
 } 

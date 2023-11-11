@@ -124,8 +124,7 @@
   transform: translateY(2px);
 }
 
-
-@media (max-width: 75em){
+@media (max-width: 84em){
   .card{
     flex-basis: 48%
   }
