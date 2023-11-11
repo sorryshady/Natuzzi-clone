@@ -28,6 +28,7 @@
 .text{
   font-size: 2.2rem;
   text-wrap: nowrap;
+  white-space: nowrap;
 }
 @media (max-width:30em){
   .radioContainer{
