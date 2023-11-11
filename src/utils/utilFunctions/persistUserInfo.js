@@ -1,7 +1,7 @@
-export const persistUserInfo = (user, tokenExpiry) => {
-  const expiryDate = new Date(tokenExpiry)
-  const formattedExpiryDate = expiryDate.toUTCString()
-  document.cookie = `loggedIn = true; expires=${formattedExpiryDate}; path=/`
-  localStorage.setItem('firstName', user.firstName)
-  localStorage.setItem('id', user['_id'])
+export const persistUserInfo = (token, rememberMe = false) => {
+  if (rememberMe) {
+    localStorage.setItem('jwt', token)
+  } else {
+    sessionStorage.setItem('jwt', token)
+  }
 }

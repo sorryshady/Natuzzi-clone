@@ -6,7 +6,6 @@ import styles from './UserRoot.module.css'
 import { Outlet, useNavigate } from 'react-router'
 import SideNav from '../../../../utils/SideNav/SideNav'
 import useViewportSize from '../../../../hooks/useViewportSize'
-import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { globalActions } from '../../../../store/global-slice'
 import MobileNav from '../../../../utils/MobileNav/MobileNav'
@@ -17,14 +16,10 @@ const UserRoot = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`${config.endpoint}/auth/logout`, {
-        withCredentials: true,
-      })
+      const response = await axios.get(`${config.endpoint}/auth/logout`)
       if (response.status === 200) {
-        localStorage.removeItem('firstName')
-        localStorage.removeItem('id')
-        document.cookie =
-          'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'
+        localStorage.removeItem('jwt')
+        sessionStorage.removeItem('jwt')
         enqueueSnackbar(response.data.message, { variant: 'success' })
         dispatch(globalActions.setNavigating(true))
         setTimeout(() => {
@@ -37,14 +32,13 @@ const UserRoot = () => {
       enqueueSnackbar('Something went wrong.', { variant: 'error' })
     }
   }
-
   useEffect(() => {
-    const userLoggedIn = Cookies.get('loggedIn')
-    // console.log(userLoggedIn)
-    if (!userLoggedIn) {
+    const jwt = sessionStorage.getItem('jwt')
+      ? sessionStorage.getItem('jwt')
+      : localStorage.getItem('jwt')
+    if (!jwt) {
       if (!window.location.pathname.includes('/login')) {
         navigate('/login')
-        enqueueSnackbar('No user logged in.', { variant: 'warning' })
       }
     }
   }, [])
@@ -70,16 +64,17 @@ export default UserRoot
 
 export async function loader() {
   // console.log('loader executed')
-  const loggedIn = Cookies.get('loggedIn')
-  if (loggedIn) {
-    const response = await axios.get(`${config.endpoint}/auth/user`, {
-      withCredentials: true,
-    })
-    if (response.status === 200) {
-      return response.data
-    } else {
-      enqueueSnackbar('Something went wrong', { variant: 'error' })
-      throw new Error('Internal Server Error')
-    }
-  }
+  // const loggedIn = Cookies.get('loggedIn')
+  // if (loggedIn) {
+  //   const response = await axios.get(`${config.endpoint}/auth/user`, {
+  //     withCredentials: true,
+  //   })
+  //   if (response.status === 200) {
+  //     return response.data
+  //   } else {
+  //     enqueueSnackbar('Something went wrong', { variant: 'error' })
+  //     throw new Error('Internal Server Error')
+  //   }
+  // }
+  return null
 } 

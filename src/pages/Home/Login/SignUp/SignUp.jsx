@@ -70,8 +70,7 @@ const SignUp = () => {
       setLoading(true)
       const response = await axios.post(
         `${config.endpoint}/auth/register`,
-        data,
-        { withCredentials: true }
+        data
       )
       setLoading(false)
       if (!response.data.code) {
@@ -106,8 +105,8 @@ const SignUp = () => {
       enqueueSnackbar('registered succesfully', { variant: 'success' })
       setUserAgreements(initialConditions)
       // console.log(response)
-      persistUserInfo(response.data.user, response.data.tokenExpiry)
-
+      persistUserInfo(response.data.tokens.token)
+      // persistUserInfo(response.data.user, response.data.token)
       setTimeout(() => {
         navigate('/user/dashboard')
         setSubmit(false)

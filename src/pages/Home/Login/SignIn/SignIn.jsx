@@ -33,9 +33,7 @@ const SignIn = () => {
   const performAPICall = async (data) => {
     try {
       setLoading(true)
-      const response = await axios.post(`${config.endpoint}/auth/login`, data, {
-        withCredentials: true,
-      })
+      const response = await axios.post(`${config.endpoint}/auth/login`, data)
       setLoading(false)
       dispatch(globalActions.setNavigating(true))
       return response
@@ -59,7 +57,7 @@ const SignIn = () => {
       setErrorMsg('')
       setRememberMe(false)
       // console.log(response)
-      persistUserInfo(response.data.user, response.data.tokenExpiry)
+      persistUserInfo(response.data.tokens.token, response.data.rememberMe)
 
       setTimeout(() => {
         navigate('/user/dashboard')
