@@ -9,6 +9,7 @@ import useViewportSize from '../../../../hooks/useViewportSize'
 import { useDispatch } from 'react-redux'
 import { globalActions } from '../../../../store/global-slice'
 import MobileNav from '../../../../utils/MobileNav/MobileNav'
+import store from '../../../../store'
 const UserRoot = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -76,6 +77,7 @@ export async function loader() {
         Authorization: token,
       },
     })
+    store.dispatch(globalActions.setNavigating(false))
     if (response.status === 200) {
       return response.data
     } else {

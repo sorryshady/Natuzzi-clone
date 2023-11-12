@@ -62,7 +62,7 @@ const SignIn = () => {
       setTimeout(() => {
         navigate('/user/dashboard')
         setSubmit(false)
-        dispatch(globalActions.setNavigating(false))
+        // dispatch(globalActions.setNavigating(false))
       }, 1000)
     }
   }
