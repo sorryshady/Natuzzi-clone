@@ -5,13 +5,26 @@ function useDynamicTitle() {
   const location = useLocation()
 
   useEffect(() => {
-    let routeName = location.pathname.replace(/^\//, '').replace(/[-/]/g, ' ')
+    let routeName = location.pathname
+      .replace(/^\//, '')
+      .replace(/[-/]/g, ' ')
+      .split(' ')
+      .pop()
     switch (routeName) {
       case '':
         routeName = 'Natuzzi Italia & Natuzzi Editions'
         break
       case 'login':
         routeName = 'Login'
+        break
+      case 'dashboard':
+        routeName = 'Dashboard'
+        break
+      case 'orders':
+        routeName = 'Your Orders'
+        break
+      case 'profile':
+        routeName = 'Profile and preferences'
         break
       case 'trade and contract':
         routeName = 'Trade and Contract'

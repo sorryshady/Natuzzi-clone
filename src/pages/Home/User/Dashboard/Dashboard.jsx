@@ -4,7 +4,9 @@ import CardLocation from '../../../../assets/Images/CardLocation.svg'
 import CustomLink from '../../../../utils/CustomLink/CustomLink'
 import RadioButtons from '../../../../utils/RadioButtons/RadioButtons'
 import { useRouteLoaderData } from 'react-router-dom'
+import useDynamicTitle from '../../../../hooks/useDynamicTitle'
 const Dashboard = () => {
+  useDynamicTitle()
   const userData = useRouteLoaderData('userRoot')
   const [storeType, setStoreType] = useState({
     italia: true,

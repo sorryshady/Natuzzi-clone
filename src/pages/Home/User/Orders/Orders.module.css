@@ -10,3 +10,37 @@
 .empty{
   font-size: 2.4rem;
 }
+@media (max-width: 64em){
+  .container{
+    margin: 4rem;
+  }
+}
+@media (max-width: 36em){
+  .container{
+    margin: 4rem 3.2rem 3.2rem;
+  }
+  .ordersHeading{
+    font-size: 7.2rem;
+  }
+}
+@media (max-width: 30em){
+  .ordersHeading{
+    font-size: 6rem;
+  }
+}
+@media (max-width: 24em){
+  .container{
+    margin: 2.4rem;
+  }
+  .ordersHeading{
+    font-size: 5.6rem;
+  }
+}
+@media (max-width: 20em){
+  .container{
+    margin: 1.6rem;
+  }
+  .ordersHeading{
+    font-size: 5.2rem;
+  }
+}

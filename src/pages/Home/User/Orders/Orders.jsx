@@ -2,7 +2,9 @@ import React from 'react'
 import styles from './Orders.module.css'
 import { useRouteLoaderData } from 'react-router'
 import OrderCard from './OrderCard/OrderCard'
+import useDynamicTitle from '../../../../hooks/useDynamicTitle'
 const Orders = () => {
+  useDynamicTitle()
   const { orders } = useRouteLoaderData('userRoot')
   console.log(orders)
   return (
