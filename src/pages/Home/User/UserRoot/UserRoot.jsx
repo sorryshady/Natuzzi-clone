@@ -15,6 +15,8 @@ const UserRoot = () => {
   const dispatch = useDispatch()
   const { width } = useViewportSize()
 
+  dispatch(globalActions.setNavigating(false))
+
   const handleLogout = async () => {
     try {
       const response = await axios.get(`${config.endpoint}/auth/logout`)
