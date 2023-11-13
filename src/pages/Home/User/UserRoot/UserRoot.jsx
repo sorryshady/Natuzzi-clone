@@ -68,6 +68,8 @@ const UserRoot = () => {
 export default UserRoot
 
 export async function loader() {
+  const { navigating } = store.getState().global
+  !navigating && store.dispatch(globalActions.setNavigating(true))
   const token = sessionStorage.getItem('jwt')
     ? sessionStorage.getItem('jwt')
     : localStorage.getItem('jwt')

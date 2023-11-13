@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Cookies from 'js-cookie'
+import React, { useCallback, useEffect, useState } from 'react'
 import styles from './Navbar.module.css'
 import { animateScroll as scroll } from 'react-scroll'
 import Logo from '../../assets/Images/Logo.svg'
@@ -77,8 +76,9 @@ const Navbar = () => {
                 icon={Account}
                 text={firstName ? `${firstName.toUpperCase()}` : 'ACCOUNT'}
                 move={'68px'}
-                dest={userName ? '/user/dashboard' : '/login'}
+                dest={firstName ? '/user/dashboard' : '/login'}
                 onClick={handleClick}
+                loader={firstName ? true : false}
               />
               {firstName && (
                 <NavButtons

@@ -4,17 +4,15 @@ import commonStyles from '../Login.module.css'
 import Input from '../../../../utils/Input/Input'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import { Oval } from 'react-loader-spinner'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { config } from '../../../../App'
 import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
-import { globalActions } from '../../../../store/global-slice'
 import { persistUserInfo } from '../../../../utils/utilFunctions/persistUserInfo'
 
 const SignIn = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [submit, setSubmit] = useState(false)
   const { email, password } = useSelector((state) => state.loginSub.login)
@@ -34,8 +32,6 @@ const SignIn = () => {
     try {
       setLoading(true)
       const response = await axios.post(`${config.endpoint}/auth/login`, data)
-      setLoading(false)
-      dispatch(globalActions.setNavigating(true))
       return response
     } catch (error) {
       setLoading(false)
@@ -53,16 +49,14 @@ const SignIn = () => {
     const response = await performAPICall(formData)
     if (response) {
       setSubmit(true)
-      enqueueSnackbar('login successfull', { variant: 'success' })
       setErrorMsg('')
       setRememberMe(false)
       // console.log(response)
       persistUserInfo(response.data.tokens.token, response.data.rememberMe)
-
       setTimeout(() => {
+        enqueueSnackbar('login successfull', { variant: 'success' })
         navigate('/user/dashboard')
         setSubmit(false)
-        // dispatch(globalActions.setNavigating(false))
       }, 1000)
     }
   }

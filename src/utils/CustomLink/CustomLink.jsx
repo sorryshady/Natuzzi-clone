@@ -7,7 +7,13 @@ import { cursorActions } from '../../store/cursor-slice'
 import { menuActions } from '../../store/menu-slice'
 import { globalActions } from '../../store/global-slice'
 // const CustomLink = ({dest, children, setExit}) => {
-const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
+const CustomLink = ({
+  dest,
+  children,
+  newTab = false,
+  styleClass,
+  loader = false,
+}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { active } = useSelector((state) => state.menu)
@@ -24,9 +30,18 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
       if (animationTimer) {
         clearTimeout(animationTimer)
       }
-      animationTimer = setTimeout(() => {
-        dispatch(globalActions.setNavigating(true))
-      }, 1000)
+      // animationTimer = setTimeout(() => {
+      //   dispatch(globalActions.setNavigating(true))
+      // }, 1000)
+      if (!loader) {
+        animationTimer = setTimeout(() => {
+          dispatch(globalActions.setNavigating(true))
+        }, 1000)
+      } else {
+        animationTimer = setTimeout(() => {
+          dispatch(globalActions.setNavigating(true))
+        }, 1500)
+      }
       if (active) {
         dispatch(menuActions.setActive(false))
         dispatch(menuActions.setSrc(Menu))
@@ -46,8 +61,8 @@ const CustomLink = ({ dest, children, newTab = false, styleClass }) => {
         dispatch(cursorActions.setHoverState(false))
         dispatch(cursorActions.setMouseClick())
         dispatch(cursorActions.setLoadingState())
-        dispatch(globalActions.setNavigating(false))
         dispatch(globalActions.setLoading(false))
+        !loader && dispatch(globalActions.setNavigating(false))
       }, delay)
     }
   }

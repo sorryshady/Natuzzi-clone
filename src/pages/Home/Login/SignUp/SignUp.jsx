@@ -5,17 +5,15 @@ import { Oval } from 'react-loader-spinner'
 import Checkbox from '../../../../utils/Checkbox/Checkbox'
 import PrivateForm from './PrivateForm'
 import CompanyForm from './CompanyForm'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { config } from '../../../../App'
 import axios from 'axios'
 import { enqueueSnackbar } from 'notistack'
 import { useNavigate } from 'react-router'
-import { globalActions } from '../../../../store/global-slice'
 import { persistUserInfo } from '../../../../utils/utilFunctions/persistUserInfo'
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const privateState = useSelector((state) => state.register.privateData)
   const companyState = useSelector((state) => state.register.companyData)
 
@@ -72,9 +70,7 @@ const SignUp = () => {
         `${config.endpoint}/auth/register`,
         data
       )
-      setLoading(false)
       if (!response.data.code) {
-        dispatch(globalActions.setNavigating(true))
         return response
       } else {
         if (response.data.code < 400)
@@ -102,15 +98,13 @@ const SignUp = () => {
     const response = await performAPICall(newData)
     if (response) {
       setSubmit(true)
-      enqueueSnackbar('registered succesfully', { variant: 'success' })
       setUserAgreements(initialConditions)
       // console.log(response)
       persistUserInfo(response.data.tokens.token)
-      // persistUserInfo(response.data.user, response.data.token)
       setTimeout(() => {
+        enqueueSnackbar('registered succesfully', { variant: 'success' })
         navigate('/user/dashboard')
         setSubmit(false)
-        // dispatch(globalActions.setNavigating(false))
       }, 1000)
     }
   }

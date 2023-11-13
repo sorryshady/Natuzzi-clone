@@ -3,11 +3,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import styles from './NavButtons.module.css'
 import CustomLink from '../CustomLink/CustomLink'
 
-const NavButtons = ({ icon, text, move, dest }) => {
+const NavButtons = ({ icon, text, move, dest, loader = false }) => {
   const [hover, setHover] = useState(false)
 
   return (
-    <CustomLink dest={dest}>
+    <CustomLink dest={dest} loader={loader}>
       <div
         className={`${styles.link} flex`}
         onMouseEnter={() => setHover(true)}
