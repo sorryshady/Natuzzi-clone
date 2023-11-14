@@ -89,41 +89,6 @@
   cursor: pointer;
   opacity: 0.7;
 }
-.helpSection{
-  background-color: var(--color-black);
-  color: var(--color-white);
-  padding: 6.4rem 4.4rem;
-}
-.helpHeading{
-  font-size: 3.2rem;
-  margin-bottom: 3rem;
-}
-.options{
-  display: flex;
-  gap: 5.6rem;
-  margin-bottom: 6.4rem;
-}
-.store{
-  font-size: 2rem;
-}
-.message{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.sendMessage{
-  background-color: var(--color-white);
-  color: var(--color-black);
-  font-size: 1.8rem;
-  border: none;
-  padding: 1.2rem 3.6rem;
-  border-radius: 100px;
-  transition: box-shadow 0.3s, transform 0.3s; 
-}
-.sendMessage:hover{
-  cursor: pointer; 
-  transform: translateY(2px);
-}
 
 @media (max-width: 84em){
   .card{
@@ -158,28 +123,6 @@
   .card{
     flex-basis: 100%;
   }
-  .helpHeading{
-    font-size: 3.6rem;
-    margin-bottom: 5.6rem;
-  }
-  .options{
-    flex-direction: column;
-    gap: 1.4rem;
-  }
-  .store{
-    font-size: 2rem;
-  }
-  .message{
-    flex-direction: column;
-    gap: 3.2rem;
-    align-items: flex-start;
-  }
-  .sendMessage{
-    font-size: 1.6rem;
-    padding: 1.2rem 2rem;
-    font-weight: 600;
-    width: 100%;
-  }
 }
 @media (max-width: 24em){
   .container{
@@ -189,17 +132,8 @@
   .welcome{
     font-size: 5.6rem;
   }
-  .options{
-    margin-bottom: 4.8rem;
-  }
   .heading{
     font-size: 2rem;
-  }
-  .helpSection{
-    padding: 4.8rem 3.2rem;
-  }
-  .store{
-    font-size: 1.8rem;
   }
 }
 @media (max-width: 20em){
@@ -212,12 +146,5 @@
   }
   .heading{
     font-size: 1.8rem;
-  }
-  .helpHeading{
-    font-size: 2.8rem;
-    font-weight: 500;
-  }
-  .link{
-    font-size: 1.3rem;
   }
 }

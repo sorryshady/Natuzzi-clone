@@ -29,6 +29,9 @@ function useDynamicTitle() {
       case 'address':
         routeName = 'Addresses'
         break
+      case 'help':
+        routeName = 'Help and contacts'
+        break
       case 'trade and contract':
         routeName = 'Trade and Contract'
         break

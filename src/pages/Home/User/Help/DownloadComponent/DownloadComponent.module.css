@@ -1,0 +1,48 @@
+.container{
+  padding: 4rem;
+  background-color: #f1f3f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.title{
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.subTitle{
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+.download{
+  display: block;
+  font-size: 1.8rem;
+  padding: 1rem 3.2rem;
+  background-color: transparent;
+  border-radius: 100px;
+  border: 1px solid black;
+}
+.download:hover{
+  cursor: pointer;
+}
+@media (max-width: 36em){
+  .container{
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .content{
+    align-items: center;
+  }
+}
+@media (max-width: 36em){
+  .title{
+    font-size: 2.2rem;
+  }
+  .subTitle{
+    font-size: 1.4rem;
+  }
+}

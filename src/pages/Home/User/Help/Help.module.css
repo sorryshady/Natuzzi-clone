@@ -1,0 +1,74 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.helpHeading{
+  font-size: 9.8rem;
+  font-weight: 500;
+}
+.downloadsContainer, .helpContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 5.6rem;
+}
+.header{
+  font-size: 3.6rem;
+  font-weight: 500;
+}
+
+.downloadsSection{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (max-width: 64em){
+  .container{
+    margin: 4rem;
+    gap: 8rem;
+  }
+}
+@media (max-width: 36em){
+  .container{
+    margin: 4rem 3.2rem 3.2rem;
+    gap: 6.4rem;
+  }
+  .helpHeading{
+    font-size: 7.2rem;
+  }
+  .header{
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 30em){
+  .helpHeading{
+    font-size: 6rem;
+  }
+  .header{
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 24em){
+  .container{
+    margin: 2.4rem;
+    gap: 5.6rem;
+  }
+  .helpHeading{
+    font-size: 5.6rem;
+  }
+  .header{
+    font-size: 2rem;
+  }
+}
+@media (max-width: 20em){
+  .container{
+    margin: 1.6rem;
+    gap: 4rem;
+  }
+  .helpHeading{
+    font-size: 5.2rem;
+  }
+  .header{
+    font-size: 1.8rem;
+  }
+}
