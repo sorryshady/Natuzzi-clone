@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { jwtDecode } from 'jwt-decode'
 import Navbar from '../../components/Navbar/Navbar'
 import { Outlet } from 'react-router'
 import Footer from '../../components/Footer/Footer'
@@ -46,6 +47,22 @@ const HomeRoot = () => {
 export default HomeRoot
 
 export async function loader() {
+  const token = localStorage.getItem('jwt')
+    ? localStorage.getItem('jwt')
+    : sessionStorage.getItem('jwt')
+  if (token) {
+    const userData = jwtDecode(token)
+    const currentTime = Math.floor(Date.now() / 1000)
+    if (currentTime >= userData.exp) {
+      if (localStorage.getItem('jwt')) {
+        localStorage.removeItem('jwt')
+        localStorage.removeItem('firstName')
+      } else {
+        sessionStorage.removeItem('jwt')
+        sessionStorage.removeItem('firstName')
+      }
+    }
+  }
   store.dispatch(globalActions.setLoading(true))
   return null
 }
