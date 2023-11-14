@@ -18,26 +18,20 @@ const UserRoot = () => {
   dispatch(globalActions.setNavigating(false))
 
   const handleLogout = async () => {
-    try {
-      const response = await axios.get(`${config.endpoint}/auth/logout`)
-      if (response.status === 200) {
-        localStorage.getItem('jwt')
-          ? localStorage.removeItem('jwt')
-          : sessionStorage.removeItem('jwt')
-        localStorage.getItem('firstName')
-          ? localStorage.removeItem('firstName')
-          : sessionStorage.removeItem('firstName')
-        enqueueSnackbar(response.data.message, { variant: 'success' })
-        dispatch(globalActions.setNavigating(true))
-        setTimeout(() => {
-          navigate('/login')
-          dispatch(globalActions.setNavigating(false))
-        }, 1000)
-      }
-    } catch (error) {
-      console.log(error)
-      enqueueSnackbar('Something went wrong.', { variant: 'error' })
+    if (localStorage.getItem('jwt')) {
+      localStorage.removeItem('jwt')
+      localStorage.removeItem('firstName')
     }
+    if (sessionStorage.getItem('jwt')) {
+      sessionStorage.removeItem('jwt')
+      sessionStorage.removeItem('firstName')
+    }
+    enqueueSnackbar('logout succesfull', { variant: 'success' })
+    dispatch(globalActions.setNavigating(true))
+    setTimeout(() => {
+      navigate('/login')
+      dispatch(globalActions.setNavigating(false))
+    }, 1000)
   }
   useEffect(() => {
     const jwt = sessionStorage.getItem('jwt')
