@@ -11,10 +11,10 @@
 .text {
   display: inline-block;
   overflow: hidden;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: rgba(0,0,0,0.7);
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 500;
+  letter-spacing: 2px;
   transform-origin: 100%;
 }
 .textContainer{
