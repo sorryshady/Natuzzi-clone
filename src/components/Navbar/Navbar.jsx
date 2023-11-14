@@ -15,11 +15,14 @@ import MenuBtn from '../../utils/MenuBtn/MenuBtn'
 import useViewportSize from '../../hooks/useViewportSize'
 import { useDispatch, useSelector } from 'react-redux'
 import { menuActions } from '../../store/menu-slice'
+import { useLocation } from 'react-router'
 
 const Navbar = () => {
   const scrollToTop = () => {
     scroll.scrollToTop()
   }
+  const location = useLocation()
+  const userLocation = location.pathname.includes('user')
   const firstName =
     localStorage.getItem('firstName') || sessionStorage.getItem('firstName')
   const [userName, setUserName] = useState('')
@@ -80,7 +83,7 @@ const Navbar = () => {
                 onClick={handleClick}
                 loader={firstName ? true : false}
               />
-              {firstName && (
+              {firstName && userLocation && (
                 <NavButtons
                   icon={Cart}
                   dest={'/checkout'}

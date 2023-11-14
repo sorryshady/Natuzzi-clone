@@ -18,8 +18,8 @@ const Cursor = ({ mousePosition }) => {
     visible: {
       x: mousePosition.x - 65,
       y: mousePosition.y - 65,
-      width: '130px',
-      height: '130px',
+      width: '120px',
+      height: '120px',
       color: 'black',
     },
     exit: {
@@ -36,8 +36,8 @@ const Cursor = ({ mousePosition }) => {
       height: 0,
     },
     visible: {
-      width: '131px',
-      height: '131px',
+      width: '121px',
+      height: '121px',
       transition: { duration: 0.3, delay: 0.2 },
     },
     exit: {
