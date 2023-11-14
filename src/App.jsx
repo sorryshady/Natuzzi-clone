@@ -17,9 +17,9 @@ import Checkout from './pages/Home/Checkout/Checkout'
 import Orders from './pages/Home/User/Orders/Orders'
 import Addresses from './pages/Home/User/Addresses/Addresses'
 export const config = {
-  // endpoint: 'https://natuzzi-backend.onrender.com/v1',
+  endpoint: 'https://natuzzi-backend.onrender.com/v1',
   // endpoint: 'http://192.168.1.38:8082/v1/',
-  endpoint: 'http://localhost:8082/v1/',
+  // endpoint: 'http://localhost:8082/v1/',
 }
 
 const router = createBrowserRouter([
