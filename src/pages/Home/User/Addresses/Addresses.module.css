@@ -1,0 +1,110 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+.addressHeading{
+  font-size: 9.8rem;
+  font-weight: 500;
+}
+.addressContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 5.6rem;
+}
+.header{
+  font-size: 3.6rem;
+  font-weight: 500;
+}
+.addressSection{
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.addAddressCard{
+  background-color: var(--color-black);
+  flex-basis: 30%;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addAddressCard:hover{
+  cursor: pointer;
+}
+.addContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.plus, .subText{
+  color: var(--color-italia);
+}
+.plus{
+  font-family: serif;
+  font-size: 12rem;
+  font-weight: 600;
+}
+.subText{
+  font-weight: 500;
+  font-size: 2.8rem;
+}
+@media (max-width: 84em){
+  .addAddressCard{
+    flex-basis: 48%;
+  }
+}
+@media (max-width: 64em){
+  .container{
+    margin: 4rem;
+  }
+  .addAddressCard{
+    flex-basis: 100%;
+    min-height: 450px;
+  }
+  .subText{
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 36em){
+  .container{
+    margin: 4rem 3.2rem 3.2rem;
+  }
+  .addressHeading{
+    font-size: 7.2rem;
+  }
+  .header{
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 30em){
+  .addressHeading{
+    font-size: 6rem;
+  }
+  .header{
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 24em){
+  .container{
+    margin: 2.4rem;
+  }
+  .addressHeading{
+    font-size: 5.6rem;
+  }
+  .header{
+    font-size: 2rem;
+  }
+}
+@media (max-width: 20em){
+  .container{
+    margin: 1.6rem;
+  }
+  .addressHeading{
+    font-size: 5.2rem;
+  }
+  .header{
+    font-size: 1.8rem;
+  }
+}
