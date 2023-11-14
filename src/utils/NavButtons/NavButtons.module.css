@@ -15,6 +15,10 @@
   color: rgba(0,0,0,0.7);
   font-weight: 600;
   letter-spacing: 1px;
+  transform-origin: 100%;
+}
+.textContainer{
+  margin-right: 1rem;
 }
 .icon{
   width: 23px;

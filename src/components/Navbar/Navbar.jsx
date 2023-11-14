@@ -71,14 +71,12 @@ const Navbar = () => {
               <NavButtons
                 icon={Location}
                 text={'STORES'}
-                move={'60px'}
                 dest={'/store-locator'}
                 onClick={handleClick}
               />
               <NavButtons
                 icon={Account}
                 text={firstName ? `${firstName.toUpperCase()}` : 'ACCOUNT'}
-                move={'68px'}
                 dest={firstName ? '/user/dashboard' : '/login'}
                 onClick={handleClick}
                 loader={firstName ? true : false}

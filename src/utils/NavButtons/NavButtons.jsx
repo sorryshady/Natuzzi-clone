@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import styles from './NavButtons.module.css'
 import CustomLink from '../CustomLink/CustomLink'
 
-const NavButtons = ({ icon, text, move, dest, loader = false }) => {
+const NavButtons = ({ icon, text, dest, loader = false }) => {
   const [hover, setHover] = useState(false)
 
   return (
@@ -19,13 +19,13 @@ const NavButtons = ({ icon, text, move, dest, loader = false }) => {
           {hover && (
             <motion.div
               key={text}
-              initial={{ width: '0vw', opacity: 0 }}
-              animate={{ width: move, opacity: 1 }}
-              exit={{ width: '0vw', opacity: 0 }}
+              initial={{ width: '0vw' }}
+              animate={{ width: 'auto' }}
+              exit={{ width: '0vw' }}
               transition={{ duration: 0.5 }}
               className={styles.text}
             >
-              {text}
+              <div className={styles.textContainer}>{text}</div>
             </motion.div>
           )}
         </AnimatePresence>
