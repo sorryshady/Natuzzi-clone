@@ -32,6 +32,9 @@ function useDynamicTitle() {
       case 'wishlist':
         routeName = 'Wishlist'
         break
+      case 'projects':
+        routeName = 'Saved Projects'
+        break
       case 'help':
         routeName = 'Help and contacts'
         break

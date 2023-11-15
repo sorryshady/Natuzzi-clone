@@ -1,0 +1,68 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  min-height: 40svh;
+}
+.projectsHeading{
+  font-size: 9.8rem;
+  font-weight: 500;
+}
+.header{
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+.projectsContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.empty{
+  font-size: 2.4rem;
+}
+@media (max-width: 64em){
+  .container{
+    margin: 4rem;
+  }
+}
+@media (max-width: 36em){
+  .container{
+    margin: 4rem 3.2rem 3.2rem;
+  }
+  .projectsHeading{
+    font-size: 7.2rem;
+  }
+  .header{
+    font-size: 2.2rem;
+  }
+  .empty{
+    font-size: 2rem;
+  }
+}
+@media (max-width: 30em){
+  .projectsHeading{
+    font-size: 6rem;
+  }
+  .empty{
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 24em){
+  .container{
+    margin: 2.4rem;
+  }
+  .projectsHeading{
+    font-size: 5.6rem;
+  }
+  .header{
+    font-size: 2rem;
+  }
+}
+@media (max-width: 20em){
+  .container{
+    margin: 1.6rem;
+  }
+  .projectsHeading{
+    font-size: 5.2rem;
+  }
+}
