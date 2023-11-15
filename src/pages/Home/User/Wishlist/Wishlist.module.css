@@ -1,12 +1,21 @@
 .container{
   display: flex;
   flex-direction: column;
-  gap: 4.8rem;
+  gap: 2.8rem;
   min-height: 40svh;
 }
-.ordersHeading{
+.wishHeading{
   font-size: 9.8rem;
   font-weight: 500;
+}
+.header{
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+.wishContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 .empty{
   font-size: 2.4rem;
@@ -20,15 +29,18 @@
   .container{
     margin: 4rem 3.2rem 3.2rem;
   }
-  .ordersHeading{
+  .wishHeading{
     font-size: 7.2rem;
+  }
+  .header{
+    font-size: 2.2rem;
   }
   .empty{
     font-size: 2rem;
   }
 }
 @media (max-width: 30em){
-  .ordersHeading{
+  .wishHeading{
     font-size: 6rem;
   }
   .empty{
@@ -39,15 +51,18 @@
   .container{
     margin: 2.4rem;
   }
-  .ordersHeading{
+  .wishHeading{
     font-size: 5.6rem;
+  }
+  .header{
+    font-size: 2rem;
   }
 }
 @media (max-width: 20em){
   .container{
     margin: 1.6rem;
   }
-  .ordersHeading{
+  .wishHeading{
     font-size: 5.2rem;
   }
 }
